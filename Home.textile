@@ -1,0 +1,12 @@
+h1. Welcome to the xmimsim wiki!
+
+h2. Introduction
+
+xmimsim is an open source tool designed for the Monte Carlo based simulation energy-dispersive X-ray fluorescence spectrometers.
+For now information will be limited but it will updated soon...
+I've added a poster that I presented recently at the ICXOM2011 conference with some information on the underlying algorithms and some results.
+A file with installation instructions is also added.
+
+A manuscript has been submitted to Spectrochimica Acta Part B covering the algorithms.
+
+Keep in mind that xmimsim is released under the GPL
