@@ -7,6 +7,14 @@ For now information is limited but it will updated soon...
 I've added a poster that I presented recently at the ICXOM2011 conference with some information on the underlying algorithms and some results.
 A file with installation instructions is also added.
 
+All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used combined with xmimsim.
+
+
+"xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
+
+
+
+
 A manuscript has been submitted to Spectrochimica Acta Part B covering the algorithms.
 
 Keep in mind that XMI-MSIM is released under the GPL.
