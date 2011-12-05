@@ -7,14 +7,38 @@ For now information is limited but it will updated soon...
 I've added a poster that I presented recently at the ICXOM2011 conference with some information on the underlying algorithms and some results.
 A file with installation instructions is also added.
 
-All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used combined with xmimsim.
-
-
-"xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
-
-
-
-
 A manuscript has been submitted to Spectrochimica Acta Part B covering the algorithms.
 
 Keep in mind that XMI-MSIM is released under the GPL.
+
+h2. Installation instructions
+
+All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used in combination with xmimsim.
+
+"xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
+
+h3. Linux
+
+To facilitate the installation on linux systems, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat, Ubuntu etc). The developers have built 64-bit RPM packages of __xmimsim__ for the Fedora 16 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
+
+bq. @su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-fedora.noarch.rpm'@
+
+and for Red Hat EL based distributions:
+
+bq. @su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-redhat.noarch.rpm'@
+
+The __xmimsim__ packages themselves can then be downloaded using yum:
+
+bq. @su -c 'yum install xmimsim'@
+
+Updates can be installed in a similar way:
+
+bq. @su -c 'yum update xmimsim'@
+
+h3. Windows
+
+An installer containing the 32-bit binaries of __xmimsim__ for the Windows platform can be found in the Downloads section. 
+
+h3. Mac OS X
+
+For now, the source code must be compiled by the user. I plan on adding it to MacPorts soon... 
