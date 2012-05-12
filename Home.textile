@@ -1,4 +1,4 @@
-h1. Welcome to the xmimsim wiki!
+h1. Welcome to the XMI-MSIM wiki!
 
 h2. Introduction
 
@@ -7,15 +7,19 @@ For now information is limited but it will updated soon...
 I've added a poster that I presented recently at the ICXOM2011 conference with some information on the underlying algorithms and some results.
 A file with installation instructions is also added.
 
-A manuscript has been submitted to Spectrochimica Acta Part B covering the algorithms.
+A manuscript has been accepted for publication in "Spectrochimica Acta Part B":http://dx.doi.org/10.1016/j.sab.2012.03.011 covering the algorithms.
 
-Keep in mind that XMI-MSIM is released under the GPL.
+Keep in mind that XMI-MSIM is released under the GPLv3.
 
 h2. Installation instructions
+
+h3. From source
 
 All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used in combination with xmimsim.
 
 "xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
+
+A pdf has been added to the Download section with more complete compilation instructions (currently outdated)
 
 h3. Linux
 
@@ -41,4 +45,4 @@ An installer containing the 32-bit binaries of __xmimsim__ for the Windows platf
 
 h3. Mac OS X
 
-For now, the source code must be compiled by the user. I plan on adding it to MacPorts soon... 
+A dmg file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run ONLY on Mac OS X Lion!!! (64-bit)
