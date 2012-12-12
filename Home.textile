@@ -3,7 +3,9 @@ h1. Welcome to the XMI-MSIM wiki!
 h2. Introduction
 
 XMI-MSIM is an open source tool designed for the Monte Carlo based simulation energy-dispersive X-ray fluorescence spectrometers.
-For now information is limited but it will updated soon...
+
+*While the development of XMI-MSIM is done through this Github repo, the "Download section":http://lvserver.ugent.be/xmi-msim is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University.*
+
 I've added a poster that I presented recently at the ICXOM2011 conference with some information on the underlying algorithms and some results.
 A pdf of an oral presentation I gave at the EXRS2012 conference can also be found in the Downloads section.
 A file with installation instructions is also added.
@@ -26,7 +28,7 @@ List of dependencies:
 * Fortran GSL bindings (FGSL)
 * xraylib (including Fortran bindings)
 * glib2
-* GTK2 and GTK-EXTRA (version 3.0.1) for the graphical user interface
+* GTK2 and GTK-EXTRA (version 3.0.1) for the graphical user interface (optional though highly recommended)
 
 All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used in combination with XMI-MSIM.
 
@@ -58,5 +60,5 @@ An installer containing the 32-bit binaries of __XMI-MSIM__ for the Windows plat
 
 h3. Mac OS X
 
-A dmg file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run ONLY on Mac OS X Lion!!! (64-bit).
+A dmg file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Lion and Mountain Lion only (64-bit).
 After downloading, mount the dmg file and drag the __XMI-MSIM__ app to the Applications folder.
