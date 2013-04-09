@@ -28,7 +28,8 @@ List of dependencies:
 * Fortran GSL bindings (FGSL)
 * xraylib (including Fortran bindings)
 * glib2
-* GTK2 and GTK-EXTRA (version 3.0.1) for the graphical user interface (optional though highly recommended)
+* GTK2 and GTK-EXTRA (version 3.0.4) for the graphical user interface (optional though highly recommended)
+* optional for the GUI: curl and json-glib
 
 All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used in combination with XMI-MSIM.
 
@@ -38,7 +39,7 @@ A pdf has been added to the Download section with more complete compilation inst
 
 h3. Linux
 
-To facilitate the installation on linux systems, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat, Ubuntu etc). The developers have built 64-bit RPM packages of __XMI-MSIM__ for the Fedora 16/17 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
+To facilitate the installation on linux systems, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat, Ubuntu etc). The developers have built 64-bit RPM packages of __XMI-MSIM__ for the Fedora 16/17/18 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
 
 bq. @su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-fedora.noarch.rpm'@
 
