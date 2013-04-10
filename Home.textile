@@ -61,5 +61,5 @@ An installer containing the 32-bit binaries of __XMI-MSIM__ for the Windows plat
 
 h3. Mac OS X
 
-A dmg file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Lion and Mountain Lion only (64-bit).
+A dmg file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion (all 64-bit only).
 After downloading, mount the dmg file and drag the __XMI-MSIM__ app to the Applications folder.
