@@ -35,7 +35,7 @@ All dependencies should be easy to obtain, except for FGSL which is available fr
 
 "xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
 
-A pdf has been added to the Download section with more complete compilation instructions (currently outdated)
+A pdf has been added to the Download section with more complete compilation instructions.
 
 h3. Linux
 
