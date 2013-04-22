@@ -1,5 +1,3 @@
-h1. Introduction
-
 XMI-MSIM is an open source tool designed for the Monte Carlo based simulation energy-dispersive X-ray fluorescence spectrometers.
 
 *While the development of XMI-MSIM is done through this Github repo, the "Download section":http://lvserver.ugent.be/xmi-msim is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University.*
