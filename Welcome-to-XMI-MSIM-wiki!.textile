@@ -1,0 +1,97 @@
+h1. Introduction
+
+XMI-MSIM is an open source tool designed for the Monte Carlo based simulation energy-dispersive X-ray fluorescence spectrometers.
+
+*While the development of XMI-MSIM is done through this Github repo, the "Download section":http://lvserver.ugent.be/xmi-msim is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University.*
+
+I've added a poster that I presented at the ICXOM2011 conference with some information on the underlying algorithms and some results.
+A pdf of an oral presentation I gave at the EXRS2012 conference can also be found in the Downloads section.
+A file with installation instructions is also added.
+
+A manuscript has been accepted for publication in "Spectrochimica Acta Part B":http://dx.doi.org/10.1016/j.sab.2012.03.011 covering the algorithms. Please include a reference to this publication in your own work if you decide to use XMI-MSIM for academic purposes.
+
+A second manuscript was "published":http://dx.doi.org/10.1016/j.sab.2012.12.011 that covers our XMI-MSIM based quantification plug-in for "PyMca":http://pymca.sourceforge.net.
+
+Keep in mind that XMI-MSIM is released under the terms of the "GPLv3":http://www.gnu.org/copyleft/gpl.html
+
+h1. Installation instructions
+
+h2. From source
+
+List of dependencies:
+* fortran 2003 compiler (gfortran >= 4.4, intel fortran are known to work) 
+* ANSI C compiler (gcc for example)
+* GNU scientific library (GSL)
+* HDF5
+* libxml2
+* libxslt
+* Fortran GSL bindings (FGSL)
+* xraylib (including Fortran bindings)
+* glib2
+* GTK2 and GTK-EXTRA (version 3.0.4) for the graphical user interface (optional though highly recommended)
+* optional for the GUI: curl and json-glib
+
+All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the "official version":http://www.lrz.de/services/software/mathematik/gsl/fortran , it won't work when used in combination with XMI-MSIM.
+
+"xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
+
+A pdf has been added to the Download section with more complete compilation instructions.
+
+h2. Linux
+
+h3. Fedora, Centos, Scientific Linux
+
+To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of __XMI-MSIM__ for the Fedora 16/17/18 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
+
+bq. @su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-fedora.noarch.rpm'@
+
+and for Red Hat EL based distributions:
+
+bq. @su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-redhat.noarch.rpm'@
+
+The __XMI-MSIM__ packages themselves can then be downloaded using yum:
+
+bq. @su -c 'yum install xmimsim'@
+
+Updates can be installed in a similar way:
+
+bq. @su -c 'yum update xmimsim'@
+
+h3. Debian and Ubuntu
+
+Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze, Ubuntu 12.04 Precise (LTS) and Ubuntu 12.10 Quantal.
+In order to access these packages using your favorite package manager, execute the following command to import our public key:
+
+bq. @curl http://lvserver.ugent.be/apt/xmi.packages.key | sudo apt-key add -@
+
+Next, add the package download location corresponding to your distribution to the /etc/apt/sources.list file (as root):
+
+Debian Squeeze:
+<pre><code>deb http://lvserver.ugent.be/apt/debian squeeze stable
+deb-src http://lvserver.ugent.be/apt/debian squeeze stable
+</code></pre>
+
+Ubuntu Precise 12.04:<pre><code>deb http://lvserver.ugent.be/apt/ubuntu precise stable
+deb-src http://lvserver.ugent.be/apt/ubuntu precise stable
+</code></pre>
+
+Ubuntu Quantal 12.10:<pre><code>deb http://lvserver.ugent.be/apt/ubuntu quantal stable
+deb-src http://lvserver.ugent.be/apt/ubuntu quantal stable
+</code></pre>
+
+When the sources.list file contains the correct download locations, update the apt cache by running:
+
+bq. @sudo apt-get update@
+
+After this, one can install XMI-MSIM by executing the following command:
+
+bq. @sudo apt-get install xmimsim@
+
+h2. Windows
+
+An installer containing the 32-bit binaries of __XMI-MSIM__ for the Windows platform can be found in the "Downloads":http://lvserver.ugent.be/xmi-msim section. 
+
+h2. Mac OS X
+
+A "dmg":http://lvserver.ugent.be/xmi-msim file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion (all 64-bit only).
+After downloading, mount the dmg file and drag the __XMI-MSIM__ app to the Applications folder.
