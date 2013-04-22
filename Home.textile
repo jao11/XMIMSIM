@@ -69,11 +69,11 @@ Debian Squeeze:
 deb-src http://lvserver.ugent.be/apt/debian squeeze stable
 </code></pre>
 
-Ubuntu Precise 12.04:<pre><code>deb http://lvserver.ugent.be/apt/ubuntu precise stable
+Ubuntu Precise 12.04:<pre><code>deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu precise stable
 deb-src http://lvserver.ugent.be/apt/ubuntu precise stable
 </code></pre>
 
-Ubuntu Quantal 12.10:<pre><code>deb http://lvserver.ugent.be/apt/ubuntu quantal stable
+Ubuntu Quantal 12.10:<pre><code>deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu quantal stable
 deb-src http://lvserver.ugent.be/apt/ubuntu quantal stable
 </code></pre>
 
