@@ -81,7 +81,7 @@ When the sources.list file contains the correct download locations, update the a
 
 bq. @sudo apt-get update@
 
-After this, one can install XMI-MSIM by executing the following command:
+After this, one can install __XMI-MSIM__ by executing the following command:
 
 bq. @sudo apt-get install xmimsim@
 
