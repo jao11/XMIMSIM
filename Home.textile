@@ -1,4 +1,6 @@
 XMI-MSIM is an open source tool designed for the Monte Carlo based simulation energy-dispersive X-ray fluorescence spectrometers.
+It comes with a fully functional graphical user interface in order to make it as user friendly as possible.
+Binary packages have been created for Mac OS X, Linux and Windows.
 
 A manuscript has been published in "Spectrochimica Acta Part B":http://dx.doi.org/10.1016/j.sab.2012.03.011 that covers the underlying algorithms. Please include a reference to this publication in your own work if you decide to use XMI-MSIM for academic purposes.
 
