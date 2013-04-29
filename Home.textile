@@ -1,7 +1,5 @@
 XMI-MSIM is an open source tool designed for the Monte Carlo based simulation energy-dispersive X-ray fluorescence spectrometers.
 
-*While the development of XMI-MSIM is done through this Github repo, the "Download section":http://lvserver.ugent.be/xmi-msim is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University.*
-
 I've added a poster that I presented at the ICXOM2011 conference with some information on the underlying algorithms and some results.
 A pdf of an oral presentation I gave at the EXRS2012 conference can also be found in the Downloads section.
 A file with installation instructions is also added.
@@ -62,7 +60,7 @@ bq. @su -c 'yum update xmimsim'@
 
 h3. <a id="deb_packages"></a>Debian and Ubuntu
 
-Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze, Ubuntu 12.04 Precise (LTS) and Ubuntu 12.10 Quantal.
+Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze, Ubuntu 12.04 Precise (LTS), Ubuntu 12.10 Quantal and Ubuntu 13.04 Raring.
 In order to access these packages using your favorite package manager, execute the following command to import our public key:
 
 bq. @curl http://lvserver.ugent.be/apt/xmi.packages.key | sudo apt-key add -@
@@ -80,6 +78,10 @@ deb-src http://lvserver.ugent.be/apt/ubuntu precise stable
 
 Ubuntu Quantal 12.10:<pre><code>deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu quantal stable
 deb-src http://lvserver.ugent.be/apt/ubuntu quantal stable
+</code></pre>
+
+Ubuntu Raring 13.04:<pre><code>deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu raring stable
+deb-src http://lvserver.ugent.be/apt/ubuntu raring stable
 </code></pre>
 
 When the sources.list file contains the correct download locations, update the apt cache by running:
