@@ -14,7 +14,12 @@ Keep in mind that XMI-MSIM is released under the terms of the "GPLv3":http://www
 
 h1. Installation instructions
 
-h2. From source
+* "Compiling from source":#compile_from_source
+* "Linux binary packages":#linux_packages: "Fedora, Centos and Scientific Linux":#rpm_packages and "Debian and Ubuntu":#deb_packages
+* "Windows installer":#windows_binaries
+* "Mac OS X":#macosx  
+
+h2. <a id="compile_from_source"></a>Compiling from source
 
 List of dependencies:
 * fortran 2003 compiler (gfortran >= 4.4, intel fortran are known to work) 
@@ -33,11 +38,11 @@ All dependencies should be easy to obtain, except for FGSL which is available fr
 
 "xraylib":http://github.com/tschoonj/xraylib can be obtained at my repository...
 
-A pdf has been added to the Download section with more complete compilation instructions.
+A pdf has been added to the "Download section":http://lvserver.ugent.be/xmi-msim with more complete compilation instructions.
 
-h2. Linux
+h2. <a id="linux_packages"></a>Linux
 
-h3. Fedora, Centos, Scientific Linux
+h3. <a id="rpm_packages"></a>Fedora, Centos, Scientific Linux
 
 To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of __XMI-MSIM__ for the Fedora 16/17/18 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
 
@@ -55,7 +60,7 @@ Updates can be installed in a similar way:
 
 bq. @su -c 'yum update xmimsim'@
 
-h3. Debian and Ubuntu
+h3. <a id="deb_packages"></a>Debian and Ubuntu
 
 Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze, Ubuntu 12.04 Precise (LTS) and Ubuntu 12.10 Quantal.
 In order to access these packages using your favorite package manager, execute the following command to import our public key:
@@ -85,11 +90,11 @@ After this, one can install __XMI-MSIM__ by executing the following command:
 
 bq. @sudo apt-get install xmimsim@
 
-h2. Windows
+h2. <a id="windows_binaries"></a>Windows
 
-An installer containing the 32-bit binaries of __XMI-MSIM__ for the Windows platform can be found in the "Downloads":http://lvserver.ugent.be/xmi-msim section. 
+An installer containing the 32-bit binaries of __XMI-MSIM__ for the Windows platform can be found in the "Downloads":http://lvserver.ugent.be/xmi-msim section. It will download and install __xraylib__ if necessary.
 
-h2. Mac OS X
+h2. <a id="macosx"></a>Mac OS X
 
 A "dmg":http://lvserver.ugent.be/xmi-msim file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion (all 64-bit only).
 After downloading, mount the dmg file and drag the __XMI-MSIM__ app to the Applications folder.
