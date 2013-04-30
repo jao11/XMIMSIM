@@ -2,10 +2,10 @@ XMI-MSIM is the successor of the msim program of Prof. Laszlo Vincze of Ghent Un
 
 ## Papers by Laszlo Vincze et al.
 
-* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 1. Unpolarized Radiation, Homogeneous Samples. Laszlo Vincze, Koen Janssens and Freddy Adams. Spectrochimica Acta Part B, 48(4), 553-573, 1993. [DOI](http://dx.doi.org/10.1016/0584-8547(93)80060-8)
-* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 2. Polarized monochromatic radiation, homegeneous samples. Laszlo Vincze, Koen Janssens, Fred Adams, M.L. Rivers and K.W. Jones. Spectrochimica Acta Part B, 50(2), 127-147, 1995. [DOI](http://dx.doi.org/10.1016/0584-8547(94)00124-E)
-* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 3. Polarized polychromatic radiation, homogeneous samples. Laszlo Vincze, Koen Janssens, Fred Adams and K.W. Jones. Spectrochimica Acta Part B, 50(12), 1481-1500, 1995. [DOI](http://dx.doi.org/10.1016/0584-8547(95)01361-X)
-* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 4. Photon scattering at high X-ray energies. Laszlo Vincze, Koen Janssens, Bart Vekemans and Fred Adams. Spectrochimica Acta Part B, 54(12), 1711-1722, 1999. [DOI](http://dx.doi.org/10.1016/S0584-8547(99)00094-4)
+* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 1. Unpolarized Radiation, Homogeneous Samples. Laszlo Vincze, Koen Janssens and Freddy Adams. Spectrochimica Acta Part B, 48(4), 553-573, 1993. [DOI](http://dx.doi.org/10.1016/0584-8547%2893%2980060-8)
+* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 2. Polarized monochromatic radiation, homegeneous samples. Laszlo Vincze, Koen Janssens, Fred Adams, M.L. Rivers and K.W. Jones. Spectrochimica Acta Part B, 50(2), 127-147, 1995. [DOI](http://dx.doi.org/10.1016/0584-8547%2894%2900124-E)
+* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 3. Polarized polychromatic radiation, homogeneous samples. Laszlo Vincze, Koen Janssens, Fred Adams and K.W. Jones. Spectrochimica Acta Part B, 50(12), 1481-1500, 1995. [DOI](http://dx.doi.org/10.1016/0584-8547%2895%2901361-X)
+* A General Monte-Carlo Simulation of Energy-Dispersive X-ray-Fluorescence Spectrometers Part 4. Photon scattering at high X-ray energies. Laszlo Vincze, Koen Janssens, Bart Vekemans and Fred Adams. Spectrochimica Acta Part B, 54(12), 1711-1722, 1999. [DOI](http://dx.doi.org/10.1016/S0584-8547%2899%2900094-4)
 
 ## Papers by Tom Schoonjans et al.
 
