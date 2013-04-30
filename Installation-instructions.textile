@@ -1,7 +1,7 @@
-* "Compiling from source":#compile_from_source
-* "Linux binary packages":#linux_packages: "Fedora, Centos and Scientific Linux":#rpm_packages and "Debian and Ubuntu":#deb_packages
-* "Windows installer":#windows_binaries
-* "Mac OS X":#macosx  
+* *"Compiling from source":#compile_from_source*
+* *"Linux binary packages":#linux_packages: "Fedora, Centos and Scientific Linux":#rpm_packages and "Debian and Ubuntu":#deb_packages*
+* *"Windows installer":#windows_binaries*
+* *"Mac OS X":#macosx*
 
 h2. <a id="compile_from_source"></a>Compiling from source
 
