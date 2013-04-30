@@ -3,7 +3,7 @@ The following guide assumes that the user has already installed XMI-MSIM, accord
 
 
 * **[Launching XMI-MSIM](#launch)**
-* **[Creating an inputfile](#creating-an-inputfile)**
+* **[Creating an inputfile](#create)**
 
 
 
