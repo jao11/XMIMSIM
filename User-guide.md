@@ -2,10 +2,10 @@ On this page a short manual is presented that should allow users to get started 
 The following guide assumes that the user has already installed XMI-MSIM, according to the [Installation instructions](../wiki/Installation-instructions).
 
 
-* **[Launching XMI-MSIM](#start_xmi_msim)**
+* **[Launching XMI-MSIM](#launching-xmi-msim)**
 
 
 
 
-## <a id="start_xmi_msim"></a>Launching XMI-MSIM
+## Launching XMI-MSIM
 
