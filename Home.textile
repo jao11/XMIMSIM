@@ -11,4 +11,4 @@ XMI-MSIM is released under the terms of the "GPLv3":http://www.gnu.org/copyleft/
 
 * *"Installation instructions":wiki/Installation-instructions*
 * *"User guide":wiki/User-guide* (under construction)
-* *"References and additional information":wiki/References-and-additional-resources*
+* *"References and additional resources":wiki/References-and-additional-resources*
