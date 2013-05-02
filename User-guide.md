@@ -82,7 +82,7 @@ This can be easily remedied by selecting a layer and then moving it around using
 
 ![Correct layer order](../wiki/figures/09layers%20correct.png)
 
-An important parameter in this table is the __Reference layer__. Using the toggle button, you select which layer corresponds to the one that is considered to be the first layer of the actual _sample_. In most cases, this will indicate the first non-atmospheric layer. The _Reference layer_is also the layer that is used to calculate the _Sample-source distance_ in the _Geometry_ section.
+An important parameter in this table is the _Reference layer_. Using the toggle button, you select which layer corresponds to the one that is considered to be the first layer of the actual _sample_. In most cases, this will indicate the first non-atmospheric layer. The _Reference layer_is also the layer that is used to calculate the _Sample-source distance_ in the _Geometry_ section.
 
 Layers can be removed by selecting them and then clicking the _Remove_ button. Existing layers may be modified by either double-clicking the layer of interest or by selecting the layer, followed by clicking the _Edit_ button.
 
