@@ -4,6 +4,8 @@ The following guide assumes that the user has already installed XMI-MSIM, accord
 
 * **[Launching XMI-MSIM](#launch)**
 * **[Creating an input-file](#create)**
+* **[Saving an input-file](#save)**
+* **[Starting a simulation](#start)**
 
 
 
@@ -20,6 +22,8 @@ For Linux users: an entry should have been added to the Education section of you
 Your desktop should now be embellished with a window resembling the one in the following screenshot.
 
 ![XMI-MSIM on startup](../wiki/figures/01start%20window.png)
+
+XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files and output-files in your platform's file manager, thereby loading the file's contents.
 
 The main view of the XMI-MSIM consists of three pages that each serve a well-defined purpose. The first page is used to generate inputfiles, based on a number of parameters that are defined by the user. The second page allows for the execution of these files, while the third and last page is designed to visualise the results and help in their interpretation. The purpose of the following sections is to provide an in-depth guide on how to operate these pages. 
 
@@ -149,8 +153,26 @@ The last section deals with the settings of the detector and its associated elec
 * Detector zero: the energy of the first channel in the spectrum (channel number zero)
 * Detector Fano factor: measure of the dispersion of a probability distribution of the fluctuation of an electric charge in the detector. Very much detector type dependent
 * Detector electronic noise): the result of random fluctuations in thermally generated leakage currents within the detector itself and in the early stages of the amplifier components. Contributes to the Gaussian broadening
-* Pulse width: the time that is necessary for the electronics to process one incoming photon. This value will be used only if the user enables the pulse pile-up simulation in the Simulation controls. Although this parameter is connected to several detector and electronics parameters, typically the value is obtained after trial and error
+* Pulse width: the time that is necessary for the electronics to process one incoming photon. This value will be used only if the user enables the pulse pile-up simulation in the [Simulation controls](#start). Although this parameter is connected to several detector and electronics parameters, typically the value is obtained after trial and error
 * Max convolution energy: the maximum energy that will be considered when applying the detector response function. Make sure this value is 10-20 % higher than the highest expected energy in the spectrum
 * Crystal composition: the composition of the detector crystal. Adding, editing and removing absorbers is performed through an interface identical to the one seen in the [Composition section](#composition), but without the _Reference layer_ toggle button. Will be used to calculate the detector transmission and the escape peak ratios
+
+
+## <a id="save"></a>Saving an input-file
+
+Once an acceptable inputfile is detected by the application, the _Save_ and _Save as_ buttons will become activated. If the file has not been saved before, clicking either of these buttons will launch a dialog allowing you to choose a filename for the input-file.
+
+If the file was saved before, then clicking _Save_ will result in the file contents will be overwritten with the new file contents.
+
+Keep in mind that _XMI-MSIM_ input-files have the xmsi extension (blue logo), while the output-files the xmso extension (red logo).
+
+## <a id="start"></a>Starting a simulation
+
+In order to start a simulation, the _Input parameters_ page must contain a valid input-file description. This can be obtained by either preparing a new input-file based on the instructions in [a previous section](#create) (and saving it!), or by opening an existing input-file by double clicking an XMI-MSIM input-file in your file manager or opening an input-file through the _Open_ interface of XMI-MSIM.
+
+Either way, the _Simulation controls_ page should look as shown in the following screenshot:
+
+![Simulation controls](../wiki/figures/13simulation%20controls.png)
+
 
 
