@@ -6,6 +6,10 @@ The following guide assumes that the user has already installed XMI-MSIM, accord
 * **[Creating an input-file](#create)**
 * **[Saving an input-file](#save)**
 * **[Starting a simulation](#start)**
+* **[Visualizing the results](#results)**
+* **[Global preferences](#preferences)**
+* **[Checking for updates](#check_for_updates)**
+* **[Example files](#example_files)**
 
 
 
@@ -25,7 +29,9 @@ Your desktop should now be embellished with a window resembling the one in the f
 
 XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files and output-files in your platform's file manager, thereby loading the file's contents.
 
-The main view of the XMI-MSIM consists of three pages that each serve a well-defined purpose. The first page is used to generate inputfiles, based on a number of parameters that are defined by the user. The second page allows for the execution of these files, while the third and last page is designed to visualise the results and help in their interpretation. The purpose of the following sections is to provide an in-depth guide on how to operate these pages. 
+The main view of the _XMI-MSIM_ consists of three pages that each serve a well-defined purpose. The first page is used to generate inputfiles, based on a number of parameters that are defined by the user. The second page allows for the execution of these files, while the third and last page is designed to visualise the results and help in their interpretation. The purpose of the following sections is to provide an in-depth guide on how to operate these pages. 
+
+When starting _XMI-MSIM_ without providing a file to open, a new file will be started with default settings. The same situation can be obtained at any moment by clicking on _New_ in the menubar.
 
 
 ## <a id="create"></a>Creating an inputfile
@@ -221,4 +227,75 @@ When all required options are set up correctly, the simulation can be started by
 
 The first and the third progress bars will in many cases display a message that the Solid angle grid and the Escape peak ratios were loaded from file: this indicates that a simulation with similar parameters was performed before and that the relevant data was written to a file, leading to a huge increase in speed.
 
-After the simulation, assuming everything went fine, the XMSO outputfile as defined in the [General section](#general) will be loaded and its contents displayed in the Results page.
+After the simulation, assuming everything went fine, the XMSO outputfile as defined in the [General section](#general) will be loaded and its contents displayed on the Results page.
+
+## <a id="results"></a>Visualizing the results
+
+The results of a simulation are stored in an XMSO file (red logo): you should be able to open these files directly by double clicking them from your file manager.
+Alternatively, you can also load these files from within _XMI-MSIM_ by clicking the _Open_ button, and subsequently setting the filetype filter to _XMI-MSIM outputfiles_. On Linux and Windows, you can also open these files from the command-line:
+
+> `xmimsim-gui file.xmso`
+
+XMSO files created after a successful simulation are automatically loaded in the Results page.
+
+* [Plot canvas](#plot_window)
+* [Net-line intensities](#net_intensities)
+* [Printing and exporting the plot canvas](#export_canvas)
+
+### <a id="plot_window"></a>Plot canvas
+
+If a simulation was performed according to the inputfile that was defined [earlier](#create), you should get a result similar to the one in the following screenshot:
+
+![Visualizing the results](../wiki/figures/19results.png)
+
+The plot canvas shows by default the different spectra obtained after an increasing number of interactions. Individual spectra may be hidden and shown by toggling the boxes to the right of the plotting window.
+Their properties of a spectrum may be modified by clicking on the _Properties_ button connected to it, which launches a dialog allowing the user to change the line width, line type and line color of the spectrum.
+
+Zooming in on the plot canvas by dragging a rectangle with the mouse while keeping the left button clicked in. Zooming out can be accomplished by double-clicking anywhere in the canvas. While moving the mouse cursor in the plot canvas, one can track the current Energy, Channel number and Intensity in the textboxes to the right.
+The size of the canvas can be changed by grabbing and moving the handle that separates the upper part from the lower part of the page.
+
+### <a id="net_intensities"></a>Net-line intensities
+
+The lower part of the page contains a list of all the intensities of all the X-ray fluorescence lines of all elements, as shown in the following screenshot:
+
+![Selecting XRF lines](../wiki/figures/20select%20lines.png)
+
+By clicking the arrows on the left side of the list, it is possible to expand the sections belonging to a particular element, line, and for different number of interactions, thereby revealing the individual contributions to a particular intensity.
+The lines can be shown on the plot canvas by activating the _Show line_ flag for the appropriate line or element.
+
+### <a id="export_canvas"></a>Printing and exporting the plot canvas
+
+The plot canvas can be printed and exported to several filetypes using the _Print_ and _Save as_ buttons to the right of the plot canvas. Both will result in an exact copy of the current state of the canvas: it will take into account all the changes that were made to the spectra properties, as well as any lines that were activated using the _Show line_ togglebuttons of the _Net-line intensitiesi_ section.
+Supported filetypes are PNG, EPS and PDF.
+
+## <a id="preferences"></a>Global preferences
+
+Clicking the _Preferences_ button will launch a dialog allowing the user to set some preferences that will be preserved across sessions off _XMI-MSIM_. Make sure to press apply after making any changes.
+
+* [Simulation defaults](#simulation_defaults)
+* [Updates](#updates)
+* [Advanced](#advanced)
+
+### <a id="simulation_defaults"></a>Simulation defaults
+
+The first page of the preferences window contains the same settings that are available on the [_Simulation controls_ page](#start). The values that are selected here will be activated in the _Simulation controls_ page the next time that _XMI-MSIM_ is started.
+
+### <a id="updates"></a>Updates
+
+If _XMI-MSIM_ was compiled with support for automatic updates then this page will contain two widgets: firstly a checkbox that will determine if the program will check for updates at startup, and secondly a list of locations that will be used to download updates from.
+
+### <a id="advanced"></a>Advanced
+
+Currently the _Advanced_ page contains only two entries, which both revolve around the deleting of the _XMI-MSIM_ HDF5 files that contain the solid angle grids and the escape peak ratios, respectively. It is recommended to remove these files manually when a complete installation of _XMI-MSIM_ is considered necessary (before running the uninstaller or removing the application manually), or if these files somehow got corrupted.
+
+## <a id="check_for_updates"></a>Checking for updates
+
+For packages of _XMI-MSIM_ that were compiled with support for automatic updates, checking for new versions will occur by default when launching the program. This can be disabled in the [Preferences window](#updates). If you would like to check explicity, then click on _Help_->_Check for updates..._ for Windows and Linux, and _XMI-MSIM_->_Check for updates..._ for Mac OS X.
+
+When updates are available, a dialog will pop up, inviting the user to download the package through the interface. When the download is completed, quit _XMI-MSIM_ and install the new version. It is highly recommended to always use the latest version of the interface.
+
+### <a id="example_files">Example files
+
+The example input-file that was created throughout the [Creating an input-file section](#create) can be downloaded at [test.xmsi](../wiki/test.xmsi).
+The corresponding output-file can be found at [test.xmso](../wiki/test.xmso).
+
