@@ -168,6 +168,12 @@ Keep in mind that _XMI-MSIM_ input-files have the xmsi extension (blue logo), wh
 
 ## <a id="start"></a>Starting a simulation
 
+* [Control panel](#control_panel)
+* [Executable](#executable)
+* [Options](#options)
+* [Export results](#export_results)
+* [During a simulation](#during)
+
 In order to start a simulation, the _Input parameters_ page must contain a valid input-file description. This can be obtained by either preparing a new input-file based on the instructions in [a previous section](#create) (and saving it!), or by opening an existing input-file by double clicking an XMI-MSIM input-file in your file manager or opening an input-file through the _Open_ interface of XMI-MSIM.
 
 Either way, the _Simulation controls_ page should look as shown in the following screenshot:
@@ -175,4 +181,40 @@ Either way, the _Simulation controls_ page should look as shown in the following
 ![Simulation controls](../wiki/figures/13simulation%20controls.png)
 
 
+### <a id="control_panel"></a>Control panel
 
+The top of the page contains the actual control panel that is used to start, stop and pause the simulation, as well as a slider that allows the user to select the number of threads that will be used by the simulation (currently broken in version 2.0, will be fixed in 2.1). To the right of the slider, there are three progress bars that indicate different stages of the Monte Carlo program: the calculation of the solid angle grid for the variance reduction, the simulation of the photon--matter interactions and the calculation of the escape peak ratios. More information about the status of the Monte Carlo program is presented in the adjacent log window. Note: the Windows version does not contain the _Pause_ button.
+
+
+### <a id="executable"></a>Executable
+
+Underneath these controls is a section that contains the name of the executable that will be used to launch the simulation. Most likely, you will never have to change this value, but it could be interesting to power users, who have customized versions of the simulation program.
+
+### <a id="options"></a>Options
+
+This section is followed by a number of options that change the behaviour of the Monte-Carlo program:
+
+* Simulate M-lines: If disabled, then the code will ignore M-lines that may be produced based on the elemental composition of the sample. In such a case, the code will probably run faster. I strongly recommend to simulate M-lines
+* Simulate the radiative and non-radiative cascade effect: the cascade effect is composed of two components, a radiative and a non-radiative one. Although these will always occur simultaneously in reality, the code allows to deactivate one or both of them. This could be interesting to those that want to investigate the contribution of both components. Otherwise, it is recommended to keep both enabled
+* Enable variance reduction techniques: disabling this option will trigger the brute-force mode, disabling all variance reduction techniques, thereby greatly reducing the precision of the estimated spectrum and net-line intensities for a given [_Number of photons per discrete line_](#general). This reduced precision may be improved upon by greatly increasing the _Number of photons per discrete line_, but this will result in a much longer runtime of the Monte-Carlo program. Expert use only. Consider building _XMI-MSIM_ with MPI support and running it on a cluster
+* Enable pulse pile-up simulation: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector) parameter
+* Enable Poisson noise generation: enabling this option will result in every channel of the detector convoluted spectrum being subjected to Poisson noise, controlled by Poisson distributions with lambda equal to the number of counts in a channel
+* Number of spectrum channels: the number of channels in the produced spectrum.
+
+
+### <a id="export_results"></a>Export results
+
+The page ends with a section that allows the user to export the output of the Monte-Carlo program at run-time to several fileformats in addition to the default XMSO fileformat.
+
+* SPE file: the well known ASCII format, readable by PyMca and AXIL. Produces one file per additional interaction. When using the file dialog to choose the filename, make sure not to add a file extension: the Monte-Carlo program will append an underscore, the number of interactions and the .spe extension automatically
+* Scalable Vector Graphics (SVG) file: produces an SVG file with vectorized images of the spectra
+* Comma Separated Values (CSV) file: produces a CSV file containing several columns. The first column contains the channel number, the second one contains the corresponding channel energy and the following columns contain the intensities for increasing number of interactions
+* Report HTML file: produces an html file that can be opened with most Internet Browsers (Internet Explorer being a notable exception), featuring an interactive overview of the results of the Monte-Carlo simulation, simular to the ones shown on the Results page 
+
+It is possible to generate these files afterwards based on the XMSO file, by clicking in the menubar on _Tools_ -> _Convert XMSO file to_.
+
+### <a id="during"></a>During a simulation
+
+When all required options are set up correctly, the simulation can be started by clicking the _Play_ button. After this, you will notice a lot of output being generated in the log window, as well as some activity in the progress bars. The first and the third progress bars will in many cases display a message that the Solid angle grid and the Escape peak ratios were loaded from file: this indicates that a simulation with similar parameters was performed before and that the relevant data was written to a file, leading to a huge increase in speed.
+
+After the simulation, assuming everything went fine, the XMSO outputfile as defined in the [General section](#general) will be loaded and its contents displayed in the Results page.
