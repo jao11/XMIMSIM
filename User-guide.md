@@ -265,7 +265,7 @@ The lines can be shown on the plot canvas by activating the _Show line_ flag for
 
 ### <a id="export_canvas"></a>Printing and exporting the plot canvas
 
-The plot canvas can be printed and exported to several filetypes using the _Print_ and _Save as_ buttons to the right of the plot canvas. Both will result in an exact copy of the current state of the canvas: it will take into account all the changes that were made to the spectra properties, as well as any lines that were activated using the _Show line_ togglebuttons of the _Net-line intensitiesi_ section.
+The plot canvas can be printed and exported to several filetypes using the _Print_ and _Save as_ buttons to the right of the plot canvas. Both will result in an exact copy of the current state of the canvas: it will take into account all the changes that were made to the spectra properties, as well as any lines that were activated using the _Show line_ togglebuttons of the _Net-line intensities_ section.
 Supported filetypes are PNG, EPS and PDF.
 
 ## <a id="preferences"></a>Global preferences
@@ -294,7 +294,7 @@ For packages of _XMI-MSIM_ that were compiled with support for automatic updates
 
 When updates are available, a dialog will pop up, inviting the user to download the package through the interface. When the download is completed, quit _XMI-MSIM_ and install the new version. It is highly recommended to always use the latest version of the interface.
 
-### <a id="example_files">Example files
+### <a id="example_files"></a>Example files
 
 The example input-file that was created throughout the [Creating an input-file section](#create) can be downloaded at [test.xmsi](../wiki/test.xmsi).
 The corresponding output-file can be found at [test.xmso](../wiki/test.xmso).
