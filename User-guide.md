@@ -215,6 +215,10 @@ It is possible to generate these files afterwards based on the XMSO file, by cli
 
 ### <a id="during"></a>During a simulation
 
-When all required options are set up correctly, the simulation can be started by clicking the _Play_ button. After this, you will notice a lot of output being generated in the log window, as well as some activity in the progress bars. The first and the third progress bars will in many cases display a message that the Solid angle grid and the Escape peak ratios were loaded from file: this indicates that a simulation with similar parameters was performed before and that the relevant data was written to a file, leading to a huge increase in speed.
+When all required options are set up correctly, the simulation can be started by clicking the _Play_ button. After this, you will notice a lot of output being generated in the log window, as well as some activity in the progress bars, as shown in the next screenshot:
+
+![Running the simulation](../wiki/figures/14calculating.png)
+
+The first and the third progress bars will in many cases display a message that the Solid angle grid and the Escape peak ratios were loaded from file: this indicates that a simulation with similar parameters was performed before and that the relevant data was written to a file, leading to a huge increase in speed.
 
 After the simulation, assuming everything went fine, the XMSO outputfile as defined in the [General section](#general) will be loaded and its contents displayed in the Results page.
