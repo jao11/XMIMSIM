@@ -294,7 +294,7 @@ For packages of _XMI-MSIM_ that were compiled with support for automatic updates
 
 When updates are available, a dialog will pop up, inviting the user to download the package through the interface. When the download is completed, quit _XMI-MSIM_ and install the new version. It is highly recommended to always use the latest version of the interface.
 
-### <a id="example_files"></a>Example files
+## <a id="example_files"></a>Example files
 
 The example input-file that was created throughout the [Creating an input-file section](#create) can be downloaded at [test.xmsi](../wiki/test.xmsi).
 The corresponding output-file can be found at [test.xmso](../wiki/test.xmso).
