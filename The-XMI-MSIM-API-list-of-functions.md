@@ -5,7 +5,7 @@ XMI-MSIM exposes a large number of its internal functions for use in other progr
 In order to access the XMI-MSIM functionality, you will need to include its headers and link against its library.
 On Linux and Mac OS X (when compiled from source!), this can be most easily accomplished using our pkg-config file:
 
-> `gcc pkg-config --cflags libxmimsim) myprogram.c $(pkg-config --libs libxmimsim)`
+> `gcc $(pkg-config --cflags libxmimsim) myprogram.c $(pkg-config --libs libxmimsim)`
 
 We intend to include a static library that includes all exported symbols in our next Windows release, allowing you to start development on this platform as well.
 

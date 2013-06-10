@@ -1,0 +1,59 @@
+\documentclass[11pt,a4paper,oneside,titlepage]{article}
+
+\usepackage[space]{grffile}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\usepackage{xspace}
+
+
+\usepackage[a4paper,plainpages=false]{hyperref}
+\setlength{\parindent}{0cm}
+
+\title{XMI-MSIM: the definitive manual\\\small{Version 2.0}}
+\author{Tom Schoonjans\\Universit\`a degli Studi di Sassari}
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Logo_xmi_msim.png}
+\end{center}
+\end{figure}
+\vspace{1cm}
+\Large{Ghent University, Belgium\\}
+\vspace{0.7cm}
+\Large{University of Sassari, Italy\\}
+\vspace{0.7cm}
+\Large{European Synchrotron Radiation Facility,\\Grenoble, France\\}
+\vspace{1.5cm}
+\Huge{\bfseries{XMI-MSIM\\}}
+\vspace{1.5cm}
+\huge{\bfseries{The definitive manual\\}}
+\vspace{1.5cm}
+\Large{Version 2.0\\}
+\vspace{1.5cm}
+\textsc{\large{By Dr.~Tom Schoonjans\\}}
+\vfill
+{\large \today}
+\end{center}
+\end{titlepage}
+
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\input{Home}
+
+\section{Installation instructions}
+\input{Installation-instructions}
+\section{User guide}
+\input{User-guide}
+\section{The XMI-MSIM API: list of functions}
+\input{The-XMI-MSIM-API-list-of-functions}
+\section{References and addtional resources}
+\input{References-and-additional-resources}
+
+\end{document}

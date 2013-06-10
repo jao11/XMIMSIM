@@ -296,6 +296,6 @@ When updates are available, a dialog will pop up, inviting the user to download 
 
 ## <a id="examplefiles"></a>Example files
 
-The example input-file that was created throughout the [Creating an input-file section](#create) can be downloaded at [test.xmsi](../wiki/test.xmsi).
-The corresponding output-file can be found at [test.xmso](../wiki/test.xmso).
+The example input-file that was created throughout the _[Creating an input-file section](#create)_ can be downloaded at _[test.xmsi](../wiki/test.xmsi)_.
+The corresponding output-file can be found at _[test.xmso](../wiki/test.xmso)_.
 

@@ -5,7 +5,7 @@
 
 ## <a id="compilefromsource"></a>Compiling from source
 
-The followind dependencies are required to build XMI-MSIM:
+The following dependencies are required to build XMI-MSIM:
 
 * fortran 2003 compiler (gfortran >= 4.4, Intel Fortran are known to work) 
 * ANSI C compiler (gcc for example)

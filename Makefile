@@ -7,9 +7,9 @@ OBJECTS = Home.tex Installation-instructions.tex References-and-additional-resou
 
 all: $(SOURCES) $(OBJECTS)
 	@echo "Building documentation"	
-	pdflatex main.tex
-	pdflatex main.tex
-	pdflatex main.tex
+	pdflatex xmimsim-manual.tex
+	pdflatex xmimsim-manual.tex
+	pdflatex xmimsim-manual.tex
 	
 
 
