@@ -64,7 +64,7 @@ The different elements that make up the layer are added by clicking on the _Add_
 
 ![Adding a compound](../wiki/figures/04enter%20compound.png)
 
-You may wonder at exactly which chemical formulas are accepted by the interface. Well the answer is: anything that is accepted by _xraylib_'s [CompoundParser](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API:-list-of-all-functions#wiki-compound_parser) function. This includes formulas with (nested) brackets such as: `Ca10(PO4)6(OH)2` (apatite). Invalid formulas will lead to the _Ok_ button being greyed out and the _Compound_ text box gaining a red background.
+You may wonder at exactly which chemical formulas are accepted by the interface. Well the answer is: anything that is accepted by _xraylib_'s [CompoundParser](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API:-list-of-all-functions#wiki-compound_parser) function. This includes formulas with (nested) brackets such as: `Ca10(PO4)6OH` (apatite). Invalid formulas will lead to the _Ok_ button being greyed out and the _Compound_ text box gaining a red background.
 
 After clicking ok, you should see something resembling the following screenshot:
 
