@@ -4,7 +4,7 @@ Considerable effort has been taken to ensure easy installation on all major plat
 
 Development of this package was part of my PhD thesis. The algorithms were inspired by the work of my promotor Prof. Laszlo Vincze of Ghent University. Links to his publications can be found in this manual.
 
-A manuscript has been published in [Spectrochimica Acta Part B](http://dx.doi.org/10.1016/j.sab.2012.03.011) that covers the algorithms that drive XMI-MSIM. Please include a reference to this publication in your own work if you decide to use XMI-MSIM for academic purposes.
+A manuscript has been published in [Spectrochimica Acta Part B](http://dx.doi.org/10.1016/j.sab.2012.03.011) that covers the algorithms that power XMI-MSIM. Please include a reference to this publication in your own work if you decide to use XMI-MSIM for academic purposes.
 
 A second manuscript was [published](http://dx.doi.org/10.1016/j.sab.2012.12.011) that covers our XMI-MSIM based quantification plug-in for [PyMca](http://pymca.sourceforge.net). Soon information on using this plug-in will be added to the manual.
 
