@@ -2,7 +2,7 @@ XMI-MSIM is an open source tool designed for predicting the spectral response of
 It comes with a fully functional graphical user interface in order to make it as user friendly as possible.
 Considerable effort has been taken to ensure easy installation on all major platforms.
 
-Development of this package was part of my PhD thesis. The algorithms were inspired by the work of my promotor Prof. Laszlo Vincze of Ghent University. Links to his publications can be found in this manual.
+Development of this package was part of my PhD thesis. The algorithms were inspired by the work of my promotor Prof. Laszlo Vincze of Ghent University. Links to his and my own publications can be found in this manual.
 
 A manuscript has been published in [Spectrochimica Acta Part B](http://dx.doi.org/10.1016/j.sab.2012.03.011) that covers the algorithms that power XMI-MSIM. Please include a reference to this publication in your own work if you decide to use XMI-MSIM for academic purposes.
 

@@ -5,7 +5,7 @@ OBJECTS = Home.tex Installation-instructions.tex References-and-additional-resou
 		The-XMI-MSIM-API-list-of-functions.tex User-guide.tex
 
 
-all: $(SOURCES) $(OBJECTS)
+xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 	@echo "Building documentation"	
 	pdflatex xmimsim-manual.tex
 	pdflatex xmimsim-manual.tex
