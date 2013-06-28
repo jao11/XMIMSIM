@@ -5,10 +5,12 @@
 
 ## <a id="compilefromsource"></a>Compiling from source
 
+XMI-MSIM has been successfully built on Linux (Debian/Ubuntu and RHEL/CentOS/Fedora), Mac OS X (Snow Leopard and up) and Windows 7 (with 32-bit compilers)
+
 The following dependencies are required to build XMI-MSIM:
 
 * fortran 2003 compiler (gfortran >= 4.4, Intel Fortran are known to work) 
-* ANSI C compiler (gcc for example)
+* C compiler with OpenMP support (gcc highly recommended)
 * GNU scientific library (GSL)
 * HDF5
 * libxml2
@@ -18,12 +20,57 @@ The following dependencies are required to build XMI-MSIM:
 * glib2
 * GTK2 and GTK-EXTRA (version 3.0.4) for the graphical user interface (optional though highly recommended)
 * optional for the GUI: curl and json-glib
+* MPI (OpenMPI or Intel MPI): optional. Recommended for those that want to perform brute-force simulations with a very high number of simulated photons
 
-All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the [official version](http://www.lrz.de/services/software/mathematik/gsl/fortran) , it won't work when used in combination with XMI-MSIM.
 
-[xraylib](http://github.com/tschoonj/xraylib) can be obtained at my repository...
+All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the [official version](http://www.lrz.de/services/software/mathematik/gsl/fortran) , it will not work when used in combination with XMI-MSIM. [xraylib](http://github.com/tschoonj/xraylib) can be obtained at my repository. Windows users will have to compile most of these dependencies themselves, which will require them to install a bash shell with all basic UNIX utilities. The Windows versions of XMI-MSIM were built using MSYS (bash shell and GNU utilities) and TDM-GCC (compilers).
 
-A pdf has been added to the [Download section](http://lvserver.ugent.be/xmi-msim) with more complete compilation instructions.
+It is absolutely critical that all Fortran packages are compiled with exactly the same compiler, and this compiler also needs to be used when building XMI-MSIM.
+
+### Compilation stages
+
+Unpack the tarball:
+
+    tar xvfz xmimsim-x.y.tar.gz
+    cd xmimsim-x.y
+
+Configure the source tree by examining the capabilities of the host system:
+
+    ./configure
+
+The configure command has a long list of options. You can have a look at them by executing:
+
+    ./configure --help
+
+A commonly used option is to change the installation destination: this can be accomplished by using the `--prefix` option.
+If your Fortran compiler does not have a standard name, you may have to specify it as an option to configure such as `FC=gfortran-mp-4.4`. Packages that are not installed in default locations, may not be detected by the configure script and could result in the configure script aborting prematurely. This is particularly likely for packages like xraylib and/or fgsl that are installed in /usr/local. Such a problem can be avoided by setting the PKG_CONFIG_PATH environment variable manually:
+
+    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+If the configure script terminates without error, try building the code by running:
+
+    make
+
+It is not recommended to invoke make with the -j option, as it may confuse the fortran compiler.
+
+After compilation, install the program using:
+
+    make install
+
+This may have to be executed with root privileges.
+
+### Preparing the precompiled dataset
+
+XMI-MSIM loads, before running a simulation, datasets of precomputed physical data into memory, depending on the exact parameters in the input file. These datasets are mostly inverse cumulative distribution functions of scattering cross-sections, which would be very computationally expensive to calculate during the simulation itself based on the corresponding probability density functions.
+
+This file is generated using the `xmimsim-db` executable, which produces a file called `xmimsimdata.h5` in the current working directory. After this file is created, which can take up to half an hour on slower machines, copy it to the data folder of your XMI-MSIM installation. Assuming the default installation destination was not altered, this would be /usr/local/share/xmimsim.
+
+### Note on the random number generators
+
+XMI-MSIMs random number generators are seeded on Mac OS X and Linux using high quality noise produced by /dev/urandom. The seeds can be collected in two ways:
+
+1. The user launches the `xmimsim-harvester` daemon, which will collect seeds at frequent intervals and pass them along to XMI-MSIM when requested. The daemon is ideally started at boottime (using some initd script), or on Mac OS X, by copying the `be.ugent.xmi.harvester.plist` file from its installation location (_prefix_/Library/LaunchDaemons) to /Library/LaunchDaemons and subsequently invoking `sudo launchctl load /Library/LaunchDaemons/be.ugent.xmi.harvester.plist`. It should be noted that the daemon is buggy, and it is generally not recommended to use this solution.
+2. If the daemon is not running, then a separate thread is launched in XMI-MSIM at runtime which takes care of harvesting the seeds (a bit slower, but reliable).
 
 ## <a id="linuxpackages"></a>Linux
 
