@@ -286,7 +286,7 @@ If XMI-MSIM was compiled with support for automatic updates then this page will 
 
 ### <a id="advanced"></a>Advanced
 
-Currently the _Advanced_ page contains only two entries, which both revolve around the deleting of the XMI-MSIM HDF5 files that contain the solid angle grids and the escape peak ratios, respectively. It is recommended to remove these files manually when a complete installation of XMI-MSIM is considered necessary (before running the uninstaller or removing the application manually), or if these files somehow got corrupted.
+Currently the _Advanced_ page contains only two entries, which both revolve around the deleting of the XMI-MSIM HDF5 files that contain the solid angle grids and the escape peak ratios, respectively. It is recommended to remove these files manually when a complete uninstall of XMI-MSIM is considered necessary (before running the uninstaller or removing the application manually), or if these files somehow got corrupted.
 
 ## <a id="checkforupdates"></a>Checking for updates
 
