@@ -158,7 +158,7 @@ The last section deals with the settings of the detector and its associated elec
 * Detector gain: the width of one channel of the spectrum, expressed in keV/channel
 * Detector zero: the energy of the first channel in the spectrum (channel number zero)
 * Detector Fano factor: measure of the dispersion of a probability distribution of the fluctuation of an electric charge in the detector. Very much detector type dependent
-* Detector electronic noise): the result of random fluctuations in thermally generated leakage currents within the detector itself and in the early stages of the amplifier components. Contributes to the Gaussian broadening
+* Detector electronic noise: the result of random fluctuations in thermally generated leakage currents within the detector itself and in the early stages of the amplifier components. Contributes to the Gaussian broadening
 * Pulse width: the time that is necessary for the electronics to process one incoming photon. This value will be used only if the user enables the pulse pile-up simulation in the [Simulation controls](#start). Although this parameter is connected to several detector and electronics parameters, typically the value is obtained after trial and error
 * Max convolution energy: the maximum energy that will be considered when applying the detector response function. Make sure this value is 10-20 % higher than the highest expected energy in the spectrum
 * Crystal composition: the composition of the detector crystal. Adding, editing and removing absorbers is performed through an interface identical to the one seen in the [Composition section](#composition), but without the _Reference layer_ toggle button. Will be used to calculate the detector transmission and the escape peak ratios
