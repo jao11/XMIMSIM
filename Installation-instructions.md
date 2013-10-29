@@ -94,7 +94,7 @@ Updates can be installed in a similar way:
 
 ### <a id="debpackages"></a>Debian and Ubuntu
 
-Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze, Ubuntu 12.04 Precise (LTS), Ubuntu 12.10 Quantal and Ubuntu 13.04 Raring.
+Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze and several Ubuntu versions .
 In order to access these packages using your favorite package manager, execute the following command to import our public key:
 
 > `curl http://lvserver.ugent.be/apt/xmi.packages.key | sudo apt-key add -`
@@ -120,6 +120,11 @@ Ubuntu Raring 13.04:
 
        deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu raring stable
        deb-src http://lvserver.ugent.be/apt/ubuntu raring stable
+
+Ubuntu Saucy 13.10:
+
+       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu saucy stable
+       deb-src http://lvserver.ugent.be/apt/ubuntu saucy stable
 
 When the sources.list file contains the correct download locations, update the apt cache by running:
 
