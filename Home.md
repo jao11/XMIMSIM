@@ -10,6 +10,8 @@ A second manuscript was [published](http://dx.doi.org/10.1016/j.sab.2012.12.011)
 
 XMI-MSIM is released under the terms of the [GPLv3](http://www.gnu.org/copyleft/gpl.html).
 
+**A [workshop](http://www.esrf.eu/home/events/conferences/monte-carlo-simulation-tools-for-x-ray-imaging-and-fluorescence.html) on Monte Carlo simulation tools for X-ray imaging and fluorescence is being organized on February 24 and 25 at the ESRF (Grenoble, France) that includes tutorial sessions on [xraylib](http://github.com/tschoonj/xraylib), [XMI-MSIM](http://github.com/tschoonj/xmimsim) and [XRMC](http://github.com/golosio/xrmc).**
+
 ## Table of contents
 
 * **[Download and installation instructions](wiki/Installation-instructions)**
