@@ -25,7 +25,7 @@ For Linux users: an entry should have been added to the Education section of you
 
 Your desktop should now be embellished with a window resembling the one in the following screenshot.
 
-![XMI-MSIM on startup](../wiki/figures/01start%20window.png)
+![XMI-MSIM on startup](../wiki/figures/01start-window.png)
 
 XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files and output-files in your platform's file manager, thereby loading the file's contents.
 
@@ -58,22 +58,22 @@ The _General_ section contains 4 parameters:
 
 This interface allows you to define the system that will make up your sample and possibly its environment. XMI-MSIM assumes that the system is defined as a stack of parallel layers, each defined by its composition, thickness (measured along the [Sample orientation vector](#geometry)) and density. Adding layers can be accomplished by simply clicking the _Add_ button. A dialog will pop up as seen in the following screenshot:
 
-![Defining a new layer](../wiki/figures/03modify%20layer.png)
+![Defining a new layer](../wiki/figures/03modify-layer.png)
 
 The different elements that make up the layer are added by clicking on the _Add_ button. A small dialog will emerge, enabling you to define a compound or a single element, with its corresponding weight fraction. In the following screenshot, I used `CuSO4` with a weight fraction of 50 % to start with.
 
-![Adding a compound](../wiki/figures/04enter%20compound.png)
+![Adding a compound](../wiki/figures/04enter-compound.png)
 
 You may wonder at exactly which chemical formulas are accepted by the interface. Well the answer is: anything that is accepted by _xraylib_'s [CompoundParser](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API:-list-of-all-functions#wiki-compound_parser) function. This includes formulas with (nested) brackets such as: `Ca10(PO4)6OH` (apatite). Invalid formulas will lead to the _Ok_ button being greyed out and the _Compound_ text box gaining a red background.
 
 After clicking ok, you should see something resembling the following screenshot:
 
-![Adding a compound](../wiki/figures/05after%20first%20compound.png)
+![Adding a compound](../wiki/figures/05after-first-compound.png)
 
 You will notice that the compound has been parsed and separated into its constituent elements, with weight fractions according to the mass fractions of the elements.
 In this example I added an additional 50 % of `U3O8` to the composition and picked the values 2.5 g/cm3 and 1 cm for density and thickness, respectively, leading to a weights sum of 100 %. It is considered good practice to have the weights sum equal to 100 %. This can be accomplished by either adding/editing/removing compounds and elements from the list, or by clicking the _Normalize_ button, which will scale **all** weight fractions in order to have their sum equal to 100 %. Your dialog should match with this screenshot:
 
-![Adding another compound](../wiki/figures/06after%20second%20compound.png)
+![Adding another compound](../wiki/figures/06after-second-compound.png)
 
 When satisfied with the layer characteristics, press _Ok_.
 
@@ -85,16 +85,16 @@ X-ray fluorescence are quite often performed under atmospheric conditions. If so
 
 To add such a layer, click again on _Add_ button. In the _Modify layer_ dialog, add the composition, density and thickness of the air layer. This is shown in the next screenshot:
 
-![Adding air layer](../wiki/figures/07after%20adding%20air%20layer.png)
+![Adding air layer](../wiki/figures/07after-adding-air-layer.png)
 
 Clicking the _Ok_ button should lead the following situation in the _Composition_ section:
 
-![Wrong layer order](../wiki/figures/08layers%20wrong.png)
+![Wrong layer order](../wiki/figures/08layers-wrong.png)
 
 However, the ordering of the layers in the table is wrong: **XMI-MSIM assumes that the layers are ordered according to distance from the X-ray source**. This means that the first layer is closest to the source and all subsequent layers are positioned at increasingly greater distances from the source.
 This can be easily remedied by selecting a layer and then moving it around using the _Top_, _Up_, _Down_ and _Bottom_ buttons. The following screenshot shows the corrected order of the layers:
 
-![Correct layer order](../wiki/figures/09layers%20correct.png)
+![Correct layer order](../wiki/figures/09layers-correct.png)
 
 An important parameter in this table is the _Reference layer_. Using the toggle button, you select which layer corresponds to the one that is considered to be the first layer of the actual _sample_. In most cases, this will indicate the first non-atmospheric layer. The _Reference layer_ is also the layer that is used to calculate the _Sample-source distance_ in the [_Geometry_ section](#geometry).
 
@@ -106,7 +106,7 @@ Keep in mind that the number of elements influences the computational time great
 
 Scrolling down a little on the _Input parameters_ page reveals the _Geometry_ section as shown in the next screenshot:
 
-![Geometry, excitation and beam absorbers](../wiki/figures/10geometry%20excitation%20beam%20absorbers.png)
+![Geometry, excitation and beam absorbers](../wiki/figures/10geometry-excitation-beam-absorbers.png)
 
 This sections covers the position and orientation of the system of layers, detector and slits. In order to fully appreciate the geometry parameters, it is important that I first describe the coordinate system that these position coordinates and directions are connected to (picture will be added later...):
 
@@ -139,7 +139,7 @@ The dialog contains the fields necessary to define a particular energy:
 
 In this particular case, I have changed the energy to 20.0 keV, and made the beam unpolarized by equalizing both intensities, as shown in the following screen shot. The source remains a point source.
 
-![Modifying the energy](../wiki/figures/11modify%20energy.png)
+![Modifying the energy](../wiki/figures/11modify-energy.png)
 
 ### <a id="absorbers"></a>Beam and detection absorbers
 
@@ -151,7 +151,7 @@ Adding, editing and removing absorbers is performed through an interface identic
 
 The last section deals with the settings of the detector and its associated electronics, as can be seein in the following screenshot:
 
-![Detector settings](../wiki/figures/12detection%20absorbers%20and%20detector%20settings.png)
+![Detector settings](../wiki/figures/12detection-absorbers-and-detector-settings.png)
 
 * Detector type: every detector comes with its own detector response function, which can be influenced by several detector and electronics parameters. XMI-MSIM offers some predefined detector response functions that its authors have found to be reasonably well for two detector types: Si(Li) and Si Drift Detectors. Generally speaking, our policy is to encourage users to implement their own detector response functions in the `xmi_detector_convolute` subroutine of `src/xmi_detector_f.F90` in the source code
 * Live time: the actual measurement time of the simulated experiment, taking into account dead time
@@ -184,7 +184,7 @@ In order to start a simulation, the _Input parameters_ page must contain a valid
 
 Either way, the _Simulation controls_ page should look as shown in the following screenshot:
 
-![Simulation controls](../wiki/figures/13simulation%20controls.png)
+![Simulation controls](../wiki/figures/13simulation-controls.png)
 
 
 ### <a id="controlpanel"></a>Control panel
@@ -258,7 +258,7 @@ The size of the canvas can be changed by grabbing and moving the handle that sep
 
 The lower part of the page contains a list of all the intensities of all the X-ray fluorescence lines of all elements, as shown in the following screenshot:
 
-![Selecting XRF lines](../wiki/figures/20select%20lines.png)
+![Selecting XRF lines](../wiki/figures/20select-lines.png)
 
 By clicking the arrows on the left side of the list, it is possible to expand the sections belonging to a particular element, line, and for different number of interactions, thereby revealing the individual contributions to a particular intensity.
 The lines can be shown on the plot canvas by activating the _Show line_ flag for the appropriate line or element.

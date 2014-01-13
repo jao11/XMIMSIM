@@ -1,0 +1,14 @@
+*.bkp*
+*.aux
+*.log
+*.toc
+*.bbl
+*.blg
+*.bak
+*.swp
+*.idx
+*.ilg
+*.ind
+*.out
+*.tex
+*.pdf
