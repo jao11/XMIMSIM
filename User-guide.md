@@ -108,12 +108,16 @@ Scrolling down a little on the _Input parameters_ page reveals the _Geometry_ se
 
 ![Geometry, excitation and beam absorbers](../wiki/figures/10geometry-excitation-beam-absorbers.png)
 
-This sections covers the position and orientation of the system of layers, detector and slits. In order to fully appreciate the geometry parameters, it is important that I first describe the coordinate system that these position coordinates and directions are connected to (picture will be added later...):
+This sections covers the position and orientation of the system of layers, detector and slits. In order to fully appreciate the geometry parameters, it is important that I first describe the coordinate system that these position coordinates and directions are connected to:
 
 * The coordinate system is right-handed Cartesian
 * The _z_-axis is aligned with the beam direction and points from the source towards the sample.
 * The _y_-axis defines, along with the _z_-axis, the horizontal plane
 * The _x_-axis emerges out from the plane formed by the _y_- and _z_-axes
+
+This is demonstrated in the following figure:
+
+![Schematic representation of the geometry](../wiki/figures/coordinate_system.png)
 
 Now with this covered, let's have a look at the different _Geometry_ parameters:
 
