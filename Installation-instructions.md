@@ -5,25 +5,25 @@
 
 ## <a id="compilefromsource"></a>Compiling from source
 
-XMI-MSIM has been successfully built on Linux (Debian/Ubuntu and RHEL/CentOS/Fedora), Mac OS X (Snow Leopard and up) and Windows 7 (with 32-bit compilers)
+XMI-MSIM has been successfully built on Linux (Debian/Ubuntu and RHEL/CentOS/Fedora), Mac OS X (Snow Leopard and up) and Windows 7 (with 32-bit MinGW and 64-bit MinGW-w64 compilers)
 
 The following dependencies are required to build XMI-MSIM:
 
 * fortran 2003 compiler (gfortran >= 4.4, Intel Fortran are known to work) 
-* C compiler with OpenMP support (gcc highly recommended)
+* C compiler with OpenMP support (gcc highly recommended). The native Mac OS X version requires that the compiler supports Objective-C as well.
 * GNU scientific library (GSL)
 * HDF5
 * libxml2
 * libxslt
 * Fortran GSL bindings (FGSL)
-* xraylib (including Fortran bindings)
+* xraylib 3.0.0+ (including Fortran bindings)
 * glib2
-* GTK2 and GTK-EXTRA (version 3.0.4) for the graphical user interface (optional though highly recommended)
-* optional for the GUI: curl and json-glib
+* GTK2 and GTK-EXTRA (version 3.1.0) for the graphical user interface (optional though highly recommended)
+* optional for the GUI: curl, json-glib and libnotify
 * MPI (OpenMPI or Intel MPI): optional. Recommended for those that want to perform brute-force simulations with a very high number of simulated photons
+* The native Mac OS X build additionally requires gtk-mac-integration
 
-
-All dependencies should be easy to obtain, except for FGSL which is available from the Download section as well. Do not use the [official version](http://www.lrz.de/services/software/mathematik/gsl/fortran) , it will not work when used in combination with XMI-MSIM. [xraylib](http://github.com/tschoonj/xraylib) can be obtained at my repository. Windows users will have to compile most of these dependencies themselves, which will require them to install a bash shell with all basic UNIX utilities. The Windows versions of XMI-MSIM were built using MSYS (bash shell and GNU utilities) and TDM-GCC (compilers).
+All dependencies should be easy to obtain. [xraylib](http://github.com/tschoonj/xraylib) can be obtained at my repository. Windows users will have to compile most of these dependencies themselves, which will require them to install a bash shell with all basic UNIX utilities. The Windows versions of XMI-MSIM were built using MSYS (bash shell and GNU utilities) and TDM-GCC (MinGW compilers).
 
 It is absolutely critical that all Fortran packages are compiled with exactly the same compiler, and this compiler also needs to be used when building XMI-MSIM.
 
@@ -106,6 +106,11 @@ Debian Squeeze:
        deb http://lvserver.ugent.be/apt/debian squeeze stable
        deb-src http://lvserver.ugent.be/apt/debian squeeze stable
 
+Debian Wheezy:
+
+       deb http://lvserver.ugent.be/apt/debian wheezy stable
+       deb-src http://lvserver.ugent.be/apt/debian wheezy stable
+
 Ubuntu Precise 12.04:
 
        deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu precise stable
@@ -136,9 +141,9 @@ After this, one can install XMI-MSIM by executing the following command:
 
 ## <a id="windowsbinaries"></a>Windows
 
-An installer containing the 32-bit binaries of XMI-MSIM for the Windows platform can be found in the [Downloads](http://lvserver.ugent.be/xmi-msim) section. It will download and install _xraylib_ if necessary.
+Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the [Downloads](http://lvserver.ugent.be/xmi-msim) section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 3.0 is the last release to have support for Windows XP.
 
 ## <a id="macosx"></a>Mac OS X
 
-A [dmg](http://lvserver.ugent.be/xmi-msim) file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion (all 64-bit only).
+A [dmg](http://lvserver.ugent.be/xmi-msim) file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit only).
 After downloading, mount the dmg file and drag the XMI-MSIM app to the Applications folder.

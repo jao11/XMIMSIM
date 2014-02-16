@@ -8,6 +8,7 @@ The following guide assumes that the user has already installed XMI-MSIM, accord
 * **[Starting a simulation](#start)**
 * **[Visualizing the results](#results)**
 * **[Global preferences](#preferences)**
+* **[Advanced features](#advancedfeatures)**
 * **[Checking for updates](#checkforupdates)**
 * **[Example files](#examplefiles)**
 
@@ -19,7 +20,7 @@ For Mac users: assuming you dragged the app into the Applications folder, use Fi
 
 For Windows users: an entry should have been added to the Start menu. Navigate towards it in _Programs_ and click on XMI-MSIM.
 
-For Linux users: an entry should have been added to the Education section of your Start menu. Since this may very considerably depending on the Linux flavour that is being used, this may not be obvious at first. Alternatively, fire up a terminal and type:
+For Linux users: an entry should have been added to the Education section of your Start menu. Since this may very considerably depending on the Linux flavor that is being used, this may not be obvious at first. Alternatively, fire up a terminal and type:
 
 > `xmimsim-gui`
 
@@ -27,7 +28,7 @@ Your desktop should now be embellished with a window resembling the one in the f
 
 ![XMI-MSIM on startup](../wiki/figures/01start-window.png)
 
-XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files and output-files in your platform's file manager, thereby loading the file's contents.
+XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files (.xmsi extension) and output-files (.xmso extenstion) in your platform's file manager, thereby loading the file's contents.
 
 The main view of the XMI-MSIM consists of three pages that each serve a well-defined purpose. The first page is used to generate inputfiles, based on a number of parameters that are defined by the user. The second page allows for the execution of these files, while the third and last page is designed to visualise the results and help in their interpretation. The purpose of the following sections is to provide an in-depth guide on how to operate these pages. 
 
@@ -44,13 +45,15 @@ The first page consists of a number of frames, each designed to manipulate a par
 * [Excitation](#excitation)
 * [Beam and detection absorbers](#absorbers)
 * [Detector settings](#detector)
+* [Import from file](#import)
 
 ### <a id="general"></a>General
 
 The _General_ section contains 4 parameters:
 
 * Outputfile: clicking the _Save_ button will pop up a file chooser dialog, allowing you to select the name of the outputfile that will contain the results of the simulation
-* Number of photons per discrete line: the excitation spectrum as it is used by the simulation is assumed to consist of a number of discrete energies with each a given intensity (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per discrete line. The calculation time is directly proportional to this value
+* Number of photons per discrete line: the excitation spectrum as it is used by the simulation may consist of a number of discrete energies with each a given intensity (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per discrete line. The calculation time is directly proportional to this value
+* Number of photons per interval: the excitation spectrum as it is used by the simulation may consist of a number of energy intervals defined by the given intensity densities at the beginning and the end of the intervals (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per interval. The calculation time is directly proportional to this value
 * Number of interactions per trajectory: this parameter will determine the maximum number of interactions a photon can experience during its trajectory. It is not recommended to set this value to higher than 4, since the contribution of increasingly higher order interactions to the spectrum decreases fast. The calculation time is directly proportional to this value
 * Comments: use this textbox to write down some notes you think are useful.
 
@@ -64,7 +67,7 @@ The different elements that make up the layer are added by clicking on the _Add_
 
 ![Adding a compound](../wiki/figures/04enter-compound.png)
 
-You may wonder at exactly which chemical formulas are accepted by the interface. Well the answer is: anything that is accepted by _xraylib_'s [CompoundParser](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API:-list-of-all-functions#wiki-compound_parser) function. This includes formulas with (nested) brackets such as: `Ca10(PO4)3OH` (apatite). Invalid formulas will lead to the _Ok_ button being greyed out and the _Compound_ text box gaining a red background.
+You may wonder at exactly which chemical formulas are accepted by the interface. Well the answer is: anything that is accepted by _xraylib_'s [CompoundParser](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API-list-of-all-functions#wiki-compoundparser) function. This includes formulas with (nested) brackets such as: `Ca10(PO4)3OH` (apatite). Invalid formulas will lead to the _Ok_ button being greyed out and the _Compound_ text box gaining a red background.
 
 After clicking ok, you should see something resembling the following screenshot:
 
@@ -74,6 +77,8 @@ You will notice that the compound has been parsed and separated into its constit
 In this example I added an additional 50 % of `U3O8` to the composition and picked the values 2.5 g/cm3 and 1 cm for density and thickness, respectively, leading to a weights sum of 100 %. It is considered good practice to have the weights sum equal to 100 %. This can be accomplished by either adding/editing/removing compounds and elements from the list, or by clicking the _Normalize_ button, which will scale **all** weight fractions in order to have their sum equal to 100 %. Your dialog should match with this screenshot:
 
 ![Adding another compound](../wiki/figures/06after-second-compound.png)
+
+Alternatively you may consider looking into the builtin catalog (press _Catalog_): a pop-up window will allow you to select a compound from a list which is generated using xraylib's [GetCompoundDataNISTList](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API-list-of-all-functions#wiki-nistcatalog) function, which provides access to NISTs compound database of compositions and densities. 
 
 When satisfied with the layer characteristics, press _Ok_.
 
@@ -106,7 +111,7 @@ Keep in mind that the number of elements influences the computational time great
 
 Scrolling down a little on the _Input parameters_ page reveals the _Geometry_ section as shown in the next screenshot:
 
-![Geometry, excitation and beam absorbers](../wiki/figures/10geometry-excitation-beam-absorbers.png)
+![Geometry, excitation and beam absorbers](../wiki/figures/10geometry-excitation.png)
 
 This sections covers the position and orientation of the system of layers, detector and slits. In order to fully appreciate the geometry parameters, it is important that I first describe the coordinate system that these position coordinates and directions are connected to:
 
@@ -117,9 +122,9 @@ This sections covers the position and orientation of the system of layers, detec
 
 This is demonstrated in the following figure:
 
-![Schematic representation of the geometry](../wiki/figures/coordinate_system.png)
+![Schematic representation of the geometry](../wiki/figures/27coordinatesystem.png)
 
-Now with this covered, let's have a look at the different _Geometry_ parameters:
+Now with this covered, let us have a look at the different _Geometry_ parameters:
 
 * Sample-source distance: the distance between the source and the _Reference layer_ in the system of layers as defined in the [_Composition section_](#composition)
 * Sample orientation vector: the normal vector that determines the orientation of the stack of layers that define the sample and its environment. The _z_ component must be strictly positive
@@ -131,19 +136,35 @@ Now with this covered, let's have a look at the different _Geometry_ parameters:
 * Source-slits distance: XMI-MSIM defines a set of virtual slits, whose purpose is to define the size of the beam at a given point, based on the distance between these slits and the X-ray source, as well as the _Slits size_, defined by the next parameter. I recommend to have the _Source-slits distance_ correspond to the _Sample-source distance_, since this way the beam, upon hitting the _Reference layer_, will have exactly the dimensions specified by _Slits size_ (if using a point source!)
 * Slits size: see previous parameter. Refers to the dimensions of the beam at the _Source-slits_ distance. This parameter will be ignored when dealing with a Gaussian source (see [Excitation section](#excitation))
 
+In order to visualize these different parameters, click the _Show geometry help_ button: a new window will pop up showing the aforementioned coordinate system. Hovering the mouse over the different components in the new window will have the corresponding widgets light up in green in the main window. This works both ways: hover the mouse over the geometry widgets in the main window and little boxes will appear in the coordinate system window.
+
 ### <a id="excitation"></a>Excitation
 
-Next, there is the _Excitation_ section, which is used to define the X-ray beam that irradiates the sample. The corresponding excitation spectrum is assumed to consist of a number of discrete energies, each with a horizontally and vertically polarized intensity, as well as a number of parameters that define the type and the aperture of the source. At runtime, the code will use the [_Number of photons per discrete line_](#general) parameter to determine how many photons will be simulated per discrete energy. Adding, editing and removing discrete energies is handled through the buttons in the _Excitation_ section. For example, we can change the settings of the default value by clicking the _Edit_ button.
+Next, there is the _Excitation_ section, which is used to define the X-ray beam that irradiates the sample.
+The corresponding excitation spectrum may consist of a number of discrete energies, each with a horizontally and vertically polarized intensity, as well as a number of parameters that define the type and the aperture of the source. Furthermore, one can also insert a number of continuous energy intervals, defined through a list of intensity densities, each with their horizontally and vertically polarized components. In this case, one has two insert at least two intensity densities in order to have at least one interval.
+
+At runtime, the code will use the [_Number of photons per discrete line_](#general) and [_Number of photons per interval_](#general) parameters to determine how many photons will be simulated per discrete energy and continuous energy interval. Adding, editing and removing discrete energies and intervals is handled through the buttons in the _Excitation_ section. For example, we can change the settings of the default value by clicking the _Edit_ button.
 The dialog contains the fields necessary to define a particular energy:
 
 * Energy: the energy of this particular part of the excitation spectrum, expressed in keV
 * Horizontally and vertically polarized intensities: the number of photons that are polarized in the horizontal and vertical planes, respectively. A completely unpolarized beam has identical horizontal and vertical intensities (such as those produced by X-ray tubes), while synchrotron beams will have very, very low vertically polarized intensities. For information on how to convert the total number of photons given the degree of polarization to the horizontal and vertical polarized intenties, consult [Part 5 in our series of papers on Monte-Carlo simulations](../wiki/References-and-additional-resources)
-* Source size _x_ and _y_: If both these values are equal to zero, then the source is assumed to be a point source, and the divergence of the beam is completely determined by the _Source-slits distance_ and _Slits size_ parameters of the [_Geometry_](#geometry) section. Otherwise the source is considered a Gaussian source, in which case the photon starting position is chosen according to Gaussian distributions in the _x_ and _y_ planes, determined by the _Source size x_ and _Source size y_ parameters
-* Source divergence _x_ and _y_: If these values are non-zero, AND the source is Gaussian, then the _Source-slits distance_ takes on a new role as it becomes the distance between the actual focus and the source position. In this way a convergent beam can be defined, emitted by a Gaussian source at the origin. For the specific case of focusing on the sample the _Sample-source distance_ should be set to the _Source-slits distance_.
+* Source size _x_ and _y_: if both these values are equal to zero, then the source is assumed to be a point source, and the divergence of the beam is completely determined by the _Source-slits distance_ and _Slits size_ parameters of the [_Geometry_](#geometry) section. Otherwise the source is considered a Gaussian source, in which case the photon starting position is chosen according to Gaussian distributions in the _x_ and _y_ planes, determined by the _Source size x_ and _Source size y_ parameters
+* Source divergence _x_ and _y_: if these values are non-zero, AND the source is Gaussian, then the _Source-slits distance_ takes on a new role as it becomes the distance between the actual focus and the source position. In this way a convergent beam can be defined, emitted by a Gaussian source at the origin. For the specific case of focusing on the sample the _Sample-source distance_ should be set to the _Source-slits distance_.
+* Energy distribution type: additionally for the discrete energies, it is possible to set the _Energy distribution type_, which may assume the values _Monochromatic_, _Gaussian_ and _Lorentzian_. The first case assumes that the discrete energy is purely monochromatic and that only the selected energy will be used in the simulation. The two other cases corrspond to a scenario in which the simulation will sample from a Gaussian or Lorentzian distribution respectively. If either of these two cases is selected, the user is expected to provide respectively the standard deviation and the scale parameter.
 
 In this particular case, I have changed the energy to 20.0 keV, and made the beam unpolarized by equalizing both intensities, as shown in the following screen shot. The source remains a point source.
 
 ![Modifying the energy](../wiki/figures/11modify-energy.png)
+
+The discrete energies and continuous energies widgets each contain six buttons:
+
+* _Add_: add a new discrete energy or continuous energy intensity density.
+* _Edit_: edit a previously defined discrete energy or continuous energy intensity density.
+* _Remove_: delete a previously defined discrete energy or continuous energy intensity density.
+* _Import_: import a list of discrete energies or continuous energy intensity densities from an ASCII file. These files must consist of either two, three or seven columns, with the first column containing the energies, the second the total intensity (if only two columns are found), or the second and third the resp. horizontally and vertically polarized intensities or intensity densities. If seven columns are encountered, the last four columns are assumed to contain source sizes and divergencies. It is possible through the interface to start reading only at a certain linenumber and also to read only a set number of lines.
+* _Clear_: delete all previously defined discrete energies or continuous energy intensity densities.
+* _Scale_: multiply the intensities or intensity densities with a positive real number.
+
 
 ### <a id="absorbers"></a>Beam and detection absorbers
 
@@ -167,6 +188,12 @@ The last section deals with the settings of the detector and its associated elec
 * Max convolution energy: the maximum energy that will be considered when applying the detector response function. Make sure this value is 10-20 % higher than the highest expected energy in the spectrum
 * Crystal composition: the composition of the detector crystal. Adding, editing and removing absorbers is performed through an interface identical to the one seen in the [Composition section](#composition), but without the _Reference layer_ toggle button. Will be used to calculate the detector transmission and the escape peak ratios
 
+### <a id="import"></a>Import from file
+
+In some cases it may be interesting to import part of the contents of other XMI-MSIM input-files or output-files (which also contain the corresponding input-file) into a new input-file. This can be accomplished by using the _File_ &rarr; _Import_ option in the menubar.
+After choosing a file from the dialog, select the components that you would like to import from the interface. This is demonstrated in the following screenshot
+
+![Import from file](../wiki/figures/25importfromfile.png)
 
 ## <a id="save"></a>Saving an input-file
 
@@ -193,7 +220,7 @@ Either way, the _Simulation controls_ page should look as shown in the following
 
 ### <a id="controlpanel"></a>Control panel
 
-The top of the page contains the actual control panel that is used to start, stop and pause the simulation, as well as a slider that allows the user to select the number of threads that will be used by the simulation (currently broken in version 2.0, will be fixed in 2.1). To the right of the slider, there are three progress bars that indicate different stages of the Monte Carlo program: the calculation of the solid angle grid for the variance reduction, the simulation of the photon--matter interactions and the calculation of the escape peak ratios. More information about the status of the Monte Carlo program is presented in the adjacent log window. Note: the Windows version does not contain the _Pause_ button.
+The top of the page contains the actual control panel that is used to start, stop and pause the simulation, as well as a slider that allows the user to select the number of threads that will be used by the simulation.  To the right of the slider, there are three progress bars that indicate different stages of the Monte Carlo program: the calculation of the solid angle grid for the variance reduction, the simulation of the photon--matter interactions and the calculation of the escape peak ratios. More information about the status of the Monte Carlo program is presented in the adjacent log window. Note: the Windows version does not contain the _Pause_ button.
 
 
 ### <a id="executable"></a>Executable
@@ -204,12 +231,13 @@ Underneath these controls is a section that contains the name of the executable 
 
 This section is followed by a number of options that change the behaviour of the Monte-Carlo program:
 
-* Simulate M-lines: If disabled, then the code will ignore M-lines that may be produced based on the elemental composition of the sample. In such a case, the code will probably run faster. I strongly recommend to simulate M-lines
-* Simulate the radiative and non-radiative cascade effect: the cascade effect is composed of two components, a radiative and a non-radiative one. Although these will always occur simultaneously in reality, the code allows to deactivate one or both of them. This could be interesting to those that want to investigate the contribution of both components. Otherwise, it is recommended to keep both enabled
-* Enable variance reduction techniques: disabling this option will trigger the brute-force mode, disabling all variance reduction techniques, thereby greatly reducing the precision of the estimated spectrum and net-line intensities for a given [_Number of photons per discrete line_](#general). This reduced precision may be improved upon by greatly increasing the _Number of photons per discrete line_, but this will result in a much longer runtime of the Monte-Carlo program. Expert use only. Consider building XMI-MSIM with MPI support and running it on a cluster
-* Enable pulse pile-up simulation: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector) parameter
-* Enable Poisson noise generation: enabling this option will result in every channel of the detector convoluted spectrum being subjected to Poisson noise, controlled by Poisson distributions with lambda equal to the number of counts in a channel
-* Number of spectrum channels: the number of channels in the produced spectrum.
+* _Simulate M-lines_: If disabled, then the code will ignore M-lines that may be produced based on the elemental composition of the sample. In such a case, the code will probably run faster. I strongly recommend to simulate M-lines
+* _Simulate the radiative and non-radiative cascade effect_: the cascade effect is composed of two components, a radiative and a non-radiative one. Although these will always occur simultaneously in reality, the code allows to deactivate one or both of them. This could be interesting to those that want to investigate the contribution of both components. Otherwise, it is recommended to keep both enabled
+* _Enable variance reduction techniques_: disabling this option will trigger the brute-force mode, disabling all variance reduction techniques, thereby greatly reducing the precision of the estimated spectrum and net-line intensities for a given [_Number of photons per discrete line_](#general). This reduced precision may be improved upon by greatly increasing the _Number of photons per discrete line_, but this will result in a much longer runtime of the Monte-Carlo program. Expert use only. Consider building XMI-MSIM with MPI support and running it on a cluster
+* _Enable pulse pile-up simulation_: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector) parameter
+* _Enable Poisson noise generation_: enabling this option will result in every channel of the detector convoluted spectrum being subjected to Poisson noise, controlled by Poisson distributions with lambda equal to the number of counts in a channel
+* _Enable OpenCL_: this option invokes XMI-MSIMs OpenCL plug-in that, if the platform comes with a videocard chipset that supports it, will use the GPU to perform the solid angle calculation, which could lead to a tremendous speed increase. Keep in mind that when this option is used during the solid angle calculation stage, the screen may have a noticeably lower refresh rate and may lose its responsiveness briefly. This option is only available when an OpenCL framework was found at compile-time.
+* _Number of spectrum channels_: the number of channels in the produced spectrum.
 
 
 ### <a id="exportresults"></a>Export results
@@ -230,6 +258,7 @@ When all required options are set up correctly, the simulation can be started by
 ![Running the simulation](../wiki/figures/14calculating.png)
 
 The first and the third progress bars will in many cases display a message that the Solid angle grid and the Escape peak ratios were loaded from file: this indicates that a simulation with similar parameters was performed before and that the relevant data was written to a file, leading to a huge increase in speed.
+It is possible that some red text appears during a run, particularly with reference to Solid angle and Escape ratio HDF5 files being outdated. This only happens when you are running a new version of XMI-MSIM that introduced a new format for these files: the old files are deleted and new ones will be created and used from then onwards.
 
 After the simulation, assuming everything went fine, the XMSO outputfile as defined in the [General section](#general) will be loaded and its contents displayed on the Results page.
 
@@ -290,13 +319,103 @@ If XMI-MSIM was compiled with support for automatic updates then this page will 
 
 ### <a id="advanced"></a>Advanced
 
-Currently the _Advanced_ page contains only two entries, which both revolve around the deleting of the XMI-MSIM HDF5 files that contain the solid angle grids and the escape peak ratios, respectively. It is recommended to remove these files manually when a complete uninstall of XMI-MSIM is considered necessary (before running the uninstaller or removing the application manually), or if these files somehow got corrupted.
+The first two options revolve around the deleting of the XMI-MSIM HDF5 files that contain the solid angle grids and the escape peak ratios, respectively. It is recommended to remove these files manually when a complete uninstall of XMI-MSIM is considered necessary (before running the uninstaller or removing the application manually), or if these files somehow got corrupted.
+
+The following two options allow the user to import solid angle grids and escape peak ratios from external files into his own. This may be interesting if another user already has a huge collection of these and it may save a lot of time using someone elses.
+In the file dialog only those files will be shown that are valid HDF5 files of the required kind and minimum version.
+
+The last option is _Enable notifications_, which when supported at compile-time and a suitable notifications server is found, will generate messages whenever a calculation finishes. On a Mac OS X native version of XMI-MSIM this will only work on Mountain Lion and newer.
+
+## <a id="advancedfeatures"></a>Advanced features
+
+* [X-ray tube spectrum generator](#ebelgenerator)
+* [Batch simulations](#batchsimulations)
+* [XMI-MSIM file manipulation with XPath and XSLT](#xmimsimfilemanipulation)
+
+In this section, we will describe some more advanced features of XMI-MSIM, which may useful for some users with specific needs.
+
+### <a id="ebelgenerator"></a>X-ray tube spectrum generator
+
+In the [_Excitation_ section](#excitation), we have shown how one can introduce the necessary components of the X-ray excitation spectrum, through a number of discrete energies and intervals of continuous energies.
+In many cases, one will perform X-ray experiments using an X-ray tube generator as source, which corresponds to a combination of discrete part (the anode element specific XRF lines) and a continuous part (the Bremsstrahlung generated through electron-nucleus interactions). Such excitation spectra are typically quite difficult to obtain experimentally and instead one relies quite often on theoretical calculations to obtain (an approximation) of the spectrum. One popular model is the one derived by Horst Ebel in his manuscripts [X-ray Spectrometry 28 (1999), 255-266](http://dx.doi.org/10.1002/(SICI)1097-4539(199907%2F08)28%3A4%3C255%3A%3AAID-XRS347%3E3.0.CO%3B2-Y) and [X-ray Spectrometry 32 (2003), 46-51](http://dx.doi.org/10.1002/xrs.610). This model has been implemented in XMI-MSIM based on the similar feature in PyMca and can be accessed by clicking the X-ray tube button in the menubar (with the radiation warning logo). After clicking, a new window will emerge that looks as:
+
+![Modifying the energy](../wiki/figures/26ebelgenerator.png)
+
+By changing the different parameters to values appropriate for the X-ray tube that the user would like to simulate, one obtains an **approximate** model for the corresponding X-ray tube excitation spectrum. The following parameters can be changed:
+
+* _Tube voltage_: the voltage in kV at which the X-ray tube is supposed to operate. This will determine the extent of the Bremsstrahlung contribution and through this which XRF lines (discrete energies) that will be present in the spectrum.
+* _Tube current_: the current in mA at which the X-ray tube is supposed to operate. The this value is directly proportional to the intensity of the spectrum components.
+* _Tube solid angle_: the solid angle in sr (steradian) under which the beam emerges from the X-ray tube. The default value here is determined by the _Source-slits distance_ and the _Slits size_, taken from the [_Geometry_ section].
+* _Electron incidence angle_ and _X-ray tube take-off angle_: X-ray tube geometry parameters
+* _Interval width_: the width of the continuous energy intervals of Bremsstahlung part of the spectrum. Decreasing this value will lead to a better simulation, but will increase the computational time.
+* _Anode_: the material that the tube anode is made of. The density and the thickness become sensitive when _Transmission tube_ is activated.
+* _Window_ and _Filter_: tube filtration materials. Set the thickness and/or the density to zero to ignore.
+* _Transmission tube_: activating this option effectively places the tube exit-window on the opposite side of the anode with respect to the cathode, thereby operating in transmission mode.
+* _Transmission efficiency file_: it is possible to load a two column ASCII file (first column energies and second column efficiencies between 0 and 1), with at least 10 lines that will be used to multiply the generated intensities and intensity densities with using interpolation of the supplied efficiencies.
+
+After adjusting the required parameters, click _Update spectrum_ to obtain a new excitation spectrum in the plot window. Using _Export spectrum_, it is possible to save the generated spectrum to an ASCII file, while _Save image_ will allow the user to save the plot window to an image file.
+Clicking _About_ will present the user with the links to the Horst Ebel manuscripts.
+Using the _Ok_ button one can close the window while replacing the contents of the _Excitation_ section with the newly generated spectrum.
+
+### <a id="xmimsimfilemanipulation"></a>XMI-MSIM file manipulation with XPath and XSLT
+
+All three XMI-MSIM document types (xmsi, xmso and xmsa) are in fact XML files defined through a document type definition (DTD) file which is included and used in all XMI-MSIM installations. Due to their XML nature, it becomes quite easy to manipulate these files in a number of ways. For example, using an Extensible Stylesheet Language Transformation (XSLT) it becomes possible to extract certain parts of the XML file and convert them to any other type of output. 
+
+XMI-MSIM uses this very technique to perform the conversions from the output-files (xmso) to the spe, html, csv and svg file formats. The stylesheets that are necessary for these operations are included with all installations and may serve the reader as a source of inspiration in developing his own XSL transformations.
+
+The previous section on batch simulations already mentioned the concept of XPath expressions: in combination with an XML processing library such as [libxml2](www.xmlsoft.org), one can read and write parts of as well as entire XML files, which essentially explains the underlying algorithms that XMI-MSIMs batch simulation feature uses. Since advanced users may require a more batch simulation method than what is covered by XMI-MSIM, they may want to have a look at the following simple Perl script which produces the required input-files for a one-dimensional batch simulation, but this can be easily rewritten for far more complex applications.
+
+```perl
+use XML::LibXML;
+use strict;
+use Scalar::Util qw(looks_like_number);
+
+die "Usage: perl xmi-msim-batch.pl XMSI-file XPath-expression start-value end-value number-of-values\n" if (scalar(@ARGV) ne 5);
+
+my $dom = XML::LibXML->load_xml(location => $ARGV[0],
+	load_ext_dtd => 0
+);
+
+my $xpc = XML::LibXML::XPathContext->new($dom);
+my @nodes = $xpc->findnodes($ARGV[1]);
+
+die "Exactly one element should be matched by the XPath expression\n" if (scalar(@nodes) ne 1);
+
+#get outputfile
+my ($outputfileNode) = $xpc->findnodes("//xmimsim/general/outputfile");
+my $outputfile = $outputfileNode->textContent;
+$outputfile =~ s/\.xmso$//;
+
+my $inputfile = $ARGV[0];
+$inputfile =~ s/\.xmsi$//; 
+
+print "outputfile: $outputfile\n";
+
+#check if numeric arguments are ok
+die "last three arguments must be numerical\n" unless(looks_like_number($ARGV[2]));
+die "last three arguments must be numerical\n" unless(looks_like_number($ARGV[3]));
+die "last three arguments must be numerical\n" unless(looks_like_number($ARGV[4]));
+
+my $diff = $ARGV[3] - $ARGV[2];
+
+die "end-value must be greater than start-value\n" if ($diff <= 0.0);
+die "number-of-values must be greater than 0\n" if ($ARGV[4] <= 0.0);
+
+for (my $i = 0 ; $i <= $ARGV[4] ; $i++) {
+	$nodes[0]->removeChildNodes();
+	$nodes[0]->appendText($ARGV[2]+ $i * $diff/$ARGV[4]);
+	$outputfileNode->removeChildNodes();
+	$outputfileNode->appendText("$outputfile"."_".$i.".xmso");
+	$dom->toFile("$inputfile"."_".$i.".xmsi",1);
+}
+```
 
 ## <a id="checkforupdates"></a>Checking for updates
 
 For packages of XMI-MSIM that were compiled with support for automatic updates, checking for new versions will occur by default when launching the program. This can be disabled in the [Preferences window](#updates). If you would like to check explicity, then click on _Help_->_Check for updates..._ for Windows and Linux, and XMI-MSIM->_Check for updates..._ for Mac OS X.
 
 When updates are available, a dialog will pop up, inviting the user to download the package through the interface. When the download is completed, quit XMI-MSIM and install the new version. It is highly recommended to always use the latest version of the interface.
+
 
 ## <a id="examplefiles"></a>Example files
 
