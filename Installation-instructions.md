@@ -74,6 +74,8 @@ XMI-MSIMs random number generators are seeded on Mac OS X and Linux using high q
 
 ## <a id="linuxpackages"></a>Linux
 
+None of the binary Linux packages ship with the OpenCL plug-in. If you want to enable OpenCL support in your Linux version of XMI-MSIM, you will have to compile the software from source, after installing the required SDK and drivers provided by your GPU chipset manufacturer. We have successfully built Linux versions with OpenCL support using nVidia GPUs.
+
 ### <a id="rpmpackages"></a>Fedora, Centos, Scientific Linux
 
 To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 16-20 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
@@ -142,6 +144,9 @@ After this, one can install XMI-MSIM by executing the following command:
 ## <a id="windowsbinaries"></a>Windows
 
 Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the [Downloads](http://lvserver.ugent.be/xmi-msim) section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 3.0 is the last release to have support for Windows XP.
+
+The Windows version ship with the OpenCL plug-in for XMI-MSIM. In order for this plug-in to function, you need 1) to have a videocard that supports OpenCL 1.1 and 2) have the OpenCL drivers installed as provided by your videocard's manufacturer.
+To test if this is the case, try running XMI-MSIM with OpenCL enabled: if an error dialog pops up, then you need to install the drivers. Other errors would be displayed in red in the log, followed by a fallback to the default OpenCL implementation.
 
 ## <a id="macosx"></a>Mac OS X
 
