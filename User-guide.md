@@ -32,7 +32,7 @@ XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input
 
 The main view of the XMI-MSIM consists of three pages that each serve a well-defined purpose. The first page is used to generate inputfiles, based on a number of parameters that are defined by the user. The second page allows for the execution of these files, while the third and last page is designed to visualise the results and help in their interpretation. The purpose of the following sections is to provide an in-depth guide on how to operate these pages. 
 
-When starting XMI-MSIM without providing a file to open, a new file will be started with default settings. The same situation can be obtained at any moment by clicking on _New_ in the menubar.
+When starting XMI-MSIM without providing a file to open, a new file will be started with default settings. The same situation can be obtained at any moment by clicking on _New_ in the toolbar.
 
 
 ## <a id="create"></a>Creating an inputfile
@@ -303,7 +303,7 @@ Supported filetypes are PNG, EPS and PDF.
 
 ## <a id="preferences"></a>Global preferences
 
-Clicking the _Preferences_ button will launch a dialog allowing the user to set some preferences that will be preserved across sessions off XMI-MSIM. Make sure to press apply after making any changes.
+Clicking the _Preferences_ button in the toolbar will launch a dialog allowing the user to set some preferences that will be preserved across sessions off XMI-MSIM. Make sure to press apply after making any changes.
 
 * [Simulation defaults](#simulationdefaults)
 * [Updates](#updates)
@@ -337,7 +337,7 @@ In this section, we will describe some more advanced features of XMI-MSIM, which
 ### <a id="ebelgenerator"></a>X-ray tube spectrum generator
 
 In the [_Excitation_ section](#excitation), we have shown how one can introduce the necessary components of the X-ray excitation spectrum, through a number of discrete energies and intervals of continuous energies.
-In many cases, one will perform X-ray experiments using an X-ray tube generator as source, which corresponds to a combination of discrete part (the anode element specific XRF lines) and a continuous part (the Bremsstrahlung generated through electron-nucleus interactions). Such excitation spectra are typically quite difficult to obtain experimentally and instead one relies quite often on theoretical calculations to obtain (an approximation) of the spectrum. One popular model is the one derived by Horst Ebel in his manuscripts [X-ray Spectrometry 28 (1999), 255-266](http://dx.doi.org/10.1002/(SICI)1097-4539(199907%2F08)28%3A4%3C255%3A%3AAID-XRS347%3E3.0.CO%3B2-Y) and [X-ray Spectrometry 32 (2003), 46-51](http://dx.doi.org/10.1002/xrs.610). This model has been implemented in XMI-MSIM based on the similar feature in PyMca and can be accessed by clicking the X-ray tube button in the menubar (with the radiation warning logo). After clicking, a new window will emerge that looks as:
+In many cases, one will perform X-ray experiments using an X-ray tube generator as source, which corresponds to a combination of discrete part (the anode element specific XRF lines) and a continuous part (the Bremsstrahlung generated through electron-nucleus interactions). Such excitation spectra are typically quite difficult to obtain experimentally and instead one relies quite often on theoretical calculations to obtain (an approximation) of the spectrum. One popular model is the one derived by Horst Ebel in his manuscripts [X-ray Spectrometry 28 (1999), 255-266](http://dx.doi.org/10.1002/(SICI)1097-4539(199907%2F08)28%3A4%3C255%3A%3AAID-XRS347%3E3.0.CO%3B2-Y) and [X-ray Spectrometry 32 (2003), 46-51](http://dx.doi.org/10.1002/xrs.610). This model has been implemented in XMI-MSIM based on the similar feature in PyMca and can be accessed by clicking the X-ray tube button in the toolbar (with the radiation warning logo). After clicking, a new window will emerge that looks as:
 
 ![Modifying the energy](../wiki/figures/26ebelgenerator.png)
 
@@ -356,6 +356,52 @@ By changing the different parameters to values appropriate for the X-ray tube th
 After adjusting the required parameters, click _Update spectrum_ to obtain a new excitation spectrum in the plot window. Using _Export spectrum_, it is possible to save the generated spectrum to an ASCII file, while _Save image_ will allow the user to save the plot window to an image file.
 Clicking _About_ will present the user with the links to the Horst Ebel manuscripts.
 Using the _Ok_ button one can close the window while replacing the contents of the _Excitation_ section with the newly generated spectrum.
+
+
+### <a id="batchsimulations"></a>Batch simulations
+
+XMI-MSIM version 3.0 introduces the option to perform batch simulations.
+Activate this feature by clicking the _Batch mode_ button in the toolbar. This will produce a filechooser dialog as is shown in the following screenshot:
+
+![Select one or more files to enter the batch simulation mode](../wiki/figures/28batchfileselection.png)
+
+At this point it becomes very important to distinguish between two different possible outcomes that depend on whether the user selects either one or multiple files.
+
+#### Batch simulations: simulate a number of unrelated input-files
+
+If the user has selected multiple files, then these files will be used as input-files for a round of successive unrelated simulations. After the file selection, the user will be selected with a dialog with a question regarding whether the options should be set for each input-file separately. The options refer to the same options that can be seen in the [_Control panel_](#controlpanel) of the main interface window. Either way, after setting the options, one will end up with the _Batch simulation controls_ window:
+
+![Batch simulation controls](../wiki/figures/29batchcontrols.png)
+
+Similar to the _Control panel_ of the main interface window, this widget features _Play_, _Stop_ and _Pause_ (Linux and Mac OS X only) to control the execution. The number of threads that will be used for the simulations may be set using the CPUs slider. During execution, all output will be shown in the central area. The verbosity level can be changed from the default _Verbose_ to _Very verbose_ for even more information about the runs. While running the simulations, it is possible to save all output that is placed on the screen to a file that will be continuously updated. Click the _Save As_ button to choose a filename.
+
+Afterwards, if all simulations were performed successfully, a message should be displayed confirming so.
+
+#### Batch simulations: vary one or two parameters in a single input-file
+
+A considerably more interesting feature of the batch simulation is its second operational mode: if the user selects a single file after clicking the _Batch mode_ button, he will be presented with a new dialog in which he is asked to select either one or two parameters that will be varied during a series of simulations based on the originally selected input-file, as is seen in the following screenshot:
+
+![Select one or two parameters to be varied](../wiki/figures/30batchselectparameters.png)
+
+After expanding the different components of the tree structure representing the original input-files contents, green rows will emerge: only the components lighting up are eligible as variable parameters!
+Furthermore, it should be noted that within a layer, one can only select an elements _weight\_fraction_ if there are at least two elements available: this is necessary because at any given moment, the sum of the weight fractions needs to be equal to 100% after rescaling. If two weight fractions within the same layer need to te varied, then at least three elements need to be present in that layer for the same reason.
+
+Clicking _Ok_ after selecting the required parameter(s), will cause a wizard to pop up that will guide the users through setting the other parameters necessary to start the batch. After the introduction, a page is presented containing the _General options_, as seen in the _Control panel_ of the main interface window.
+The next page contains the information necessary to define the range and the number of steps that will be used to determine the parameter(s) values in the different input-files that will be produced and later on, simulated. In bold, above the _Start_, _End_ and _#Steps_ entries, are the name(s) of the selected parameter expressed in its XPath notation, which corresponds to an internal description of the parameter of its location in the XMI-MSIM input-file (see [next section](#xmimsimfilemanipulation) for more information.
+This page also contains a _Save As_ button that will launch a file chooser dialog, which will ask the user to determine the XMI-MSIM archive that will eventually be produced containing all results from the simulation. This is shown (for a case with one selected variable parameter) in the following screenshot:
+
+![Set the range of the variable parameter(s) and the name of the XMI-MSIM archive file](../wiki/figures/31batchrangeselection.png)
+
+After confirming the introduced values, a _Batch simulation controls_ window will appear, as was already described and shown in the preceding section. Clicking the _Play_ button will launch the simulations window. After all simulations have been successfully performed, click the _Ok_ button and wait until a window is shown that looks similar to the one in the following screenshot:
+
+![Batch mode plot window for one variable parameter](../wiki/figures/32batchmodeplotsingle.png)
+
+In this window, one can analyze the results of the batch simulation by selecting specific elements, lines, regions of interest etc for individual or cumulative interaction contributions. It is possible to save the plot as an image file using _Save image_, while the data that makes up the currently shown plot can be exported in a CSV file. Change the axes titles to a more appropriate description if deemed necessary.
+The following screenshot shows a case where two variable parameters were chosen:
+
+![Batch mode plot window for two variable parameters](../wiki/figures/33batchmodeplottwo.png)
+
+All information that was produced in the batch simulation has been stored in an XMI-MSIM archive file (.xmsa extension). If one would like to inspect its contents again with the _Batch mode plot_ window, just double-click such a file from your favorite file manager, or open it from within XMI-MSIM by clicking _Open_ in the toolbar or menubar and setting the filter to _XMI-MSIM archives_, and then selecting the desired file.
 
 ### <a id="xmimsimfilemanipulation"></a>XMI-MSIM file manipulation with XPath and XSLT
 
