@@ -27,7 +27,7 @@ xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 	    -e 's/](\.\.\/wiki.\{1,\}#/](#/g' \
 	    $< > $<.bkp
 	perl captions.pl $<.bkp
-	pandoc --listings  --no-wrap -f markdown_github -t latex -o $@.bkp $<.bkp
+	pandoc --no-wrap -f markdown_github -t latex -o $@.bkp $<.bkp
 	gsed -e 's/\\includegraphics\(.\{1,\}\)/\\begin{center}\\includegraphics[width=1.0\\textwidth]\1\\end{center}/' \
 	    -e 's/LABEL\(.\{1,\}\)/\\label{\1}/' \
 	    -e 's/BEGINSUB/$$_{/g' \

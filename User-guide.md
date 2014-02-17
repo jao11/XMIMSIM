@@ -416,7 +416,9 @@ use XML::LibXML;
 use strict;
 use Scalar::Util qw(looks_like_number);
 
-die "Usage: perl xmi-msim-batch.pl XMSI-file XPath-expression start-value end-value number-of-values\n" if (scalar(@ARGV) ne 5);
+die "Usage: perl xmi-msim-batch.pl XMSI-file ".
+	"XPath-expression start-value end-value number-of-values\n" 
+	if (scalar(@ARGV) ne 5);
 
 my $dom = XML::LibXML->load_xml(location => $ARGV[0],
 	load_ext_dtd => 0
@@ -425,7 +427,8 @@ my $dom = XML::LibXML->load_xml(location => $ARGV[0],
 my $xpc = XML::LibXML::XPathContext->new($dom);
 my @nodes = $xpc->findnodes($ARGV[1]);
 
-die "Exactly one element should be matched by the XPath expression\n" if (scalar(@nodes) ne 1);
+die "Exactly one element should be matched by the XPath expression\n"
+	if (scalar(@nodes) ne 1);
 
 #get outputfile
 my ($outputfileNode) = $xpc->findnodes("//xmimsim/general/outputfile");
@@ -438,9 +441,12 @@ $inputfile =~ s/\.xmsi$//;
 print "outputfile: $outputfile\n";
 
 #check if numeric arguments are ok
-die "last three arguments must be numerical\n" unless(looks_like_number($ARGV[2]));
-die "last three arguments must be numerical\n" unless(looks_like_number($ARGV[3]));
-die "last three arguments must be numerical\n" unless(looks_like_number($ARGV[4]));
+die "last three arguments must be numerical\n"
+	unless(looks_like_number($ARGV[2]));
+die "last three arguments must be numerical\n"
+	unless(looks_like_number($ARGV[3]));
+die "last three arguments must be numerical\n"
+	unless(looks_like_number($ARGV[4]));
 
 my $diff = $ARGV[3] - $ARGV[2];
 
