@@ -52,8 +52,8 @@ The first page consists of a number of frames, each designed to manipulate a par
 The _General_ section contains 4 parameters:
 
 * Outputfile: clicking the _Save_ button will pop up a file chooser dialog, allowing you to select the name of the outputfile that will contain the results of the simulation
-* Number of photons per discrete line: the excitation spectrum as it is used by the simulation may consist of a number of discrete energies with each a given intensity (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per discrete line. The calculation time is directly proportional to this value
-* Number of photons per interval: the excitation spectrum as it is used by the simulation may consist of a number of energy intervals defined by the given intensity densities at the beginning and the end of the intervals (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per interval. The calculation time is directly proportional to this value
+* Number of photons per discrete line: the excitation spectrum as it is used by the simulation may consist of a number of discrete components with each a given energy and intensity (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per discrete line. The calculation time is directly proportional to this value
+* Number of photons per interval: the excitation spectrum as it is used by the simulation may consist of a number of continuous interval components defined by the given energies and intensity densities at the beginning and the end of the intervals (see [Excitation](#excitation) for more information). This parameter will determine how many photons are to be simulated per interval. The calculation time is directly proportional to this value
 * Number of interactions per trajectory: this parameter will determine the maximum number of interactions a photon can experience during its trajectory. It is not recommended to set this value to higher than 4, since the contribution of increasingly higher order interactions to the spectrum decreases fast. The calculation time is directly proportional to this value
 * Comments: use this textbox to write down some notes you think are useful.
 
@@ -141,16 +141,16 @@ In order to visualize these different parameters, click the _Show geometry help_
 ### <a id="excitation"></a>Excitation
 
 Next, there is the _Excitation_ section, which is used to define the X-ray beam that irradiates the sample.
-The corresponding excitation spectrum may consist of a number of discrete energies, each with a horizontally and vertically polarized intensity, as well as a number of parameters that define the type and the aperture of the source. Furthermore, one can also insert a number of continuous energy intervals, defined through a list of intensity densities, each with their horizontally and vertically polarized components. In this case, one has two insert at least two intensity densities in order to have at least one interval.
+The corresponding excitation spectrum may consist of a number of discrete components, each with a horizontally and vertically polarized intensity, as well as a number of parameters that define the type and the aperture of the source. Furthermore, one can also insert a number of continuous interval components, defined through a list of intensity densities, each with their horizontally and vertically polarized components. In this case, one has two insert at least two intensity densities in order to have at least one interval.
 
-At runtime, the code will use the [_Number of photons per discrete line_](#general) and [_Number of photons per interval_](#general) parameters to determine how many photons will be simulated per discrete energy and continuous energy interval. Adding, editing and removing discrete energies and intervals is handled through the buttons in the _Excitation_ section. For example, we can change the settings of the default value by clicking the _Edit_ button.
-The dialog contains the fields necessary to define a particular energy:
+At runtime, the code will use the [_Number of photons per discrete line_](#general) and [_Number of photons per interval_](#general) parameters to determine how many photons will be simulated per discrete component and continuous energy interval component. Adding, editing and removing components is handled through the buttons in the _Excitation_ section. For example, we can change the settings of the default value by clicking the _Edit_ button.
+The dialog contains the fields necessary to define a particular component:
 
 * Energy: the energy of this particular part of the excitation spectrum, expressed in keV
 * Horizontally and vertically polarized intensities: the number of photons that are polarized in the horizontal and vertical planes, respectively. A completely unpolarized beam has identical horizontal and vertical intensities (such as those produced by X-ray tubes), while synchrotron beams will have very, very low vertically polarized intensities. For information on how to convert the total number of photons given the degree of polarization to the horizontal and vertical polarized intenties, consult [Part 5 in our series of papers on Monte-Carlo simulations](../wiki/References-and-additional-resources)
 * Source size _x_ and _y_: if both these values are equal to zero, then the source is assumed to be a point source, and the divergence of the beam is completely determined by the _Source-slits distance_ and _Slits size_ parameters of the [_Geometry_](#geometry) section. Otherwise the source is considered a Gaussian source, in which case the photon starting position is chosen according to Gaussian distributions in the _x_ and _y_ planes, determined by the _Source size x_ and _Source size y_ parameters
 * Source divergence _x_ and _y_: if these values are non-zero, AND the source is Gaussian, then the _Source-slits distance_ takes on a new role as it becomes the distance between the actual focus and the source position. In this way a convergent beam can be defined, emitted by a Gaussian source at the origin. For the specific case of focusing on the sample the _Sample-source distance_ should be set to the _Source-slits distance_.
-* Energy distribution type: additionally for the discrete energies, it is possible to set the _Energy distribution type_, which may assume the values _Monochromatic_, _Gaussian_ and _Lorentzian_. The first case assumes that the discrete energy is purely monochromatic and that only the selected energy will be used in the simulation. The two other cases corrspond to a scenario in which the simulation will sample from a Gaussian or Lorentzian distribution respectively. If either of these two cases is selected, the user is expected to provide respectively the standard deviation and the scale parameter.
+* Energy distribution type: additionally for the discrete components, it is possible to set the _Energy distribution type_, which may assume the values _Monochromatic_, _Gaussian_ and _Lorentzian_. The first case assumes that the discrete energy is purely monochromatic and that only the selected energy will be used in the simulation. The two other cases corrspond to a scenario in which the simulation will sample from a Gaussian or Lorentzian distribution respectively. If either of these two cases is selected, the user is expected to provide respectively the standard deviation and the scale parameter.
 
 In this particular case, I have changed the energy to 20.0 keV, and made the beam unpolarized by equalizing both intensities, as shown in the following screen shot. The source remains a point source.
 
@@ -158,11 +158,11 @@ In this particular case, I have changed the energy to 20.0 keV, and made the bea
 
 The discrete energies and continuous energies widgets each contain six buttons:
 
-* _Add_: add a new discrete energy or continuous energy intensity density.
-* _Edit_: edit a previously defined discrete energy or continuous energy intensity density.
-* _Remove_: delete a previously defined discrete energy or continuous energy intensity density.
-* _Import_: import a list of discrete energies or continuous energy intensity densities from an ASCII file. These files must consist of either two, three or seven columns, with the first column containing the energies, the second the total intensity (if only two columns are found), or the second and third the resp. horizontally and vertically polarized intensities or intensity densities. If seven columns are encountered, the last four columns are assumed to contain source sizes and divergencies. It is possible through the interface to start reading only at a certain linenumber and also to read only a set number of lines.
-* _Clear_: delete all previously defined discrete energies or continuous energy intensity densities.
+* _Add_: add a new component.
+* _Edit_: edit a previously defined component.
+* _Remove_: delete previously components.
+* _Import_: import a list of discrete lines or continuous energy intensity densities from an ASCII file. These files must consist of either two, three or seven columns, with the first column containing the energies, the second the total intensity (if only two columns are found), or the second and third the resp. horizontally and vertically polarized intensities or intensity densities. If seven columns are encountered, the last four columns are assumed to contain source sizes and divergencies. It is possible through the interface to start reading only at a certain linenumber and also to read only a set number of lines.
+* _Clear_: delete all previously defined components.
 * _Scale_: multiply the intensities or intensity densities with a positive real number.
 
 
@@ -473,4 +473,3 @@ When updates are available, a dialog will pop up, inviting the user to download 
 
 The example input-file that was created throughout the _[Creating an input-file section](#create)_ can be downloaded at _[test.xmsi](../wiki/test.xmsi)_.
 The corresponding output-file can be found at _[test.xmso](../wiki/test.xmso)_.
-
