@@ -41,8 +41,7 @@ xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 	gsed -e '/^\\label/s/\\_/_/g' \
 	    -e 's/ux5f/_/g' \
 	    $@.bkp2 > $@
-	    #-e 's/^\\hyperdef.\{1,\}\\sub/\\sub/' \
-	#rm -f $<.bkp $@.bkp $@.bkp2
+	rm -f $<.bkp $@.bkp $@.bkp2
 
 	
 
