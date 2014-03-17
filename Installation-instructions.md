@@ -1,9 +1,9 @@
-* **[Compiling from source](#compilefromsource)**
-* **[Linux binary packages](#linuxpackages): [Fedora, Centos and Scientific Linux](#rpmpackages) and [Debian and Ubuntu](#debpackages)**
-* **[Windows installer](#windowsbinaries)**
-* **[Mac OS X](#macosx)**
+* **[Compiling from source](#compiling-from-source)**
+* **[Linux binary packages](#linux): [Fedora, Centos and Scientific Linux](#fedora-centos-and-scientific-linux) and [Debian and Ubuntu](#debian-and-ubuntu)**
+* **[Windows installer](#windows)**
+* **[Mac OS X](#mac-os-x)**
 
-## <a id="compilefromsource"></a>Compiling from source
+## Compiling from source
 
 XMI-MSIM has been successfully built on Linux (Debian/Ubuntu and RHEL/CentOS/Fedora), Mac OS X (Snow Leopard and up) and Windows 7 (with 32-bit MinGW and 64-bit MinGW-w64 compilers)
 
@@ -72,11 +72,11 @@ XMI-MSIMs random number generators are seeded on Mac OS X and Linux using high q
 1. The user launches the `xmimsim-harvester` daemon, which will collect seeds at frequent intervals and pass them along to XMI-MSIM when requested. The daemon is ideally started at boottime (using some initd script), or on Mac OS X, by copying the `be.ugent.xmi.harvester.plist` file from its installation location (_prefix_/Library/LaunchDaemons) to /Library/LaunchDaemons and subsequently invoking `sudo launchctl load /Library/LaunchDaemons/be.ugent.xmi.harvester.plist`. It should be noted that the daemon is buggy, and it is generally not recommended to use this solution.
 2. If the daemon is not running, then a separate thread is launched in XMI-MSIM at runtime which takes care of harvesting the seeds (a bit slower, but reliable).
 
-## <a id="linuxpackages"></a>Linux
+## Linux
 
 None of the binary Linux packages ship with the OpenCL plug-in. If you want to enable OpenCL support in your Linux version of XMI-MSIM, you will have to compile the software from source, after installing the required SDK and drivers provided by your GPU chipset manufacturer. We have successfully built Linux versions with OpenCL support using nVidia GPUs.
 
-### <a id="rpmpackages"></a>Fedora, Centos, Scientific Linux
+### Fedora, Centos and Scientific Linux
 
 To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 16-20 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
 
@@ -94,7 +94,7 @@ Updates can be installed in a similar way:
 
 > `su -c 'yum update xmimsim'`
 
-### <a id="debpackages"></a>Debian and Ubuntu
+### Debian and Ubuntu
 
 Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze and several Ubuntu versions .
 In order to access these packages using your favorite package manager, execute the following command to import our public key:
@@ -141,14 +141,14 @@ After this, one can install XMI-MSIM by executing the following command:
 
 > `sudo apt-get install xmimsim`
 
-## <a id="windowsbinaries"></a>Windows
+## Windows
 
 Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the [Downloads](http://lvserver.ugent.be/xmi-msim) section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 3.0 is the last release to have support for Windows XP.
 
 The Windows version ship with the OpenCL plug-in for XMI-MSIM. In order for this plug-in to function, you need 1) to have a videocard that supports OpenCL 1.1 and 2) have the OpenCL drivers installed as provided by your videocard's manufacturer.
 To test if this is the case, try running XMI-MSIM with OpenCL enabled: if an error dialog pops up, then you need to install the drivers. Other errors would be displayed in red in the log, followed by a fallback to the default OpenCL implementation.
 
-## <a id="macosx"></a>Mac OS X
+## Mac OS X
 
 A [dmg](http://lvserver.ugent.be/xmi-msim) file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit only).
 After downloading, mount the dmg file and drag the XMI-MSIM app to the Applications folder.
