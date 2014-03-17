@@ -18,5 +18,5 @@ XMI-MSIM is the successor of the msim program of Prof. Laszlo Vincze of Ghent Un
 
 ## Oral presentation by Tom Schoonjans et al.
 
-* Quantification of ED-XRF datasets through iterative Monte Carlo simulations: new developments. Tom Schoonjans, Claudio Ferrero, V.Armando Solé, Manuel Sanchez del Rio, Geert Silversmit, Karen Appel and Laszlo Vincze. [EXRS 2012 conference](http://www.ati.ac.at/EXRS2012/), Vienna, Austria. 18-22 June 2012
-
+* Quantification of ED-XRF datasets through iterative Monte Carlo simulations: new developments. Tom Schoonjans, Claudio Ferrero, V.Armando Solé, Manuel Sanchez del Rio, Geert Silversmit, Karen Appel and Laszlo Vincze. [EXRS 2012 conference](http://www.ati.ac.at/EXRS2012/), Vienna, Austria. 18-22 June 2012.
+* A general Monte Carlo simulation of energy-dispersive X-ray fluorescence spectrometers. Tom Schoonjans. Monte Carlo simulation tools for X-ray imaging and fluorescence workshop, ESRF, Grenoble, France, 24-25 February 2014.

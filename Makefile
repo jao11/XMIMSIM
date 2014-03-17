@@ -16,7 +16,8 @@ xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 
 
 .md.tex:
-	gsed -e 's/\* \*\*\(.\{1,\}\)\*\*.\{0,\}//' \
+	gsed -e 's/^\* \*\*\(.\{1,\}\)\*\*.\{0,\}//' \
+	    -e 's/^\* \[.\{1,\})$$//' \
 	    -e 's/## Table of contents//' \
 	    -e 's/\.\.\/wiki\/figures/figures/' \
 	    -e 's/^\(#\{2,3\}\) <a id="\(.\{1,\}\)"><\/a>\(.\{1,\}\)/\1 \3\nLABEL\2/' \
@@ -24,7 +25,7 @@ xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 	    -e 's/<\/sub>/ENDSUB/g' \
 	    -e 's/<sup>/BEGINSUP/g' \
 	    -e 's/<\/sup>/ENDSUP/g' \
-	    -e 's/](\.\.\/wiki.\{1,\}#/](#/g' \
+	    -e 's/](\.\.\/wiki\/\(.\{1,\}\))/](#\1)/g' \
 	    $< > $<.bkp
 	perl captions.pl $<.bkp
 	pandoc --no-wrap -f markdown_github -t latex -o $@.bkp $<.bkp
@@ -35,14 +36,13 @@ xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 	    -e 's/BEGINSUP/$$^{/g' \
 	    -e 's/ENDSUP/}$$/g' \
 	    -e 's/^BEGCAP\(.\{1,\}\)ENDCAPFILE\(.\{1,\}\)ENDFILE/\\begin{figure}[htb]\\begin{center}\\includegraphics[width=1.0\\textwidth]{\2}\\caption{\1}\\end{center}\\end{figure}/' \
-	    -e 's/}\\label.\{1,\}$$/}/' \
 	    $@.bkp > $@.bkp2
 	perl equation.pl $@.bkp2
 	gsed -e '/^\\label/s/\\_/_/g' \
 	    -e 's/ux5f/_/g' \
-	    -e 's/^\\hyperdef.\{1,\}\\subsub/\\subsub/' \
 	    $@.bkp2 > $@
-	rm -f $<.bkp $@.bkp $@.bkp2
+	    #-e 's/^\\hyperdef.\{1,\}\\sub/\\sub/' \
+	#rm -f $<.bkp $@.bkp $@.bkp2
 
 	
 

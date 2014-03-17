@@ -1,20 +1,20 @@
-On this page a short manual is presented that should allow users to get started with XMI-MSIM. Although the screenshots were obtained on a Mac, they should be representative for Windows and Linux as well. Significant divergences will be indicated.
+In this section a short manual is presented that should allow users to get started with XMI-MSIM. Although the screenshots were obtained on a Mac, they should be representative for Windows and Linux as well. Significant divergences will be indicated.
 The following guide assumes that the user has already installed XMI-MSIM, according to the [Installation instructions](../wiki/Installation-instructions).
 
 
-* **[Launching XMI-MSIM](#launch)**
-* **[Creating an input-file](#create)**
-* **[Saving an input-file](#save)**
-* **[Starting a simulation](#start)**
-* **[Visualizing the results](#results)**
-* **[Global preferences](#preferences)**
-* **[Advanced features](#advancedfeatures)**
-* **[Checking for updates](#checkforupdates)**
-* **[Example files](#examplefiles)**
+* **[Launching XMI-MSIM](#launching-xmi-msim)**
+* **[Creating an input-file](#creating-an-input-file)**
+* **[Saving an input-file](#saving-an-input-file)**
+* **[Starting a simulation](#starting-a-simulation)**
+* **[Visualizing the results](#visualizing-the-results)**
+* **[Global preferences](#global-preferences)**
+* **[Advanced features](#advanced-features)**
+* **[Checking for updates](#checking-for-updates)**
+* **[Example files](#example-files)**
 
 
 
-## <a id="launch"></a>Launching XMI-MSIM
+## Launching XMI-MSIM
 
 For Mac users: assuming you dragged the app into the Applications folder, use Finder or Spotlight to launch XMI-MSIM.
 
@@ -35,7 +35,7 @@ The main view of the XMI-MSIM consists of three pages that each serve a well-def
 When starting XMI-MSIM without providing a file to open, a new file will be started with default settings. The same situation can be obtained at any moment by clicking on _New_ in the toolbar.
 
 
-## <a id="create"></a>Creating an inputfile
+## Creating an input-file
 
 The first page consists of a number of frames, each designed to manipulate a particular part of the parameters that govern a simulation.
 
@@ -43,11 +43,11 @@ The first page consists of a number of frames, each designed to manipulate a par
 * [Composition](#composition)
 * [Geometry](#geometry)
 * [Excitation](#excitation)
-* [Beam and detection absorbers](#absorbers)
-* [Detector settings](#detector)
-* [Import from file](#import)
+* [Beam and detection absorbers](#beam-and-detection-absorbers)
+* [Detector settings](#detector-settings)
+* [Import from file](#import-from-file)
 
-### <a id="general"></a>General
+### General
 
 The _General_ section contains 4 parameters:
 
@@ -57,7 +57,7 @@ The _General_ section contains 4 parameters:
 * Number of interactions per trajectory: this parameter will determine the maximum number of interactions a photon can experience during its trajectory. It is not recommended to set this value to higher than 4, since the contribution of increasingly higher order interactions to the spectrum decreases fast. The calculation time is directly proportional to this value
 * Comments: use this textbox to write down some notes you think are useful.
 
-### <a id="composition"></a>Composition
+### Composition
 
 This interface allows you to define the system that will make up your sample and possibly its environment. XMI-MSIM assumes that the system is defined as a stack of parallel layers, each defined by its composition, thickness (measured along the [Sample orientation vector](#geometry)) and density. Adding layers can be accomplished by simply clicking the _Add_ button. A dialog will pop up as seen in the following screenshot:
 
@@ -107,7 +107,7 @@ Layers can be removed by selecting them and then clicking the _Remove_ button. E
 
 Keep in mind that the number of elements influences the computational time greatly, especially when dealing with high Z-elements that may produce L- and M-lines.
 
-### <a id="geometry"></a>Geometry
+### Geometry
 
 Scrolling down a little on the _Input parameters_ page reveals the _Geometry_ section as shown in the next screenshot:
 
@@ -138,7 +138,7 @@ Now with this covered, let us have a look at the different _Geometry_ parameters
 
 In order to visualize these different parameters, click the _Show geometry help_ button: a new window will pop up showing the aforementioned coordinate system. Hovering the mouse over the different components in the new window will have the corresponding widgets light up in green in the main window. This works both ways: hover the mouse over the geometry widgets in the main window and little boxes will appear in the coordinate system window.
 
-### <a id="excitation"></a>Excitation
+### Excitation
 
 Next, there is the _Excitation_ section, which is used to define the X-ray beam that irradiates the sample.
 The corresponding excitation spectrum may consist of a number of discrete components, each with a horizontally and vertically polarized intensity, as well as a number of parameters that define the type and the aperture of the source. Furthermore, one can also insert a number of continuous interval components, defined through a list of intensity densities, each with their horizontally and vertically polarized components. In this case, one has two insert at least two intensity densities in order to have at least one interval.
@@ -166,13 +166,13 @@ The discrete energies and continuous energies widgets each contain six buttons:
 * _Scale_: multiply the intensities or intensity densities with a positive real number.
 
 
-### <a id="absorbers"></a>Beam and detection absorbers
+### Beam and detection absorbers
 
 The two following sections deal with absorbers, first absorbers that are optionally placed in the excitation path (for example a sheet of Al or Cu), and next the absorbers that are optionally placed in the detector path. This means that the former will reduce the intensity of the incoming beam, while the latter will reduce the intensity of the photons that hits the detector.
 It is important to realize that these absorbers are only used here for their attenuating properties, they are *not* considered as objects in the simulations so they cannot contribute fluorescence lines to the eventual spectrum!
 Adding, editing and removing absorbers is performed through an interface identical to the one seen in the [Composition section](#composition), but without the _Reference layer_ toggle button. New inputfiles will always have a Be detector absorber added, corresponding to the detector window commonly found in ED-XRF detectors.
 
-### <a id="detector"></a>Detector settings
+### Detector settings
 
 The last section deals with the settings of the detector and its associated electronics, as can be seein in the following screenshot:
 
@@ -184,18 +184,18 @@ The last section deals with the settings of the detector and its associated elec
 * Detector zero: the energy of the first channel in the spectrum (channel number zero)
 * Detector Fano factor: measure of the dispersion of a probability distribution of the fluctuation of an electric charge in the detector. Very much detector type dependent
 * Detector electronic noise: the result of random fluctuations in thermally generated leakage currents within the detector itself and in the early stages of the amplifier components. Contributes to the Gaussian broadening
-* Pulse width: the time that is necessary for the electronics to process one incoming photon. This value will be used only if the user enables the pulse pile-up simulation in the [Simulation controls](#start). Although this parameter is connected to several detector and electronics parameters, typically the value is obtained after trial and error
+* Pulse width: the time that is necessary for the electronics to process one incoming photon. This value will be used only if the user enables the pulse pile-up simulation in the [Simulation controls](#starting-a-simulation). Although this parameter is connected to several detector and electronics parameters, typically the value is obtained after trial and error
 * Max convolution energy: the maximum energy that will be considered when applying the detector response function. Make sure this value is 10-20 % higher than the highest expected energy in the spectrum
 * Crystal composition: the composition of the detector crystal. Adding, editing and removing absorbers is performed through an interface identical to the one seen in the [Composition section](#composition), but without the _Reference layer_ toggle button. Will be used to calculate the detector transmission and the escape peak ratios
 
-### <a id="import"></a>Import from file
+### Import from file
 
 In some cases it may be interesting to import part of the contents of other XMI-MSIM input-files or output-files (which also contain the corresponding input-file) into a new input-file. This can be accomplished by using the _File_ &rarr; _Import_ option in the menubar.
 After choosing a file from the dialog, select the components that you would like to import from the interface. This is demonstrated in the following screenshot
 
 ![Import from file](../wiki/figures/25importfromfile.png)
 
-## <a id="save"></a>Saving an input-file
+## Saving an input-file
 
 Once an acceptable inputfile is detected by the application, the _Save_ and _Save as_ buttons will become activated. If the file has not been saved before, clicking either of these buttons will launch a dialog allowing you to choose a filename for the input-file.
 
@@ -203,44 +203,44 @@ If the file was saved before, then clicking _Save_ will result in the file conte
 
 Keep in mind that XMI-MSIM input-files have the xmsi extension (blue logo), while the output-files the xmso extension (red logo).
 
-## <a id="start"></a>Starting a simulation
+## Starting a simulation
 
-* [Control panel](#controlpanel)
+* [Control panel](#control-panel)
 * [Executable](#executable)
 * [Options](#options)
-* [Export results](#exportresults)
-* [During a simulation](#during)
+* [Export results](#export-results)
+* [During a simulation](#during-a-simulation)
 
-In order to start a simulation, the _Input parameters_ page must contain a valid input-file description. This can be obtained by either preparing a new input-file based on the instructions in [a previous section](#create) (and saving it!), or by opening an existing input-file by double clicking an XMI-MSIM input-file in your file manager or opening an input-file through the _Open_ interface of XMI-MSIM.
+In order to start a simulation, the _Input parameters_ page must contain a valid input-file description. This can be obtained by either preparing a new input-file based on the instructions in [a previous section](#creating-an-input-file) (and saving it!), or by opening an existing input-file by double clicking an XMI-MSIM input-file in your file manager or opening an input-file through the _Open_ interface of XMI-MSIM.
 
 Either way, the _Simulation controls_ page should look as shown in the following screenshot:
 
 ![Simulation controls](../wiki/figures/13simulation-controls.png)
 
 
-### <a id="controlpanel"></a>Control panel
+### Control panel
 
 The top of the page contains the actual control panel that is used to start, stop and pause the simulation, as well as a slider that allows the user to select the number of threads that will be used by the simulation.  To the right of the slider, there are three progress bars that indicate different stages of the Monte Carlo program: the calculation of the solid angle grid for the variance reduction, the simulation of the photon--matter interactions and the calculation of the escape peak ratios. More information about the status of the Monte Carlo program is presented in the adjacent log window. Note: the Windows version does not contain the _Pause_ button.
 
 
-### <a id="executable"></a>Executable
+### Executable
 
 Underneath these controls is a section that contains the name of the executable that will be used to launch the simulation. Most likely, you will never have to change this value, but it could be interesting to power users, who have customized versions of the simulation program.
 
-### <a id="options"></a>Options
+### Options
 
 This section is followed by a number of options that change the behaviour of the Monte-Carlo program:
 
 * _Simulate M-lines_: If disabled, then the code will ignore M-lines that may be produced based on the elemental composition of the sample. In such a case, the code will probably run faster. I strongly recommend to simulate M-lines
 * _Simulate the radiative and non-radiative cascade effect_: the cascade effect is composed of two components, a radiative and a non-radiative one. Although these will always occur simultaneously in reality, the code allows to deactivate one or both of them. This could be interesting to those that want to investigate the contribution of both components. Otherwise, it is recommended to keep both enabled
 * _Enable variance reduction techniques_: disabling this option will trigger the brute-force mode, disabling all variance reduction techniques, thereby greatly reducing the precision of the estimated spectrum and net-line intensities for a given [_Number of photons per discrete line_](#general). This reduced precision may be improved upon by greatly increasing the _Number of photons per discrete line_, but this will result in a much longer runtime of the Monte-Carlo program. Expert use only. Consider building XMI-MSIM with MPI support and running it on a cluster
-* _Enable pulse pile-up simulation_: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector) parameter
+* _Enable pulse pile-up simulation_: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector-settings) parameter
 * _Enable Poisson noise generation_: enabling this option will result in every channel of the detector convoluted spectrum being subjected to Poisson noise, controlled by Poisson distributions with lambda equal to the number of counts in a channel
 * _Enable OpenCL_: this option invokes XMI-MSIMs OpenCL plug-in that, if the platform comes with a videocard chipset that supports it, will use the GPU to perform the solid angle calculation, which could lead to a tremendous speed increase. Keep in mind that when this option is used during the solid angle calculation stage, the screen may have a noticeably lower refresh rate and may lose its responsiveness briefly. This option is only available when an OpenCL framework was found at compile-time.
 * _Number of spectrum channels_: the number of channels in the produced spectrum.
 
 
-### <a id="exportresults"></a>Export results
+### Export results
 
 The page ends with a section that allows the user to export the output of the Monte-Carlo program at run-time to several fileformats in addition to the default XMSO fileformat.
 
@@ -251,7 +251,7 @@ The page ends with a section that allows the user to export the output of the Mo
 
 It is possible to generate these files afterwards based on the XMSO file, by clicking in the menubar on _Tools_ -> _Convert XMSO file to_.
 
-### <a id="during"></a>During a simulation
+### During a simulation
 
 When all required options are set up correctly, the simulation can be started by clicking the _Play_ button. After this, you will notice a lot of output being generated in the log window, as well as some activity in the progress bars, as shown in the next screenshot:
 
@@ -262,22 +262,22 @@ It is possible that some red text appears during a run, particularly with refere
 
 After the simulation, assuming everything went fine, the XMSO outputfile as defined in the [General section](#general) will be loaded and its contents displayed on the Results page.
 
-## <a id="results"></a>Visualizing the results
+## Visualizing the results
 
 The results of a simulation are stored in an XMSO file (red logo): you should be able to open these files directly by double clicking them from your file manager.
 Alternatively, you can also load these files from within XMI-MSIM by clicking the _Open_ button, and subsequently setting the filetype filter to _XMI-MSIM outputfiles_. On Linux and Windows, you can also open these files from the command-line:
 
 > `xmimsim-gui file.xmso`
 
-XMSO files created after a successful simulation are automatically loaded in the Results page.
+XMSO files created after a successful simulation are automatically loaded in the Results page, where the spectra and net-line intensities are represented.
 
-* [Plot canvas](#plotwindow)
-* [Net-line intensities](#netintensities)
-* [Printing and exporting the plot canvas](#exportcanvas)
+* [Plot canvas](#plot-canvas)
+* [Net-line intensities](#net-line-intensities)
+* [Printing and exporting the plot canvas](#printing-and-exporting-the-plot-canvas)
 
-### <a id="plotwindow"></a>Plot canvas
+### Plot canvas
 
-If a simulation was performed according to the inputfile that was defined [earlier](#create), you should get a result similar to the one in the following screenshot:
+If a simulation was performed according to the inputfile that was defined [earlier](#creating-an-input-file), you should get a result similar to the one in the following screenshot:
 
 ![Visualizing the results](../wiki/figures/19results.png)
 
@@ -287,7 +287,7 @@ Their properties of a spectrum may be modified by clicking on the _Properties_ b
 Zooming in on the plot canvas by dragging a rectangle with the mouse while keeping the left button clicked in. Zooming out can be accomplished by double-clicking anywhere in the canvas. While moving the mouse cursor in the plot canvas, one can track the current Energy, Channel number and Intensity in the textboxes to the right.
 The size of the canvas can be changed by grabbing and moving the handle that separates the upper part from the lower part of the page.
 
-### <a id="netintensities"></a>Net-line intensities
+### Net-line intensities
 
 The lower part of the page contains a list of all the intensities of all the X-ray fluorescence lines of all elements, as shown in the following screenshot:
 
@@ -296,28 +296,28 @@ The lower part of the page contains a list of all the intensities of all the X-r
 By clicking the arrows on the left side of the list, it is possible to expand the sections belonging to a particular element, line, and for different number of interactions, thereby revealing the individual contributions to a particular intensity.
 The lines can be shown on the plot canvas by activating the _Show line_ flag for the appropriate line or element.
 
-### <a id="exportcanvas"></a>Printing and exporting the plot canvas
+### Printing and exporting the plot canvas
 
 The plot canvas can be printed and exported to several filetypes using the _Print_ and _Save as_ buttons to the right of the plot canvas. Both will result in an exact copy of the current state of the canvas: it will take into account all the changes that were made to the spectra properties, as well as any lines that were activated using the _Show line_ togglebuttons of the _Net-line intensities_ section.
 Supported filetypes are PNG, EPS and PDF.
 
-## <a id="preferences"></a>Global preferences
+## Global preferences
 
 Clicking the _Preferences_ button in the toolbar will launch a dialog allowing the user to set some preferences that will be preserved across sessions off XMI-MSIM. Make sure to press apply after making any changes.
 
-* [Simulation defaults](#simulationdefaults)
+* [Simulation defaults](#simulation-defaults)
 * [Updates](#updates)
 * [Advanced](#advanced)
 
-### <a id="simulationdefaults"></a>Simulation defaults
+### Simulation defaults
 
-The first page of the preferences window contains the same settings that are available on the [_Simulation controls_ page](#start). The values that are selected here will be activated in the _Simulation controls_ page the next time that XMI-MSIM is started.
+The first page of the preferences window contains the same settings that are available on the [_Simulation controls_ page](#starting-a-simulation). The values that are selected here will be activated in the _Simulation controls_ page the next time that XMI-MSIM is started.
 
-### <a id="updates"></a>Updates
+### Updates
 
 If XMI-MSIM was compiled with support for automatic updates then this page will contain two widgets: firstly a checkbox that will determine if the program will check for updates at startup, and secondly a list of locations that will be used to download updates from.
 
-### <a id="advanced"></a>Advanced
+### Advanced
 
 The first two options revolve around the deleting of the XMI-MSIM HDF5 files that contain the solid angle grids and the escape peak ratios, respectively. It is recommended to remove these files manually when a complete uninstall of XMI-MSIM is considered necessary (before running the uninstaller or removing the application manually), or if these files somehow got corrupted.
 
@@ -326,15 +326,15 @@ In the file dialog only those files will be shown that are valid HDF5 files of t
 
 The last option is _Enable notifications_, which when supported at compile-time and a suitable notifications server is found, will generate messages whenever a calculation finishes. On a Mac OS X native version of XMI-MSIM this will only work on Mountain Lion and newer.
 
-## <a id="advancedfeatures"></a>Advanced features
+## Advanced features
 
-* [X-ray tube spectrum generator](#ebelgenerator)
-* [Batch simulations](#batchsimulations)
-* [XMI-MSIM file manipulation with XPath and XSLT](#xmimsimfilemanipulation)
+* [X-ray tube spectrum generator](#x-ray-tube-spectrum-generator)
+* [Batch simulations](#batch-simulations)
+* [XMI-MSIM file manipulation with XPath and XSLT](#xmi-msim-file-manipulation-with-xpath-and-xslt)
 
 In this section, we will describe some more advanced features of XMI-MSIM, which may useful for some users with specific needs.
 
-### <a id="ebelgenerator"></a>X-ray tube spectrum generator
+### X-ray tube spectrum generator
 
 In the [_Excitation_ section](#excitation), we have shown how one can introduce the necessary components of the X-ray excitation spectrum, through a number of discrete energies and intervals of continuous energies.
 In many cases, one will perform X-ray experiments using an X-ray tube generator as source, which corresponds to a combination of discrete part (the anode element specific XRF lines) and a continuous part (the Bremsstrahlung generated through electron-nucleus interactions). Such excitation spectra are typically quite difficult to obtain experimentally and instead one relies quite often on theoretical calculations to obtain (an approximation) of the spectrum. One popular model is the one derived by Horst Ebel in his manuscripts [X-ray Spectrometry 28 (1999), 255-266](http://dx.doi.org/10.1002/(SICI)1097-4539(199907%2F08)28%3A4%3C255%3A%3AAID-XRS347%3E3.0.CO%3B2-Y) and [X-ray Spectrometry 32 (2003), 46-51](http://dx.doi.org/10.1002/xrs.610). This model has been implemented in XMI-MSIM based on the similar feature in PyMca and can be accessed by clicking the X-ray tube button in the toolbar (with the radiation warning logo). After clicking, a new window will emerge that looks as:
@@ -358,7 +358,7 @@ Clicking _About_ will present the user with the links to the Horst Ebel manuscri
 Using the _Ok_ button one can close the window while replacing the contents of the _Excitation_ section with the newly generated spectrum.
 
 
-### <a id="batchsimulations"></a>Batch simulations
+### Batch simulations
 
 XMI-MSIM version 3.0 introduces the option to perform batch simulations.
 Activate this feature by clicking the _Batch mode_ button in the toolbar. This will produce a filechooser dialog as is shown in the following screenshot:
@@ -369,7 +369,7 @@ At this point it becomes very important to distinguish between two different pos
 
 #### Batch simulations: simulate a number of unrelated input-files
 
-If the user has selected multiple files, then these files will be used as input-files for a round of successive unrelated simulations. After the file selection, the user will be selected with a dialog with a question regarding whether the options should be set for each input-file separately. The options refer to the same options that can be seen in the [_Control panel_](#controlpanel) of the main interface window. Either way, after setting the options, one will end up with the _Batch simulation controls_ window:
+If the user has selected multiple files, then these files will be used as input-files for a round of successive unrelated simulations. After the file selection, the user will be selected with a dialog with a question regarding whether the options should be set for each input-file separately. The options refer to the same options that can be seen in the [_Control panel_](#control-panel) of the main interface window. Either way, after setting the options, one will end up with the _Batch simulation controls_ window:
 
 ![Batch simulation controls](../wiki/figures/29batchcontrols.png)
 
@@ -387,7 +387,7 @@ After expanding the different components of the tree structure representing the 
 Furthermore, it should be noted that within a layer, one can only select an elements _weight\_fraction_ if there are at least two elements available: this is necessary because at any given moment, the sum of the weight fractions needs to be equal to 100% after rescaling. If two weight fractions within the same layer need to te varied, then at least three elements need to be present in that layer for the same reason.
 
 Clicking _Ok_ after selecting the required parameter(s), will cause a wizard to pop up that will guide the users through setting the other parameters necessary to start the batch. After the introduction, a page is presented containing the _General options_, as seen in the _Control panel_ of the main interface window.
-The next page contains the information necessary to define the range and the number of steps that will be used to determine the parameter(s) values in the different input-files that will be produced and later on, simulated. In bold, above the _Start_, _End_ and _#Steps_ entries, are the name(s) of the selected parameter expressed in its XPath notation, which corresponds to an internal description of the parameter of its location in the XMI-MSIM input-file (see [next section](#xmimsimfilemanipulation) for more information.
+The next page contains the information necessary to define the range and the number of steps that will be used to determine the parameter(s) values in the different input-files that will be produced and later on, simulated. In bold, above the _Start_, _End_ and _#Steps_ entries, are the name(s) of the selected parameter expressed in its XPath notation, which corresponds to an internal description of the parameter of its location in the XMI-MSIM input-file (see [next section](#xmi-msim-file-manipulation-with-xpath-and-xslt) for more information.
 This page also contains a _Save As_ button that will launch a file chooser dialog, which will ask the user to determine the XMI-MSIM archive that will eventually be produced containing all results from the simulation. This is shown (for a case with one selected variable parameter) in the following screenshot:
 
 ![Set the range of the variable parameter(s) and the name of the XMI-MSIM archive file](../wiki/figures/31batchrangeselection.png)
@@ -403,7 +403,7 @@ The following screenshot shows a case where two variable parameters were chosen:
 
 All information that was produced in the batch simulation has been stored in an XMI-MSIM archive file (.xmsa extension). If one would like to inspect its contents again with the _Batch mode plot_ window, just double-click such a file from your favorite file manager, or open it from within XMI-MSIM by clicking _Open_ in the toolbar or menubar and setting the filter to _XMI-MSIM archives_, and then selecting the desired file.
 
-### <a id="xmimsimfilemanipulation"></a>XMI-MSIM file manipulation with XPath and XSLT
+### XMI-MSIM file manipulation with XPath and XSLT
 
 All three XMI-MSIM document types (xmsi, xmso and xmsa) are in fact XML files defined through a document type definition (DTD) file which is included and used in all XMI-MSIM installations. Due to their XML nature, it becomes quite easy to manipulate these files in a number of ways. For example, using an Extensible Stylesheet Language Transformation (XSLT) it becomes possible to extract certain parts of the XML file and convert them to any other type of output. 
 
@@ -462,14 +462,14 @@ for (my $i = 0 ; $i <= $ARGV[4] ; $i++) {
 }
 ```
 
-## <a id="checkforupdates"></a>Checking for updates
+## Checking for updates
 
 For packages of XMI-MSIM that were compiled with support for automatic updates, checking for new versions will occur by default when launching the program. This can be disabled in the [Preferences window](#updates). If you would like to check explicity, then click on _Help_->_Check for updates..._ for Windows and Linux, and XMI-MSIM->_Check for updates..._ for Mac OS X.
 
 When updates are available, a dialog will pop up, inviting the user to download the package through the interface. When the download is completed, quit XMI-MSIM and install the new version. It is highly recommended to always use the latest version of the interface.
 
 
-## <a id="examplefiles"></a>Example files
+## Example files
 
-The example input-file that was created throughout the _[Creating an input-file section](#create)_ can be downloaded at _[test.xmsi](../wiki/test.xmsi)_.
-The corresponding output-file can be found at _[test.xmso](../wiki/test.xmso)_.
+The example input-file that was created throughout the _[Creating an input-file section](#creating-an-input-file)_ can be downloaded at _[test.xmsi](http://github.com/tschoonj/xmimsim/wiki/test.xmsi)_.
+The corresponding output-file can be found at _[test.xmso](http://github.com/tschoonj/xmimsim/wiki/test.xmso)_.
