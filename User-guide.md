@@ -220,7 +220,7 @@ Either way, the _Simulation controls_ page should look as shown in the following
 
 ### Control panel
 
-The top of the page contains the actual control panel that is used to start, stop and pause the simulation, as well as a slider that allows the user to select the number of threads that will be used by the simulation.  To the right of the slider, there are three progress bars that indicate different stages of the Monte Carlo program: the calculation of the solid angle grid for the variance reduction, the simulation of the photon--matter interactions and the calculation of the escape peak ratios. More information about the status of the Monte Carlo program is presented in the adjacent log window. Note: the Windows version does not contain the _Pause_ button.
+The top of the page contains the actual control panel that is used to start, stop and pause the simulation, as well as a slider that allows the user to select the number of threads that will be used by the simulation.  To the right of the slider, there are three progress bars that indicate different stages of the Monte Carlo program: the calculation of the solid angle grid for the variance reduction, the simulation of the photon--matter interactions and the calculation of the escape peak ratios. More information about the status of the Monte Carlo program is presented in the adjacent log window.
 
 
 ### Executable
@@ -373,7 +373,7 @@ If the user has selected multiple files, then these files will be used as input-
 
 ![Batch simulation controls](../wiki/figures/29batchcontrols.png)
 
-Similar to the _Control panel_ of the main interface window, this widget features _Play_, _Stop_ and _Pause_ (Linux and Mac OS X only) to control the execution. The number of threads that will be used for the simulations may be set using the CPUs slider. During execution, all output will be shown in the central area. The verbosity level can be changed from the default _Verbose_ to _Very verbose_ for even more information about the runs. While running the simulations, it is possible to save all output that is placed on the screen to a file that will be continuously updated. Click the _Save As_ button to choose a filename.
+Similar to the _Control panel_ of the main interface window, this widget features _Play_, _Stop_ and _Pause_ to control the execution. The number of threads that will be used for the simulations may be set using the CPUs slider. During execution, all output will be shown in the central area. The verbosity level can be changed from the default _Verbose_ to _Very verbose_ for even more information about the runs. While running the simulations, it is possible to save all output that is placed on the screen to a file that will be continuously updated. Click the _Save As_ button to choose a filename.
 
 Afterwards, if all simulations were performed successfully, a message should be displayed confirming so.
 
