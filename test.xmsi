@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE xmimsim SYSTEM "http://www.xmi.UGent.be/xml/xmimsim-1.0.dtd">
 <!-- <Creator>Tom Schoonjans (schoon)</Creator>
- <Timestamp>2013-04-30 14:59:38 (CEST)</Timestamp>
+ <Timestamp>2014-06-11 17:09:17 (CEST)</Timestamp>
  <Hostname>172-16-51-189.hosts.uniss.it</Hostname>
 -->
+<!--DO NOT MODIFY THIS FILE UNLESS YOU KNOW WHAT YOU ARE DOING!-->
 <xmimsim>
  <general version="1.0">
   <outputfile>/Users/schoon/Desktop/test.xmso</outputfile>
@@ -52,40 +53,40 @@
   <reference_layer>2</reference_layer>
  </composition>
  <geometry>
-  <d_sample_source>100.000000</d_sample_source>
+  <d_sample_source>100</d_sample_source>
   <n_sample_orientation>
-   <x>0.000000</x>
+   <x>0</x>
    <y>0.707107</y>
    <z>0.707107</z>
   </n_sample_orientation>
   <p_detector_window>
-   <x>0.000000</x>
-   <y>-1.000000</y>
-   <z>100.000000</z>
+   <x>0</x>
+   <y>-1</y>
+   <z>100</z>
   </p_detector_window>
   <n_detector_orientation>
-   <x>0.000000</x>
-   <y>1.000000</y>
-   <z>0.000000</z>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
   </n_detector_orientation>
-  <area_detector>0.300000</area_detector>
-  <collimator_height>0.000000</collimator_height>
-  <collimator_diameter>0.000000</collimator_diameter>
-  <d_source_slit>100.000000</d_source_slit>
+  <area_detector>0.3</area_detector>
+  <collimator_height>0</collimator_height>
+  <collimator_diameter>0</collimator_diameter>
+  <d_source_slit>100</d_source_slit>
   <slit_size>
-   <slit_size_x>0.001000</slit_size_x>
-   <slit_size_y>0.001000</slit_size_y>
+   <slit_size_x>0.001</slit_size_x>
+   <slit_size_y>0.001</slit_size_y>
   </slit_size>
  </geometry>
  <excitation>
   <discrete>
-   <energy>20.000000</energy>
+   <energy>20</energy>
    <horizontal_intensity>1e+09</horizontal_intensity>
    <vertical_intensity>1e+09</vertical_intensity>
-   <sigma_x>0.000000</sigma_x>
-   <sigma_xp>0.000000</sigma_xp>
-   <sigma_y>0.000000</sigma_y>
-   <sigma_yp>0.000000</sigma_yp>
+   <sigma_x>0</sigma_x>
+   <sigma_xp>0</sigma_xp>
+   <sigma_y>0</sigma_y>
+   <sigma_yp>0</sigma_yp>
   </discrete>
  </excitation>
  <absorbers>
@@ -102,7 +103,7 @@
  </absorbers>
  <detector>
   <detector_type>SiLi</detector_type>
-  <live_time>1.000000</live_time>
+  <live_time>1</live_time>
   <pulse_width>1e-05</pulse_width>
   <gain>0.02</gain>
   <zero>0</zero>

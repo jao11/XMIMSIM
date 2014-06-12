@@ -10,6 +10,7 @@ The following guide assumes that the user has already installed XMI-MSIM, accord
 * **[Global preferences](#global-preferences)**
 * **[Advanced features](#advanced-features)**
 * **[Checking for updates](#checking-for-updates)**
+* **[Command line interface](#command-line-interface)**
 * **[Example files](#example-files)**
 
 
@@ -28,7 +29,7 @@ Your desktop should now be embellished with a window resembling the one in the f
 
 ![XMI-MSIM on startup](../wiki/figures/01start-window.png)
 
-XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files (.xmsi extension) and output-files (.xmso extenstion) in your platform's file manager, thereby loading the file's contents.
+XMI-MSIM may also be started on most platforms by double clicking XMI-MSIM input-files (.xmsi extension) and output-files (.xmso extension) in your platform's file manager, thereby loading the file's contents.
 
 The main view of the XMI-MSIM consists of three pages that each serve a well-defined purpose. The first page is used to generate inputfiles, based on a number of parameters that are defined by the user. The second page allows for the execution of these files, while the third and last page is designed to visualise the results and help in their interpretation. The purpose of the following sections is to provide an in-depth guide on how to operate these pages. 
 
@@ -78,7 +79,7 @@ In this example I added an additional 50 % of `U3O8` to the composition and pick
 
 ![Adding another compound](../wiki/figures/06after-second-compound.png)
 
-Alternatively you may consider looking into the builtin catalog (press _Catalog_): a pop-up window will allow you to select a compound from a list which is generated using xraylib's [GetCompoundDataNISTList](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API-list-of-all-functions#wiki-nistcatalog) function, which provides access to NISTs compound database of compositions and densities. 
+Alternatively you may consider looking into the builtin catalog (press _Load from catalog_): a pop-up window will allow you to select a compound from one of two lists. The first list is generated using xraylib's [GetCompoundDataNISTList](https://github.com/tschoonj/xraylib/wiki/The-xraylib-API-list-of-all-functions#wiki-nistcatalog) function, which provides access to NISTs compound database of compositions and densities. The second one however, provides access to layers that you defined yourself: when a valid layer (i.e. composition, density and thickness) is showing in the layer dialog, click _Add to catalog_ and choose a name for the layer: this layer will show up in the catalog list next time it is opened. Keep in mind that existing layers in the list will be overwritten without warning! If you would like to delete previously defined layers from the list, use the [_Preferences_](#user-defined-layers) interface.
 
 When satisfied with the layer characteristics, press _Ok_.
 
@@ -92,6 +93,7 @@ To add such a layer, click again on _Add_ button. In the _Modify layer_ dialog, 
 
 ![Adding air layer](../wiki/figures/07after-adding-air-layer.png)
 
+Alternatively, click on _Load from catalog_ and select _Air, Dry (near sea level)_ from the NIST compositions list.
 Clicking the _Ok_ button should lead the following situation in the _Composition_ section:
 
 ![Wrong layer order](../wiki/figures/08layers-wrong.png)
@@ -236,6 +238,7 @@ This section is followed by a number of options that change the behaviour of the
 * _Enable variance reduction techniques_: disabling this option will trigger the brute-force mode, disabling all variance reduction techniques, thereby greatly reducing the precision of the estimated spectrum and net-line intensities for a given [_Number of photons per discrete line_](#general). This reduced precision may be improved upon by greatly increasing the _Number of photons per discrete line_, but this will result in a much longer runtime of the Monte-Carlo program. Expert use only. Consider building XMI-MSIM with MPI support and running it on a cluster
 * _Enable pulse pile-up simulation_: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector-settings) parameter
 * _Enable Poisson noise generation_: enabling this option will result in every channel of the detector convoluted spectrum being subjected to Poisson noise, controlled by Poisson distributions with lambda equal to the number of counts in a channel
+* _Enable escape peaks support_: enable this option to activate the support for escape peaks in the detector response function. Typically you will want to leave this on.
 * _Enable OpenCL_: this option invokes XMI-MSIMs OpenCL plug-in that, if the platform comes with a videocard chipset that supports it, will use the GPU to perform the solid angle calculation, which could lead to a tremendous speed increase. Keep in mind that when this option is used during the solid angle calculation stage, the screen may have a noticeably lower refresh rate and may lose its responsiveness briefly. This option is only available when an OpenCL framework was found at compile-time.
 * _Number of spectrum channels_: the number of channels in the produced spectrum.
 
@@ -282,7 +285,7 @@ If a simulation was performed according to the inputfile that was defined [earli
 ![Visualizing the results](../wiki/figures/19results.png)
 
 The plot canvas shows by default the different spectra obtained after an increasing number of interactions. Individual spectra may be hidden and shown by toggling the boxes to the right of the plotting window.
-Their properties of a spectrum may be modified by clicking on the _Properties_ button connected to it, which launches a dialog allowing the user to change the line width, line type and line color of the spectrum.
+Their properties of a spectrum may be modified by clicking on the _Properties_ button connected to it, which launches a dialog allowing the user to change the line width, line type and line color of the spectrum. The _Properties_ button above the coordinate entries opens a dialog with the option to switch between linear and logarithmic display of the spectra, as well as the opportunity to change the axes titles. More options will be added in future releases allowing the user to customize this further.
 
 Zooming in on the plot canvas by dragging a rectangle with the mouse while keeping the left button clicked in. Zooming out can be accomplished by double-clicking anywhere in the canvas. While moving the mouse cursor in the plot canvas, one can track the current Energy, Channel number and Intensity in the textboxes to the right.
 The size of the canvas can be changed by grabbing and moving the handle that separates the upper part from the lower part of the page.
@@ -307,6 +310,7 @@ Clicking the _Preferences_ button in the toolbar will launch a dialog allowing t
 
 * [Simulation defaults](#simulation-defaults)
 * [Updates](#updates)
+* [User-defined layers](#user-defined-layers)
 * [Advanced](#advanced)
 
 ### Simulation defaults
@@ -316,6 +320,10 @@ The first page of the preferences window contains the same settings that are ava
 ### Updates
 
 If XMI-MSIM was compiled with support for automatic updates then this page will contain two widgets: firstly a checkbox that will determine if the program will check for updates at startup, and secondly a list of locations that will be used to download updates from.
+
+### User-defined layers
+
+Select layers and hit backspace to remove them from the list of user-defined layers. The layers are deleted immediately and cannot be recovered.
 
 ### Advanced
 
@@ -330,6 +338,7 @@ The last option is _Enable notifications_, which when supported at compile-time 
 
 * [X-ray tube spectrum generator](#x-ray-tube-spectrum-generator)
 * [Batch simulations](#batch-simulations)
+* [Generate XRMC input-files](#generate-xrmc-input-files)
 * [XMI-MSIM file manipulation with XPath and XSLT](#xmi-msim-file-manipulation-with-xpath-and-xslt)
 
 In this section, we will describe some more advanced features of XMI-MSIM, which may useful for some users with specific needs.
@@ -403,6 +412,12 @@ The following screenshot shows a case where two variable parameters were chosen:
 
 All information that was produced in the batch simulation has been stored in an XMI-MSIM archive file (.xmsa extension). If one would like to inspect its contents again with the _Batch mode plot_ window, just double-click such a file from your favorite file manager, or open it from within XMI-MSIM by clicking _Open_ in the toolbar or menubar and setting the filter to _XMI-MSIM archives_, and then selecting the desired file.
 
+### Generate XRMC input-files
+
+Using the _Convert XMSI file to XRMC_ option from the _Tools_ menu, one can produce input-files for the [XRMC](http://github.com/golosio/xrmc/wiki) software package, a Monte Carlo simulation tool for X-ray imaging and spectroscopy experiments. This should be of particular interest to those users that are interested in a simulation that includes scattering and XRF that is generated by the collimator, which is being ignored by XMI-MSIM. Keep in mind though that simulations with XMI-MSIM typically will take considerably longer compared to XMI-MSIM for a result with equivalent statistical variance.
+In order to use the produced input-files, install XRMC including its XMI-MSIM plug-in, which will be used for the detector response function.
+One can also generate the XRMC input-files using the [command-line utility](#command-line-interface) `xmsi2xrmc`.
+
 ### XMI-MSIM file manipulation with XPath and XSLT
 
 All three XMI-MSIM document types (xmsi, xmso and xmsa) are in fact XML files defined through a document type definition (DTD) file which is included and used in all XMI-MSIM installations. Due to their XML nature, it becomes quite easy to manipulate these files in a number of ways. For example, using an Extensible Stylesheet Language Transformation (XSLT) it becomes possible to extract certain parts of the XML file and convert them to any other type of output. 
@@ -467,6 +482,21 @@ for (my $i = 0 ; $i <= $ARGV[4] ; $i++) {
 For packages of XMI-MSIM that were compiled with support for automatic updates, checking for new versions will occur by default when launching the program. This can be disabled in the [Preferences window](#updates). If you would like to check explicity, then click on _Help_->_Check for updates..._ for Windows and Linux, and XMI-MSIM->_Check for updates..._ for Mac OS X.
 
 When updates are available, a dialog will pop up, inviting the user to download the package through the interface. When the download is completed, quit XMI-MSIM and install the new version. It is highly recommended to always use the latest version of the interface.
+
+## Command line interface
+
+XMI-MSIM ships with a number of command line utilities that may be useful for some users. An overview:
+
+* `xmimsim-gui`: This executable corresponds to the graphical user interface of XMI-MSIM, as described in this user guide. This will mostly be useful for Linux users or Mac OS X users that compiled from source without gtk-mac-integration support.
+* `xmimsim`: The executable that actually does the hard simulations work. It is usually launched from within the graphical user interface with the _Play_, _Pause_ and _Stop_ buttons from the [control panel](#control-panel), but in some circumstances it may be useful from the command-line as well. It has a lot of options: consult them by running `xmimsim --help`. Windows users will have to use `xmimsim-cli.exe` since `xmimsim.exe` is compiled as a graphical user interface executable in order to avoid a console window from popping up during the simulation in XMI-MSIM.
+* `xmimsim-db`: Used to generate the `xmimsimdata.h5` file that contains the tables of physical data (mostly inverse cumulative distribution functions) that will be used during the simulation to speed things up drastically. This executable is intended for those that compile XMI-MSIM from source.
+* `xmimsim-conv`: A recently added executable that allows to extract the unconvoluted spectra from an XMSO file and apply the detector response function to it with different settings that were used initially to generate the XMSO file.
+* `xmimsim-harvester`: a daemon that collects seeds for the random number generators. Read [the note on the random number generators in the installation instructions](../wiki/Installation-instructions) for more information.
+* `xmso2xmsi`, `xmso2spe`, `xmso2csv`, `xmso2htm` and `xmso2svg`: utilities that allow for the conversion of XMSO files to the corresponding XMSI, SPE, CSV, HTML and SVG counterparts, providing the same functionality as obtained through _Tools_ -> _Convert XMSO file to_.
+* `xmsi2xrmc`: Utility to convert an XMSI file to the corresponding XRMC input-files. Read [here](#generate-xrmc-input-files) for more information.
+* `xmimsim-pymca`: The quantification plug-in that is used by PyMca.
+
+Most of these executables have quite a few options. Consult them by passing the `--help` option to the executable.
 
 
 ## Example files
