@@ -5,7 +5,7 @@
 
 ## Compiling from source
 
-XMI-MSIM has been successfully built on Linux (Debian/Ubuntu and RHEL/CentOS/Fedora), Mac OS X (Snow Leopard and up) and Windows 7 (with 32-bit MinGW and 64-bit MinGW-w64 compilers)
+XMI-MSIM has been successfully built on Linux (Debian/Ubuntu and RHEL/CentOS/Fedora), Mac OS X (Snow Leopard and up) and Windows 7 (with the 32-bit MinGW and 64-bit MinGW-w64 compilers). Obtain the source code from **[our download repository](http://lvserver.ugent.be/xmi-msim)**, kindly hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University.
 
 The following dependencies are required to build XMI-MSIM:
 
@@ -148,12 +148,12 @@ After this, one can install XMI-MSIM by executing the following command:
 
 ## Windows
 
-Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the [Downloads](http://lvserver.ugent.be/xmi-msim) section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 4.0 is the last release to have support for Windows XP.
+Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the **[Downloads](http://lvserver.ugent.be/xmi-msim)** section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 4.0 is the last release to have support for Windows XP.
 
 The Windows version ship with the OpenCL plug-in for XMI-MSIM. In order for this plug-in to function, you need 1) to have a videocard that supports OpenCL 1.1 and 2) have the OpenCL drivers installed as provided by your videocard's manufacturer.
 To test if this is the case, try running XMI-MSIM with OpenCL enabled: if an error dialog pops up, then you need to install the drivers. Other errors would be displayed in red in the log, followed by a fallback to the default OpenCL implementation.
 
 ## Mac OS X
 
-A [dmg](http://lvserver.ugent.be/xmi-msim) file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit only).
+A **[dmg](http://lvserver.ugent.be/xmi-msim)** file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit only).
 After downloading, mount the dmg file and drag the XMI-MSIM app to the Applications folder.
