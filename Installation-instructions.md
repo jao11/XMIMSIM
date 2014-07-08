@@ -78,13 +78,17 @@ None of the binary Linux packages ship with the OpenCL plug-in. If you want to e
 
 ### Fedora, Centos and Scientific Linux
 
-To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 16-20 and Redhat EL/CentOS/Scientific Linux 6 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
+To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 16-20 and Redhat EL/CentOS/Scientific Linux 6/7 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
 
 > `su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-fedora.noarch.rpm`
 
-and for Red Hat EL based distributions:
+for Red Hat EL 6 based distributions:
 
-> `su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-redhat.noarch.rpm`
+> `su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-6.0-1.el6.noarch.rpm`
+
+and for Red Hat EL 7 based distributions:
+
+> `su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-7.0-1.el7.noarch.rpm`
 
 The XMI-MSIM packages themselves can then be downloaded using yum:
 
