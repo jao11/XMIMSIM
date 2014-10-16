@@ -1,15 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE xmimsim SYSTEM "http://www.xmi.UGent.be/xml/xmimsim-1.0.dtd">
-<!-- <Creator>Tom Schoonjans (schoon)</Creator>
- <Timestamp>2014-06-11 17:09:17 (CEST)</Timestamp>
- <Hostname>172-16-51-189.hosts.uniss.it</Hostname>
--->
 <!--DO NOT MODIFY THIS FILE UNLESS YOU KNOW WHAT YOU ARE DOING!-->
 <xmimsim>
  <general version="1.0">
-  <outputfile>/Users/schoon/Desktop/test.xmso</outputfile>
+  <outputfile>test.xmso</outputfile>
   <n_photons_interval>10000</n_photons_interval>
-  <n_photons_line>100000</n_photons_line>
+  <n_photons_line>1000000</n_photons_line>
   <n_interactions_trajectory>4</n_interactions_trajectory>
   <comments/>
  </general>
@@ -105,11 +101,11 @@
   <detector_type>SiLi</detector_type>
   <live_time>1</live_time>
   <pulse_width>1e-05</pulse_width>
+  <nchannels>2048</nchannels>
   <gain>0.02</gain>
   <zero>0</zero>
   <fano>0.12</fano>
   <noise>0.1</noise>
-  <max_convolution_energy>40</max_convolution_energy>
   <crystal>
    <layer>
     <element>

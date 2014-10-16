@@ -1,15 +1,15 @@
 SOURCES = Home.md Installation-instructions.md References-and-additional-resources.md \
-		The-XMI-MSIM-API-list-of-functions.md User-guide.md
+		The-XMI-MSIM-API-list-of-functions.md User-guide.md Advanced-usage.md
 
 OBJECTS = Home.tex Installation-instructions.tex References-and-additional-resources.tex \
-		The-XMI-MSIM-API-list-of-functions.tex User-guide.tex
+		The-XMI-MSIM-API-list-of-functions.tex User-guide.tex Advanced-usage.tex
 
 
-xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
+xmi-msim-manual.pdf: $(SOURCES) $(OBJECTS) xmi-msim-manual.tex
 	@echo "Building documentation"	
-	pdflatex xmimsim-manual.tex
-	pdflatex xmimsim-manual.tex
-	pdflatex xmimsim-manual.tex
+	pdflatex xmi-msim-manual.tex
+	pdflatex xmi-msim-manual.tex
+	pdflatex xmi-msim-manual.tex
 	
 
 
@@ -25,6 +25,7 @@ xmimsim-manual.pdf: $(SOURCES) $(OBJECTS)
 	    -e 's/<\/sub>/ENDSUB/g' \
 	    -e 's/<sup>/BEGINSUP/g' \
 	    -e 's/<\/sup>/ENDSUP/g' \
+	    -e 's/](\.\.\/wiki\/\(.\{1,\}\)#/](#/g' \
 	    -e 's/](\.\.\/wiki\/\(.\{1,\}\))/](#\1)/g' \
 	    $< > $<.bkp
 	perl captions.pl $<.bkp

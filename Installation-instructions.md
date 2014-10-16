@@ -16,9 +16,9 @@ The following dependencies are required to build XMI-MSIM:
 * libxml2
 * libxslt
 * Fortran GSL bindings (FGSL)
-* xraylib 3.0.0+ (including Fortran bindings)
+* xraylib 3.1.0+ (including Fortran bindings)
 * glib2
-* GTK2 and GTK-EXTRA (version 3.1.0) for the graphical user interface (optional though highly recommended)
+* GTK2 (2.18.0+) and GTK-EXTRA (3.1.0+) for the graphical user interface (optional though highly recommended)
 * optional for the GUI: curl, json-glib and libnotify
 * MPI (OpenMPI or Intel MPI): optional. Recommended for those that want to perform brute-force simulations with a very high number of simulated photons
 * The native Mac OS X build additionally requires gtk-mac-integration
@@ -76,9 +76,11 @@ XMI-MSIMs random number generators are seeded on Mac OS X and Linux using high q
 
 None of the binary Linux packages ship with the OpenCL plug-in. If you want to enable OpenCL support in your Linux version of XMI-MSIM, you will have to compile the software from source, after installing the required SDK and drivers provided by your GPU chipset manufacturer. We have successfully built Linux versions with OpenCL support using nVidia GPUs.
 
+Keep in mind that we only provide packages for distributions that are currently officially supported!
+
 ### Fedora, Centos and Scientific Linux
 
-To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 16-20 and Redhat EL/CentOS/Scientific Linux 6/7 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
+To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 19-20 and Redhat EL/CentOS/Scientific Linux 6/7 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
 
 > `su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-fedora.noarch.rpm`
 
@@ -107,11 +109,6 @@ In order to access these packages using your favorite package manager, execute t
 
 Next, add the package download location corresponding to your distribution to the /etc/apt/sources.list file (as root):
 
-Debian Squeeze:
-
-       deb http://lvserver.ugent.be/apt/debian squeeze stable
-       deb-src http://lvserver.ugent.be/apt/debian squeeze stable
-
 Debian Wheezy:
 
        deb http://lvserver.ugent.be/apt/debian wheezy stable
@@ -121,21 +118,6 @@ Ubuntu Precise 12.04:
 
        deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu precise stable
        deb-src http://lvserver.ugent.be/apt/ubuntu precise stable
-
-Ubuntu Quantal 12.10:
-
-       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu quantal stable
-       deb-src http://lvserver.ugent.be/apt/ubuntu quantal stable
-
-Ubuntu Raring 13.04:
-
-       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu raring stable
-       deb-src http://lvserver.ugent.be/apt/ubuntu raring stable
-
-Ubuntu Saucy 13.10:
-
-       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu saucy stable
-       deb-src http://lvserver.ugent.be/apt/ubuntu saucy stable
 
 Ubuntu Trusty 14.04:
 
@@ -159,5 +141,5 @@ To test if this is the case, try running XMI-MSIM with OpenCL enabled: if an err
 
 ## Mac OS X
 
-A **[dmg](http://lvserver.ugent.be/xmi-msim)** file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit only).
+A **[dmg](http://lvserver.ugent.be/xmi-msim)** file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit Intel only).
 After downloading, mount the dmg file and drag the XMI-MSIM app to the Applications folder.
