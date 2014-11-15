@@ -1,4 +1,4 @@
-XMI-MSIM is an open source tool designed for predicting the spectral response of energy-dispersive X-ray fluorescence spectrometers using Monte-Carlo simulations.
+XMI-MSIM is an open source tool designed for predicting the spectral response of energy-dispersive X-ray fluorescence spectrometers using Monte Carlo simulations.
 It comes with a fully functional graphical user interface in order to make it as user friendly as possible.
 Considerable effort has been taken to ensure easy installation on all major platforms.
 
