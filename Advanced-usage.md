@@ -68,11 +68,11 @@ Afterwards, if all simulations were performed successfully, a message should be 
 
 ### Batch simulations: vary one or two parameters in a single input-file
 
-A considerably more interesting feature of the batch simulation is its second operational mode: if the user selects a single file after clicking the _Batch mode_ button, he will be presented with a new dialog in which he is asked to select either one or two parameters that will be varied during a series of simulations based on the originally selected input-file, as is seen in the following screenshot:
+A considerably more interesting feature of the batch simulation is its second operational mode: if the user selects a single file after clicking the _Batch mode_ button, he will be presented with a new dialog in which he is asked to select either one or two parameters that will be varied during a series of simulations based on the initially selected input-file, as is seen in the following screenshot:
 
 ![Select one or two parameters to be varied](../wiki/figures/30batchselectparameters.png)
 
-After expanding the different components of the tree structure representing the original input-files contents, green rows will emerge: only the components lighting up are eligible as variable parameters!
+After expanding the different components of the tree structure representing the initial input-file contents, green rows will emerge: only the components lighting up are eligible as variable parameters!
 Furthermore, it should be noted that within a layer, one can only select an element's _weight\_fraction_ if there are at least two elements available: this is necessary because at any given moment, the sum of the weight fractions needs to be equal to 100% after rescaling. If two weight fractions within the same layer need to te varied, then at least three elements need to be present in that layer for the same reason.
 
 Clicking _Ok_ after selecting the required parameter(s), will cause a wizard to pop up that will guide the users through setting the other parameters necessary to start the batch. After the introduction, a page is presented containing the _General options_, as seen in the _Control panel_ of the main interface window.
