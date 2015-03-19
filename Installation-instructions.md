@@ -148,3 +148,13 @@ To test if this is the case, try running XMI-MSIM with OpenCL enabled: if an err
 
 A **[dmg](http://lvserver.ugent.be/xmi-msim)** file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Snow Leopard, Lion and Mountain Lion and Mavericks (all 64-bit Intel only).
 After downloading, mount the dmg file and drag the XMI-MSIM app to the Applications folder.
+
+[Homebrew](http://brew.sh) offers the command-line part of XMI-MSIM, which is probably only useful when installing [XRMC](http://github.com/golosio/xrmc) with its XMI-MSIM plug-in.
+
+In order to install XMI-MSIM using Homebrew type in a terminal:
+
+> `brew install homebrew/science/xmi-msim`
+
+To install XRMC with XMI-MSIM support (in this case the previous command does not have to be executed since XMI-MSIM will be installed first as a dependency):
+
+> `brew install homebrew/science/xrmc --with-xmi-msim`
