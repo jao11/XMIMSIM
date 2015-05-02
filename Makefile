@@ -13,6 +13,8 @@ xmi-msim-manual.pdf: $(SOURCES) $(OBJECTS) xmi-msim-manual.tex
 	
 
 
+scp: xmi-msim-manual.pdf
+	scp -P 6522 xmi-msim-manual.pdf schoon@lvserver.ugent.be:/var/www/html/xmi-msim/
 
 
 .md.tex:
