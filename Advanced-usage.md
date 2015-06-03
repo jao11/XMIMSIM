@@ -113,7 +113,7 @@ use Scalar::Util qw(looks_like_number);
 
 die "Usage: perl xmi-msim-batch.pl XMSI-file ".
 	"XPath-expression start-value end-value number-of-values\n" 
-	if (scalar(@ARGV) ne 5);
+	if (scalar(@ARGV) != 5);
 
 my $dom = XML::LibXML->load_xml(location => $ARGV[0],
 	load_ext_dtd => 0
