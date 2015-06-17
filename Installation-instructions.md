@@ -25,7 +25,7 @@ The following dependencies are required to build XMI-MSIM:
 
 All dependencies should be easy to obtain. [xraylib](http://github.com/tschoonj/xraylib) can be obtained at my repository. Windows users will have to compile most of these dependencies themselves, which will require them to install a bash shell with all basic UNIX utilities. The Windows versions of XMI-MSIM were built using MSYS (bash shell and GNU utilities) and TDM-GCC (MinGW compilers).
 
-It is absolutely critical that all Fortran packages are compiled with exactly the same compiler, and this compiler also needs to be used when building XMI-MSIM.
+It is absolutely critical that all Fortran packages are compiled with exactly the same compiler, and this same compiler also needs to be used when building XMI-MSIM.
 
 ### Compilation stages
 
@@ -80,7 +80,7 @@ Keep in mind that we only provide packages for distributions that are currently 
 
 ### Fedora, Centos and Scientific Linux
 
-To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 19-21 and Redhat EL/CentOS/Scientific Linux 6/7 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
+To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of XMI-MSIM for the Fedora 20-22 and Redhat EL/CentOS/Scientific Linux 6/7 distributions. These can be downloaded from the RPM repository that is hosted by the X-ray Microspectroscopy and Imaging research group of Ghent University. Access to this repository can be obtained as follows for Fedora distros:
 
 > `su -c 'rpm -Uvh http://lvserver.ugent.be/yum/xmi-repo-key-fedora.noarch.rpm'`
 
