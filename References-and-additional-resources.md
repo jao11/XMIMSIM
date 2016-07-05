@@ -15,6 +15,8 @@ XMI-MSIM is the successor of the msim program of Prof. Laszlo Vincze of Ghent Un
 ## Poster by Tom Schoonjans et al.
 
 * A general Monte Carlo simulation of ED-XRF spectrometers. New developments. Tom Schoonjans, V. Armando Solé, Manuel Sanchez del Rio, Claudio Ferrero and Laszlo Vincze. [ICXOM 2011 conference](http://icxom21.lnls.br), Campinas, Brazil. 5-8 September 2011.
+* XMI-MSIM: A general Monte Carlo simulation of ED-XRF spectrometers. Tom Schoonjans, Laszlo Vincze, V. Armando Solé, Manuel Sanchez del Rio and Claudio Ferrero. [European Conference on X-Ray Spectrometry](http://exrs2014.ing.unibo.it), Alma Mater Studiorum Università di Bologna, Italy, 15-20 June 2014
+* XMI-MSIM: A general Monte Carlo simulation of ED-XRF spectrometers. Tom Schoonjans, Laszlo Vincze, V. Armando Solé, Manuel Sanchez del Rio and Claudio Ferrero. [European Conference on X-Ray Spectrometry](http://www.exrs2016.se), University of Gothenburg, Sweden, 19-24 June 2016 [PDF](http://lvserver.ugent.be/xmi-msim/poster_EXRS2016.pdf)
 
 ## Oral presentation by Tom Schoonjans et al.
 
