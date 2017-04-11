@@ -6,7 +6,7 @@ Development of this package was part of my PhD thesis. The algorithms were inspi
 
 A manuscript has been published in [Spectrochimica Acta Part B](http://dx.doi.org/10.1016/j.sab.2012.03.011) that covers the algorithms that power XMI-MSIM. Please include a reference to this publication in your own work if you decide to use XMI-MSIM for academic purposes.
 
-A second manuscript was [published](http://dx.doi.org/10.1016/j.sab.2012.12.011) that covers our XMI-MSIM based quantification plug-in for [PyMca](http://pymca.sourceforge.net). Soon information on using this plug-in will be added to the manual.
+A second manuscript was [published](http://dx.doi.org/10.1016/j.sab.2012.12.011) that covers our XMI-MSIM based quantification plug-in for [PyMca](http://pymca.sourceforge.net).
 
 XMI-MSIM is released under the terms of the [GPLv3](http://www.gnu.org/copyleft/gpl.html).
 

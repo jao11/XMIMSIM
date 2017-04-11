@@ -239,7 +239,8 @@ This section is followed by a number of options that change the behaviour of the
 * _Enable pulse pile-up simulation_: this option activates the simulation of the so-called sum peaks in a spectrum due to the pulse pile-up effect which occurs when more photons are entering the detector than it can process. The magnitude of this effect can controlled through the [_Pulse width_](#detector-settings) parameter
 * _Enable Poisson noise generation_: enabling this option will result in every channel of the detector convoluted spectrum being subjected to Poisson noise, controlled by Poisson distributions with lambda equal to the number of counts in a channel
 * _Enable escape peaks support_: enable this option to activate the support for escape peaks in the detector response function. Typically you will want to leave this on
-* _Enable advanced Compton scattering simulation_: this option activates an alternative algorithm for the simulation of the Compton profiles based on the work of [Fernandez and Scot](http://dx.doi.org/10.1016/j.nimb.2007.04.203), which takes into account the fact that not all orbitals are completely populated, leading to a more accurate reproduction of the profiles. This has been coupled with the simulation of the fluorescence that is generated after Compton effect interactions (extremely small contribution!). The downside of this approach is that it's slower than the default implementation. Recommended only for advanced users. In order to fully understand the importance of an improved Compton profile simulation, the leader is advised to read the aforementioned manuscript of Fernandez and Scot
+* _Enable advanced Compton scattering simulation_: this option activates an alternative algorithm for the simulation of the Compton profiles based on the work of [Fernandez and Scot](http://dx.doi.org/10.1016/j.nimb.2007.04.203), which takes into account the fact that not all orbitals are completely populated, leading to a more accurate reproduction of the profiles. The downside of this approach is that it's slower than the default implementation. Recommended only for advanced users. In order to fully understand the importance of an improved Compton profile simulation, the reader is advised to read the aforementioned manuscript of Fernandez and Scot
+* _Enable default seeds support_: instead of using randomly chosen seeds for the random number generators, use default values, which should result in reproducible results, at least when using a single thread. This option should normally not be used.
 * _Enable OpenCL_: this option invokes XMI-MSIMs OpenCL plug-in that, if the platform comes with a videocard chipset that supports it, will use the GPU to perform the solid angle calculation, which could lead to a tremendous speed increase. Keep in mind that when this option is used during the solid angle calculation stage, the screen may have a noticeably lower refresh rate and may lose its responsiveness briefly. This option is only available when an OpenCL framework was found at compile-time
 * _Custom detector response_: through this option, one can load a plug-in that exports a routine that will override the default detector response functions of XMI-MSIM. Click [here](../wiki/Advanced-usage#custom-detector-response-functions) more information on how to write and build such plug-ins
 
@@ -323,7 +324,7 @@ If XMI-MSIM was compiled with support for automatic updates then this page will 
 
 ### User-defined layers
 
-Select layers and hit backspace to remove them from the list of user-defined layers (which are defined in the _Modify layer_ dialog windows). The layers are deleted immediately and cannot be recovered.
+Select layers and hit backspace to remove them from the list of user-defined layers (which are defined in the _layer_ dialogs). The layers are deleted when the Apply button is clicked.
 
 ### Advanced
 
@@ -349,8 +350,9 @@ XMI-MSIM ships with a number of command line utilities that may be useful for so
 * `xmimsim-db`: Used to generate the `xmimsimdata.h5` file that contains the tables of physical data (mostly inverse cumulative distribution functions) that will be used during the simulation to speed things up drastically. This executable is intended for those that compile XMI-MSIM from source.
 * `xmimsim-conv`: A recently added executable that allows to extract the unconvoluted spectra from an XMSO file and apply the detector response function to it with different settings that were used initially to generate the XMSO file.
 * `xmimsim-harvester`: a daemon that collects seeds for the random number generators. Read [the note on the random number generators in the installation instructions](../wiki/Installation-instructions) for more information.
-* `xmso2xmsi`, `xmso2spe`, `xmso2csv`, `xmso2htm` and `xmso2svg`: utilities that allow for the conversion of XMSO files to the corresponding XMSI, SPE, CSV, HTML and SVG counterparts, providing the same functionality as obtained through _Tools_ -> _Convert XMSO file to_.
-* `xmsi2xrmc`: Utility to convert an XMSI file to the corresponding XRMC input-files. Read [here](../wiki/Advanced-usage#generate-xrmc-input-files) for more information.
+* `xmso2xmsi`, `xmso2spe`, `xmso2csv`, `xmso2htm` and `xmso2svg`: utilities that allow for the conversion of XMSO files to the corresponding XMSI, SPE, CSV, HTML and SVG counterparts, providing the same functionality as obtained through _Tools_ -> _Convert_ -> _XMSO file_ -> ...
+* `xmsa2xmso`: utility that allows for the extraction of XMSO files from an XMSA file, providing the same functionality as obtained through _Tools_ -> _Convert_ -> _XMSA file_ -> _to XMSO_.
+* `xmsi2xrmc`: Utility to convert an XMSI file to the corresponding XRMC input-files. Read [here](../wiki/Advanced-usage#generate-xrmc-input-files) for more information. Also available through _Tools_ -> _Convert_ -> _XMSI file_ -> _to XRMC input-files_.
 * `xmimsim-pymca`: The quantification plug-in that is used by PyMca.
 
 Most of these executables have quite a few options. Consult them by passing the `--help` option to the executable.

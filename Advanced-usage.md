@@ -9,7 +9,7 @@ In this section, we will describe some more advanced features of XMI-MSIM, which
 
 ## X-ray sources
 
-In the [_Excitation_ section](#excitation), we have shown how one can introduce the necessary components of the X-ray excitation spectrum, through a number of discrete energies and intervals of continuous energies. XMI-MSIM tries to facilitate the process of defining the excitation spectrum through its _X-ray sources_ dialog, which can be invoked by clicking the corresponding button (with the radiation warning symbol) in the toolbar. Currently two types of sources can be defined this way: X-ray tubes and radionuclides. Switching between both types can be accomplished easily by clicking on the desired tab in the dialog.
+In the [_Excitation_ section](#excitation), we have shown how one can introduce the necessary components of the X-ray excitation spectrum, through a number of discrete energies and intervals of continuous energies. XMI-MSIM tries to facilitate the process of defining the excitation spectrum through its _X-ray sources_ dialog, which can be invoked by clicking the corresponding button (with the radiation warning symbol) in the toolbar. Currently two types of sources can be defined this way: X-ray tubes and radionuclides. Switching between both types can be accomplished easily by clicking on the desired tab in the dialog. It is possible to add user-defined sources to this dialog by writing custom plug-ins. Documentation on how to do this will be added soon.
 
 After adjusting the required parameters of the selected source, click _Update spectrum_ to obtain a new excitation spectrum in the plot window. Using _Export spectrum_, it is possible to save the generated spectrum to an ASCII file, while _Save image_ will allow the user to save the plot window to an image file.
 Clicking _About_ will display some information regarding the origins of the model or dataset. 
@@ -163,21 +163,34 @@ As already mentioned in [simulation options](../wiki/User-guide#options), it has
 Basically, you will have to write your own routine called `xmi_detector_convolute_all_custom` and compile this function into a plug-in (dynamically loadable module). This routine should follow the prototype:
 
 ```c
-void xmi_detector_convolute_all(xmi_inputFPtr inputFPtr, double **channels_noconv, double **channels_conv, struct xmi_main_options, struct xmi_escape_ratios *escape_ratios, int n_interactions_all, int zero_interaction);
+void xmi_detector_convolute_all_custom(xmi_inputFPtr inputFPtr, double **channels_noconv, double **channels_conv, double *brute_history, double *var_red_history, struct xmi_main_options, struct xmi_escape_ratios *escape_ratios, int n_interactions_all, int zero_interaction);
 ```
 
 or in Fortran:
 
 ```fortran
-SUBROUTINE xmi_detector_convolute_all_custom(inputFPtr, channels_noconvPtr,&
-channels_convPtr, options, escape_ratiosCPtr, n_interactions_all,&
-zero_inter) BIND(C,NAME='xmi_detector_convolute_all_custom')
+INTERFACE
+SUBROUTINE xmi_detector_convolute_all_custom(&
+        inputFPtr,&
+        channels_noconvPtr,&
+        channels_convPtr,&
+        brute_historyPtr,&
+        var_red_historyPtr,&
+        options,&
+        escape_ratiosCPtr,&
+        n_interactions_all,&
+        zero_inter) &
+        BIND(C,NAME='xmi_detector_convolute_all')
+        IMPLICIT NONE
         TYPE (C_PTR), INTENT(IN), VALUE :: inputFPtr
         TYPE (C_PTR), INTENT(IN), VALUE :: channels_noconvPtr
         TYPE (C_PTR), INTENT(IN), VALUE :: channels_convPtr
+        TYPE (C_PTR), INTENT(IN), VALUE :: var_red_historyPtr
+        TYPE (C_PTR), INTENT(IN), VALUE :: brute_historyPtr
         TYPE (xmi_escape_ratiosC), INTENT(IN) :: escape_ratiosCPtr
         TYPE (xmi_main_options), VALUE, INTENT(IN) :: options
         INTEGER (C_INT), VALUE, INTENT(IN) :: n_interactions_all, zero_inter
+ENDINTERFACE
 ```
 
 Clearly for this to work you will have to make use of the datatypes exposed in the headers and the fortran module files.
@@ -203,23 +216,23 @@ The following instructions apply to the XMI-MSIM app bundle only, and assume it 
 
 #### Fortran
 
-The latest release of XMI-MSIM (5.0) has been compiled with gfortran 4.9, installed using MacPorts. Do not attempt to try a different fortran compiler, it won't work!
+The latest release of XMI-MSIM (6.0) has been compiled with gfortran 6, installed using MacPorts. Do not attempt to try a different fortran compiler, or even a different version of gfortran: it won't work! What should work (though I haven't tested this), is a gfortran 6 compiler installed with Homebrew or Fink.
 
 Compile your source files (to be executed for each source file separately):
 
 ```
-gfortran-mp-4.9 -I/Applications/XMI-MSIM.app/Contents/Resources/include/xmimsim -fopenmp -ffree-line-length-none -c -fno-common -o object1.o source1.f90
+gfortran-mp-6 -I/Applications/XMI-MSIM.app/Contents/Resources/include/xmimsim -fopenmp -ffree-line-length-none -c -fno-common -o object1.o source1.f90
 ```
 
 Link the objects together:
 
 ```
-gfortran-mp-4.9 -fopenmp -Wl,-undefined -Wl,dynamic_lookup -o module.so -bundle object1.o object2.o ...
+gfortran-mp-6 -fopenmp -Wl,-undefined -Wl,dynamic_lookup -o module.so -bundle object1.o object2.o ...
 ```
 
 #### C
 
-Feel free to use any C compiler you want for this: the default clang, or any C compiler offered by MacPorts. Keep in mind though that clang currently doesn't support OpenMP.
+Feel free to use any C compiler you want for this: the default clang, or any C compiler offered by MacPorts. Keep in mind though that the macOS system clang currently doesn't support OpenMP. clang as provided by Homebrew and MacPorts does support OpenMP.
 
 Compile your source files (to be executed for each source file separately):
 
@@ -278,11 +291,13 @@ For the sake of convenience, let's call this installation folder _xmi\_msim_. If
 
 XMI-MSIM for Windows has been compiled with MinGW-w64 compilers offered through [TDM-GCC](http://tdm-gcc.tdragon.net). In order for this to work, you will have to install the exact same compilers on your system:
 
-* For XMI-MSIM win64: download [tdm64-gcc-4.8.1-3.exe](http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/tdm64-gcc-4.8.1-3.exe/download)
+* For XMI-MSIM win64: download [MSYS2 and install the gcc compiler suite](http://www.msys2.org)
 * For XMI-MSIM win32: download [tdm-gcc-4.8.1-3.exe](http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/tdm-gcc-4.8.1-3.exe/download)
 
-When selecting components, make sure to select the C and Fortran compilers, and OpenMP too if you want to use it.
-After installation, fire up a MinGW shell from the Start Menu entries that were just created and cd to the directory that contains your source. Depending on what language was written, follow either the Fortran or C instructions, keeping in mind that _xmi\_msim_ refers to the full path to the XMI-MSIM installation folder!!!
+When selecting components during the TDM-GCC installation, make sure to select the C and Fortran compilers, and OpenMP too if you want to use it.
+After installation, fire up a MinGW/MSYS2 shell from the Start Menu entries that were just created and cd to the directory that contains your source. Depending on what language was written, follow either the Fortran or C instructions, keeping in mind that _xmi\_msim_ refers to the full path to the XMI-MSIM installation folder!!!
+
+I highly recommend using the 64-bit version of XMI-MSIM, as I am only providing minimal support for the 32-bit release at this point.
 
 #### Fortran
 
