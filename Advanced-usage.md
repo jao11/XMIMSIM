@@ -190,6 +190,7 @@ SUBROUTINE xmi_detector_convolute_all_custom(&
         TYPE (xmi_escape_ratiosC), INTENT(IN) :: escape_ratiosCPtr
         TYPE (xmi_main_options), VALUE, INTENT(IN) :: options
         INTEGER (C_INT), VALUE, INTENT(IN) :: n_interactions_all, zero_inter
+ENDSUBROUTINE
 ENDINTERFACE
 ```
 
