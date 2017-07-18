@@ -107,22 +107,22 @@ Updates can be installed in a similar way:
 
 ### Debian and Ubuntu
 
-Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Squeeze and Jessie and several Ubuntu versions .
+Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Jessie and Stretch and several Ubuntu versions .
 In order to access these packages using your favorite package manager, execute the following command to import our public key:
 
 > `curl http://lvserver.ugent.be/apt/xmi.packages.key | sudo apt-key add -`
 
 Next, add the package download location corresponding to your distribution to the /etc/apt/sources.list file (as root):
 
-Debian Wheezy:
-
-       deb http://lvserver.ugent.be/apt/debian wheezy stable
-       deb-src http://lvserver.ugent.be/apt/debian wheezy stable
-
 Debian Jessie:
 
        deb http://lvserver.ugent.be/apt/debian jessie stable
        deb-src http://lvserver.ugent.be/apt/debian jessie stable
+
+Debian Stretch:
+
+       deb http://lvserver.ugent.be/apt/debian stretch stable
+       deb-src http://lvserver.ugent.be/apt/debian stretch stable
 
 Ubuntu Precise 12.04:
 
