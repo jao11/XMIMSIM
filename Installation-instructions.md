@@ -1,7 +1,7 @@
 * **[Compiling from source](#compiling-from-source)**
 * **[Linux binary packages](#linux): [Fedora, Centos and Scientific Linux](#fedora-centos-and-scientific-linux) and [Debian and Ubuntu](#debian-and-ubuntu)**
 * **[Windows installer](#windows)**
-* **[Mac OS X](#mac-os-x)**
+* **[macOS](#macos)**
 
 ## Compiling from source
 
@@ -15,10 +15,10 @@ The following dependencies are required to build XMI-MSIM:
 * libxml2
 * libxslt
 * Fortran GSL bindings (FGSL) or easyRNG
-* xraylib 3.2.0+ (including Fortran bindings)
+* xraylib 3.3.0+ (including Fortran bindings)
 * glib2
 * GTK2 (2.24.0+) + GTK-EXTRA (3.1.0+) or GTKMM3 + Gtkmm-PLplot for the graphical user interface (optional though highly recommended)
-* optional for the GUI: curl, json-glib and libnotify
+* optional for the GUI: curl, json-glib, libsoup and libnotify (Linux only)
 * MPI (OpenMPI or Intel MPI): optional. Recommended for those that want to perform brute-force simulations with a very high number of simulated photons
 * The native Mac OS X build additionally requires gtk-mac-integration
 
@@ -124,11 +124,6 @@ Debian Stretch:
        deb http://lvserver.ugent.be/apt/debian stretch stable
        deb-src http://lvserver.ugent.be/apt/debian stretch stable
 
-Ubuntu Precise 12.04:
-
-       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu precise stable
-       deb-src http://lvserver.ugent.be/apt/ubuntu precise stable
-
 Ubuntu Trusty 14.04:
 
        deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu trusty stable
@@ -138,11 +133,6 @@ Ubuntu Xenial 16.04:
 
       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu xenial stable
       deb-src http://lvserver.ugent.be/apt/ubuntu xenial stable
-
-Ubuntu Yakkety 16.10:
-
-      deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu yakkety stable
-      deb-src http://lvserver.ugent.be/apt/ubuntu yakkety stable
 
 Ubuntu Zesty 17.04:
 
@@ -159,14 +149,14 @@ After this, one can install XMI-MSIM by executing the following command:
 
 ## Windows
 
-Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the **[Downloads](http://lvserver.ugent.be/xmi-msim)** section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 4.0 is the last release to have support for Windows XP. **I strongly recommend using the 64-bit release, as I may drop support for the 32-bit version when the next release is made**
+Installers containing the 32-bit and 64-bit binaries of XMI-MSIM for the Windows platform can be found in the **[Downloads](http://lvserver.ugent.be/xmi-msim)** section. It will download and install _xraylib_ if necessary. Although the 32-bit version has been verified to work on Windows XP, we recommend using it on Windows 7 and newer. Version 4.0 is the last release to have support for Windows XP. **I strongly recommend using the 64-bit release, as I will drop support for the 32-bit version when the next release is made**
 
 The Windows versions ship with the OpenCL plug-in for XMI-MSIM. In order for this plug-in to function, you need 1) to have a videocard that supports OpenCL 1.1 and 2) have the OpenCL drivers installed as provided by your videocard's manufacturer.
 To test if this is the case, try running XMI-MSIM with OpenCL enabled: if an error dialog pops up, then you need to install the drivers. Other errors would be displayed in red in the log, followed by a fallback to the default Fortran implementation.
 
-## Mac OS X
+## macOS
 
-A **[dmg](http://lvserver.ugent.be/xmi-msim)** file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on Mac OS X Mountain Lion and newer (all 64-bit Intel only).
+A **[dmg](http://lvserver.ugent.be/xmi-msim)** file has been created containing an application bundle which integrates nicely within Mac OS X, through the use of some dedicated API's. The provided app will run on macOS Yosemite and newer (all 64-bit Intel only).
 After downloading, mount the dmg file and drag the XMI-MSIM app to the Applications folder.
 
 [Homebrew](http://brew.sh) offers the command-line part of XMI-MSIM, which is probably only useful when installing [XRMC](http://github.com/golosio/xrmc) with its XMI-MSIM plug-in.

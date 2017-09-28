@@ -23,10 +23,10 @@ scp: xmi-msim-manual.pdf
 	    -e 's/## Table of contents//' \
 	    -e 's/\.\.\/wiki\/figures/figures/' \
 	    -e 's/^\(#\{2,3\}\) <a id="\(.\{1,\}\)"><\/a>\(.\{1,\}\)/\1 \3\nLABEL\2/' \
-	    -e 's/<sub>/BEGINSUB/g' \
-	    -e 's/<\/sub>/ENDSUB/g' \
-	    -e 's/<sup>/BEGINSUP/g' \
-	    -e 's/<\/sup>/ENDSUP/g' \
+	    -e 's/<sub>/__BEGINSUB__/g' \
+	    -e 's/<\/sub>/__ENDSUB__/g' \
+	    -e 's/<sup>/__BEGINSUP__/g' \
+	    -e 's/<\/sup>/__ENDSUP__/g' \
 	    -e 's/](\.\.\/wiki\/\(.\{1,\}\)#/](#/g' \
 	    -e 's/](\.\.\/wiki\/\(.\{1,\}\))/](#\1)/g' \
 	    $< > $<.bkp
@@ -34,10 +34,10 @@ scp: xmi-msim-manual.pdf
 	pandoc --wrap=none -f markdown_github -t latex -o $@.bkp $<.bkp
 	gsed -e 's/\\includegraphics\(.\{1,\}\)/\\begin{center}\\includegraphics[width=1.0\\textwidth]\1\\end{center}/' \
 	    -e 's/LABEL\(.\{1,\}\)/\\label{\1}/' \
-	    -e 's/BEGINSUB/$$_{/g' \
-	    -e 's/ENDSUB/}$$/g' \
-	    -e 's/BEGINSUP/$$^{/g' \
-	    -e 's/ENDSUP/}$$/g' \
+	    -e 's/__BEGINSUB__/$$_{/g' \
+	    -e 's/__ENDSUB__/}$$/g' \
+	    -e 's/__BEGINSUP__/$$^{/g' \
+	    -e 's/__ENDSUP__/}$$/g' \
 	    -e 's/^BEGCAP\(.\{1,\}\)ENDCAPFILE\(.\{1,\}\)ENDFILE/\\begin{figure}[htb]\\begin{center}\\includegraphics[width=1.0\\textwidth]{\2}\\caption{\1}\\end{center}\\end{figure}/' \
 	    $@.bkp > $@.bkp2
 	perl equation.pl $@.bkp2
