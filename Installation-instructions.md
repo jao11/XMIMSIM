@@ -139,6 +139,12 @@ Ubuntu Zesty 17.04:
       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu zesty stable
       deb-src http://lvserver.ugent.be/apt/ubuntu zesty stable
 
+Ubuntu Artful 17.10:
+
+    deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu artful stable
+    deb-src http://lvserver.ugent.be/apt/ubuntu artful stable
+
+
 When the sources.list file contains the correct download locations, update the apt cache by running:
 
 > `sudo apt-get update`
