@@ -144,6 +144,10 @@ Ubuntu Artful 17.10:
     deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu artful stable
     deb-src http://lvserver.ugent.be/apt/ubuntu artful stable
 
+Ubuntu Bionic 18.04:
+
+    deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu bionic stable
+    deb-src http://xmi-apt.tomschoonjans.eu/ubuntu bionic stable
 
 When the sources.list file contains the correct download locations, update the apt cache by running:
 
