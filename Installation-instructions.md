@@ -134,20 +134,15 @@ Ubuntu Xenial 16.04:
       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu xenial stable
       deb-src http://lvserver.ugent.be/apt/ubuntu xenial stable
 
-Ubuntu Zesty 17.04:
-
-      deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu zesty stable
-      deb-src http://lvserver.ugent.be/apt/ubuntu zesty stable
-
-Ubuntu Artful 17.10:
-
-    deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu artful stable
-    deb-src http://lvserver.ugent.be/apt/ubuntu artful stable
-
 Ubuntu Bionic 18.04:
 
     deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu bionic stable
     deb-src http://xmi-apt.tomschoonjans.eu/ubuntu bionic stable
+
+Ubuntu Cosmic 18.10:
+
+    deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu cosmic stable
+    deb-src http://xmi-apt.tomschoonjans.eu/ubuntu cosmic stable
 
 When the sources.list file contains the correct download locations, update the apt cache by running:
 
@@ -173,8 +168,8 @@ After downloading, mount the dmg file and drag the XMI-MSIM app to the Applicati
 
 In order to install XMI-MSIM using Homebrew type in a terminal:
 
-> `brew install homebrew/science/xmi-msim`
+> `brew install tschoonj/tap/xmi-msim
 
 To install XRMC with XMI-MSIM support (in this case the previous command does not have to be executed since XMI-MSIM will be installed first as a dependency):
 
-> `brew install homebrew/science/xrmc --with-xmi-msim`
+> `brew install tschoonj/tap/xrmc --with-xmi-msim`
