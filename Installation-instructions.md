@@ -168,7 +168,7 @@ After downloading, mount the dmg file and drag the XMI-MSIM app to the Applicati
 
 In order to install XMI-MSIM using Homebrew type in a terminal:
 
-> `brew install tschoonj/tap/xmi-msim
+> `brew install tschoonj/tap/xmi-msim`
 
 To install XRMC with XMI-MSIM support (in this case the previous command does not have to be executed since XMI-MSIM will be installed first as a dependency):
 
