@@ -144,6 +144,11 @@ Ubuntu Cosmic 18.10:
     deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu cosmic stable
     deb-src http://xmi-apt.tomschoonjans.eu/ubuntu cosmic stable
 
+Ubuntu Disco 19.04:
+
+    deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu disco stable
+    deb-src http://xmi-apt.tomschoonjans.eu/ubuntu disco stable
+
 When the sources.list file contains the correct download locations, update the apt cache by running:
 
 > `sudo apt-get update`
