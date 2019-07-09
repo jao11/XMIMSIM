@@ -124,10 +124,10 @@ Debian Stretch:
        deb http://lvserver.ugent.be/apt/debian stretch stable
        deb-src http://lvserver.ugent.be/apt/debian stretch stable
 
-Ubuntu Trusty 14.04:
+Debian Buster:
 
-       deb [arch=amd64] http://lvserver.ugent.be/apt/ubuntu trusty stable
-       deb-src http://lvserver.ugent.be/apt/ubuntu trusty stable
+       deb http://lvserver.ugent.be/apt/debian buster stable
+       deb-src http://lvserver.ugent.be/apt/debian buster stable
 
 Ubuntu Xenial 16.04:
 
